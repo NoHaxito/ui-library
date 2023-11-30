@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@acme/ui";
+import { Button } from "@sihaxito/deluxe-ui";
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -22,25 +22,16 @@ type Story = StoryObj<typeof Button>;
  */
 export const Primary: Story = {
   render: (props) => (
-    <Button
-      {...props}
-      onClick={(): void => {
-        // eslint-disable-next-line no-alert -- alert for demo
-        alert("Hello from Turborepo!");
-      }}
-    >
-      Hello
+    <Button className={props.className} {...props}>
+      {props.children}
     </Button>
   ),
   name: "Button",
   args: {
     children: "Hello",
     type: "button",
-    style: {
-      color: "blue",
-      border: "1px solid gray",
-      padding: 10,
-      borderRadius: 10,
-    },
+    className: "hover:translate-x-2",
+    disabled: false,
+    buttonStyle: "outline",
   },
 };
