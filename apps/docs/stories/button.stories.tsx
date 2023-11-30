@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@acme/ui";
+import { Button } from "@deluxe/ui";
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -29,12 +29,12 @@ export const Primary: Story = {
         alert("Hello from Turborepo!");
       }}
     >
-      Hello
+      Hola
     </Button>
   ),
   name: "Button",
   args: {
-    children: "Hello",
+    children: "Hola",
     type: "button",
     style: {
       color: "blue",
