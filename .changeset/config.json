@@ -6,5 +6,5 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": ["@deluxe/docs"]
+  "ignore": ["@acme/docs"]
 }
