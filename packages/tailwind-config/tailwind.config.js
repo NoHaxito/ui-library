@@ -1,7 +1,7 @@
 import colors from "tailwindcss/colors";
 
 export default {
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: ["class"],
   content: [
     // app content
     `src/**/*.{js,ts,jsx,tsx,mdx}`,
@@ -19,5 +19,4 @@ export default {
     },
   },
   plugins: [],
-  darkMode: ["class", '[data-mode="dark"]'],
 };

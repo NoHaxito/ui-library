@@ -2,7 +2,7 @@ import {
   withThemeByClassName,
   withThemeByDataAttribute,
 } from "@storybook/addon-themes";
-import "@acme/ui/styles.css";
+import "@sihaxito/deluxe-ui/styles.css";
 
 export const decorators = [
   withThemeByClassName({
