@@ -33,39 +33,39 @@ const items = [
     text: "Inbox",
     active: false,
   },
-  {
-    id: 4,
-    icon: <SettingsIcon className="h-4 w-4" />,
-    href: "#",
-    text: "Settings",
-  },
-  {
-    id: 5,
-    icon: <ContactIcon className="h-4 w-4" />,
-    href: "#",
-    text: "Contact",
-    active: false,
-  },
-  {
-    id: 6,
-    icon: <BookIcon className="h-4 w-4" />,
-    href: "#",
-    text: "Documentation",
-    active: false,
-  },
-  {
-    id: 7,
-    icon: <SettingsIcon className="h-4 w-4" />,
-    href: "#",
-    text: "Settings",
-  },
-  {
-    id: 8,
-    icon: <CoinIcon className="h-4 w-4" />,
-    href: "#",
-    text: "Suscription",
-    active: false,
-  },
+  // {
+  //   id: 4,
+  //   icon: <SettingsIcon className="h-4 w-4" />,
+  //   href: "#",
+  //   text: "Settings",
+  // },
+  // {
+  //   id: 5,
+  //   icon: <ContactIcon className="h-4 w-4" />,
+  //   href: "#",
+  //   text: "Contact",
+  //   active: false,
+  // },
+  // {
+  //   id: 6,
+  //   icon: <BookIcon className="h-4 w-4" />,
+  //   href: "#",
+  //   text: "Documentation",
+  //   active: false,
+  // },
+  // {
+  //   id: 7,
+  //   icon: <SettingsIcon className="h-4 w-4" />,
+  //   href: "#",
+  //   text: "Settings",
+  // },
+  // {
+  //   id: 8,
+  //   icon: <CoinIcon className="h-4 w-4" />,
+  //   href: "#",
+  //   text: "Suscription",
+  //   active: false,
+  // },
 ];
 
 const meta: Meta<typeof Sidebar> = {
