@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
     "tailwind-merge": "^2.0.0",
     "tailwind-variants": "^0.1.14"
   }
