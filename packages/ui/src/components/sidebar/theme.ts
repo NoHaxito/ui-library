@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export const sidebar = tv({
   slots: {
-    base: "h-full transition-width duration-300 antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col fixed top-0 left-0 z-10",
+    base: "h-full transition-width duration-[400ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col fixed top-0 left-0 z-10",
     headBase:
       "transition-opacity dark:text-white top-0 w-full items-center min-h-[4rem] px-[20px] dark:border-neutral-800 border-b border-dashed bg-inherit flex flex-nowrap truncate",
     headLogo: "flex flex-none items-center justify-center",
@@ -13,27 +13,26 @@ export const sidebar = tv({
     headToggleIcon:
       "h-full w-full transition transform duration-250 ease-in-out",
     items:
-      "[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-neutral-400 my-4 overflow-x-hidden flex flex-col gap-y-6",
-    itemGroup:
-      "mt-4 px-3 flex flex-col gap-2 border-t border-neutral-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-neutral-700",
-    item: "border group rounded-md truncate w-full flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-md py-2.5 px-3 justify-start gap-x-3",
-    itemIcon: "h-6 w-6 flex-none flex items-center justify-center",
+      "my-4 px-3 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-neutral-400 my-4 overflow-x-hidden flex flex-col gap-y-6",
+    itemGroup: "flex flex-col",
+    item: "border group truncate w-full flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-md py-2.5 gap-x-3",
+    itemIcon: "flex-none flex items-center justify-center",
     label: "bg-indigo-500 rounded-md text-white text-xs p-1",
   },
   variants: {
     collapsed: {
       true: {
-        base: ["justify-center"],
         items: ["overflow-y-hidden"],
-        item: ["border-transparent"],
+        item: ["border-transparent", "px-3", "justify-start", "rounded-md"],
+        itemIcon: ["w-7", "h-7"],
         headTitle: [],
         headToggleIcon: ["rotate-180"],
       },
       false: {
-        base: [],
         items: ["overflow-y-hidden"],
-        item: ["border-transparent"],
+        item: ["border-transparent", "px-3", "rounded-md"],
         headTitle: ["ml-2"],
+        itemIcon: ["w-7", "h-7"],
         headToggleIcon: [],
       },
     },
@@ -55,7 +54,7 @@ export const sidebar = tv({
     {
       slots: ["base"],
       collapsed: true,
-      class: ["min-w-[5rem]", "max-w-[5rem]"],
+      class: ["min-w-[4.9rem]", "max-w-[4.9rem]"],
     },
     {
       slots: ["item"],

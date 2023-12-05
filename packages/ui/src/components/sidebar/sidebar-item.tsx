@@ -58,32 +58,32 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
           {...props}
         >
           {Icon ? (
-            <span aria-hidden className={itemIcon({ active: isActive })}>
+            <span
+              aria-hidden
+              className={itemIcon({ active: isActive, collapsed })}
+            >
               {Icon}
             </span>
           ) : null}
-
+          {collapsed && !Icon ? (
+            <span className="font-bold">
+              {(children as string).charAt(0).toLocaleUpperCase()}
+            </span>
+          ) : null}
           <div
             className={cn(
               collapsed ? "opacity-0" : "opacity-100",
-              "transition-opacity flex-1 duration-[400ms] flex items-center justify-between"
+              "transition-opacity duration-[400ms] w-full flex items-center justify-between"
             )}
           >
             {!collapsed && (
-              <span
-                className="text-left w-full flex-1 whitespace-nowrap"
-                id={id}
-              >
+              <span className="text-left" id={id}>
                 {children}
               </span>
             )}
-            {collapsed && !Icon ? (
-              <span className="font-bold">
-                {(children as string).charAt(0).toLocaleUpperCase()}
-              </span>
-            ) : null}
+
             {!collapsed && label ? (
-              <span className={itemLabel({ className: "text-right" })}>
+              <span className={itemLabel({ className: "ml-auto" })}>
                 {label}
               </span>
             ) : null}
