@@ -1,3 +1,3 @@
-import sharedConfig from "tailwind-config/tailwind.config";
+import sharedConfig from "@sihaxito/tailwind-config/tailwind.config";
 
 export const presets = [sharedConfig];
