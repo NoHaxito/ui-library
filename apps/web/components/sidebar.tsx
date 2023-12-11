@@ -21,6 +21,14 @@ export function SidebarComp() {
   const { context } = useSidebarContext();
   const matches = useMediaQuery("(min-width: 768px)");
   useEffect(() => {
+    if (context.collapsed && context.open) {
+      context.setCollapsed(false);
+    }
+  }, [context.open]);
+  useEffect(() => {
+    if (context.open && context.collapsed) {
+      context.setCollapsed(false);
+    }
     if (!matches) {
       if (context.collapsed) {
         context.setCollapsed(false);
@@ -30,6 +38,7 @@ export function SidebarComp() {
   }, [matches]);
   return (
     <Sidebar
+      overlay={context.overlay}
       collapsed={context.collapsed}
       open={context.open}
       onOpenChange={context.setOpen}

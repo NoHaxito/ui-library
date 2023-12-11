@@ -1,8 +1,25 @@
-import Image from "next/image";
+"use client";
+
+import { useSidebarContext } from "../components/sidebar-context";
 
 export default function Home() {
+  const { context } = useSidebarContext();
   return (
     <main className="relative text-neutral-400 p-6  lg:p-8">
+      <div className="py-2 flex flex-wrap items-center gap-2">
+        <button
+          onClick={() => context.setOverlay(!context.overlay)}
+          className="flex items-center gap-2 justify-center px-4 py-2 rounded-lg bg-neutral-800 text-neutral-200 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-800 dark:hover:bg-neutral-300 dark:hover:text-neutral-900"
+        >
+          Toggle overlay
+        </button>
+        <button
+          onClick={() => context.setCollapsed(!context.collapsed)}
+          className="flex items-center gap-2 justify-center px-4 py-2 rounded-lg bg-neutral-800 text-neutral-200 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-800 dark:hover:bg-neutral-300 dark:hover:text-neutral-900"
+        >
+          Toggle Collapse
+        </button>
+      </div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ipsum
       ipsam distinctio minus molestiae sit dolores assumenda quas rerum sequi.
       Illum veritatis necessitatibus quasi officiis incidunt provident

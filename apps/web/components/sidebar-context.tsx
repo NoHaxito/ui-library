@@ -7,6 +7,8 @@ interface SidebarContextProps {
   setCollapsed: (value: boolean) => void;
   open: boolean;
   setOpen: (value: boolean) => void;
+  overlay: boolean;
+  setOverlay: (value: boolean) => void;
 }
 
 const SidebarContext = createContext<SidebarContextProps>({
@@ -14,6 +16,8 @@ const SidebarContext = createContext<SidebarContextProps>({
   setCollapsed: () => {},
   open: false,
   setOpen: () => {},
+  overlay: false,
+  setOverlay: () => {},
 });
 
 export const SidebarContextProvider = ({
@@ -23,8 +27,11 @@ export const SidebarContextProvider = ({
 }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
+  const [overlay, setOverlay] = useState(false);
   return (
-    <SidebarContext.Provider value={{ collapsed, setCollapsed, open, setOpen }}>
+    <SidebarContext.Provider
+      value={{ collapsed, setCollapsed, open, setOpen, overlay, setOverlay }}
+    >
       {children}
     </SidebarContext.Provider>
   );
