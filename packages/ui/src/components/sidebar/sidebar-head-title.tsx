@@ -15,7 +15,9 @@ export const SidebarHeadTitle = forwardRef<
   SidebarHeadTitleProps
 >(({ children, className }, ref?: Ref<HTMLDivElement>) => {
   const id = useId();
-  const { collapsed } = useSidebarContext();
+  const {
+    context: { collapsed },
+  } = useSidebarContext();
 
   const { headTitle } = sidebar();
   return (
