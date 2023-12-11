@@ -5,6 +5,7 @@ import { SidebarComp } from "../components/sidebar";
 import "./globals.css";
 import "@sihaxito/deluxe-ui/styles.css";
 import { Navbar } from "../components/navbar";
+import { SidebarContextProvider } from "../components/sidebar-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,15 +23,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="border-b">
-            <div className="flex-1 items-start md:grid md:grid-cols-[auto_minmax(0,1fr)]">
-              <SidebarComp />
-              <div className="w-full">
-                <Navbar />
-                {children}
+          <SidebarContextProvider>
+            <div className="border-b">
+              <div className="duration-[400ms] flex-1 items-start md:grid md:grid-cols-[auto_minmax(0,1fr)]">
+                <SidebarComp />
+                <div className="w-full">
+                  <Navbar />
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
+          </SidebarContextProvider>
         </ThemeProvider>
       </body>
     </html>

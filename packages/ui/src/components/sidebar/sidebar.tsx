@@ -11,6 +11,7 @@ import {
 import { cn } from "../../utils";
 import { sidebar, type SidebarVariant } from "./theme";
 import { SidebarProvider } from "./sidebar-context";
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 
 interface SidebarProps extends SidebarVariant, ComponentProps<"div"> {
   children: ReactNode;
@@ -25,18 +26,24 @@ const SidebarComponent: FC<SidebarProps> = ({
   onCollapsedChange,
   ...props
 }) => {
-  const [collapsed, setCollapsed] = useState(collapsedProp);
+  // const [collapsed, setCollapsed] = useState(collapsedProp);
+  const [collapsed, setCollapsed] = useControllableState({
+    defaultProp: collapsedProp,
+    prop: collapsedProp,
+    onChange: onCollapsedChange,
+  });
   const { base } = sidebar();
   const mounted = useRef<boolean>(false);
+
   useEffect(() => {
     if (!mounted.current) {
       mounted.current = true;
       return;
     }
-    onCollapsedChange && onCollapsedChange(collapsed);
+    onCollapsedChange && onCollapsedChange(collapsed as boolean);
   }, [collapsed, onCollapsedChange]);
   return (
-    <SidebarProvider value={{ collapsed, setCollapsed }}>
+    <SidebarProvider value={{ collapsed: collapsed as boolean, setCollapsed }}>
       <Component
         aria-label={props["aria-label"] ?? "Sidebar"}
         className={cn(base({ collapsed, className }))}
