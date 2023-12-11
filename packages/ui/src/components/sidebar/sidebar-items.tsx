@@ -11,9 +11,9 @@ export const SidebarItems: FC<SidebarItemsProps> = ({
 }) => {
   const { items } = sidebar();
   return (
-    <div className={items({ className })} {...props}>
+    <nav className={items({ className })} {...props}>
       {children}
-    </div>
+    </nav>
   );
 };
 SidebarItems.displayName = "Sidebar.Items";

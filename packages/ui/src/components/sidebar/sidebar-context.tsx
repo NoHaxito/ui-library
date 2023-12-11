@@ -1,3 +1,5 @@
+"use client";
+
 import { type ReactNode, createContext, useContext } from "react";
 
 export interface SidebarContextProps {

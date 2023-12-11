@@ -1,4 +1,5 @@
 "use client";
+
 export { SidebarComponent as Sidebar } from "./sidebar";
 export { SidebarItems, type SidebarItemsProps } from "./sidebar-items";
 export {

@@ -10,6 +10,7 @@ import { forwardRef, useId } from "react";
 import { cn } from "../../utils";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
+import { ChevronDownIcon } from "lucide-react";
 
 export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref"> {
   as?: ElementType;
@@ -28,7 +29,7 @@ const ListItem: FC<
   <li {...props}>{collapsed ? wrapperChildren : wrapperChildren}</li>
 );
 
-export const SidebarItem = forwardRef<Element, SidebarItemProps>(
+export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
   (
     {
       active: isActive,
@@ -39,32 +40,24 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       label,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { collapsed } = useSidebarContext();
     const id = useId();
     const { item, itemIcon, label: itemLabel } = sidebar();
     return (
-      <ListItem
-        className={cn(collapsed && "", "cursor-pointer")}
-        collapsed={collapsed}
+      <li
+        className={cn("cursor-pointer")}
+        ref={ref}
         data-active={isActive}
         id={id}
       >
         <Component
           className={item({ className, active: isActive, collapsed })}
           data-active={isActive}
-          ref={ref}
           {...props}
         >
-          {Icon ? (
-            <span
-              aria-hidden
-              className={itemIcon({ active: isActive, collapsed })}
-            >
-              {Icon}
-            </span>
-          ) : null}
+          {Icon && <span className={itemIcon()}>{Icon}</span>}
           {collapsed && !Icon ? (
             <span className="font-bold">
               {(children as string).charAt(0).toLocaleUpperCase()}
@@ -72,25 +65,15 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
           ) : null}
           <div
             className={cn(
-              collapsed ? "opacity-0" : "opacity-100",
-              "transition-opacity duration-[400ms] w-full flex items-center justify-between"
+              collapsed ? "opacity-0 hidden" : "opacity-100",
+              "transition-opacity duration-[300ms] flex items-center justify-between w-full",
             )}
           >
-            {!collapsed && (
-              <span className="text-left" id={id}>
-                {children}
-              </span>
-            )}
-
-            {!collapsed && label ? (
-              <span className={itemLabel({ className: "ml-auto" })}>
-                {label}
-              </span>
-            ) : null}
+            <span className={cn("text-left")}>{children}</span>
           </div>
         </Component>
-      </ListItem>
+      </li>
     );
-  }
+  },
 );
 SidebarItem.displayName = "Sidebar.Item";
