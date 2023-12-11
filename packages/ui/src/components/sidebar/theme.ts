@@ -3,7 +3,8 @@ import { tv } from "tailwind-variants";
 
 export const sidebar = tv({
   slots: {
-    base: "transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
+    base: "z-30 transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
+    overlay: "fixed inset-0 z-20 bg-black/50",
     headBase:
       "transition-opacity dark:text-white top-0 w-full items-center min-h-[4rem] px-[20px] dark:border-neutral-800 border-b bg-inherit flex flex-nowrap truncate",
     headLogo: "flex flex-none items-center justify-center",
@@ -20,6 +21,14 @@ export const sidebar = tv({
     label: "bg-indigo-500 rounded-md text-white text-xs p-1",
   },
   variants: {
+    open: {
+      true: {
+        overlay: ["block"],
+      },
+      false: {
+        overlay: ["hidden"],
+      },
+    },
     collapsed: {
       true: {
         items: ["overflow-y-hidden"],

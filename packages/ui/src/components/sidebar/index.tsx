@@ -20,3 +20,7 @@ export {
   SidebarHeadToggle,
   type SidebarHeadToggleProps,
 } from "./sidebar-head-toggle";
+export {
+  SidebarHeadToggleOpen,
+  type SidebarHeadToggleOpenProps,
+} from "./sidebar-head-toggle-open";

@@ -42,7 +42,9 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     },
     ref,
   ) => {
-    const { collapsed } = useSidebarContext();
+    const {
+      context: { collapsed },
+    } = useSidebarContext();
     const id = useId();
     const { item, itemIcon, label: itemLabel } = sidebar();
     return (

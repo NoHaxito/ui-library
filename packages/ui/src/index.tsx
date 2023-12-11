@@ -9,4 +9,5 @@ export {
   SidebarHeadLogo,
   SidebarHeadTitle,
   SidebarHeadToggle,
+  SidebarHeadToggleOpen,
 } from "./components/sidebar";

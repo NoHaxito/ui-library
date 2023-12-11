@@ -10,13 +10,18 @@ import {
 } from "react";
 import { cn } from "../../utils";
 import { sidebar, type SidebarVariant } from "./theme";
-import { SidebarProvider } from "./sidebar-context";
+import { SidebarProvider, useSidebarContext } from "./sidebar-context";
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
 
-interface SidebarProps extends SidebarVariant, ComponentProps<"div"> {
+interface SidebarProps
+  extends Omit<SidebarVariant, "active" | "open">,
+    ComponentProps<"div"> {
   children: ReactNode;
   as?: ElementType;
   onCollapsedChange?: (value: boolean) => void;
+  open?: boolean;
+  onOpenChange?: (value: boolean) => void;
+  overlay?: boolean;
 }
 const SidebarComponent: FC<SidebarProps> = ({
   children,
@@ -24,6 +29,9 @@ const SidebarComponent: FC<SidebarProps> = ({
   collapsed: collapsedProp = false,
   className,
   onCollapsedChange,
+  open: openProp,
+  overlay: overlayProp = true,
+  onOpenChange,
   ...props
 }) => {
   // const [collapsed, setCollapsed] = useState(collapsedProp);
@@ -32,27 +40,40 @@ const SidebarComponent: FC<SidebarProps> = ({
     prop: collapsedProp,
     onChange: onCollapsedChange,
   });
-  const { base } = sidebar();
-  const mounted = useRef<boolean>(false);
+  const [open, setOpen] = useControllableState({
+    defaultProp: openProp,
+    prop: openProp,
+    onChange: onOpenChange,
+  });
+  const { base, overlay: overlayStyles } = sidebar();
+  const { context, SidebarContext } = useSidebarContext();
 
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
-    onCollapsedChange && onCollapsedChange(collapsed as boolean);
-  }, [collapsed, onCollapsedChange]);
   return (
-    <SidebarProvider value={{ collapsed: collapsed as boolean, setCollapsed }}>
+    <SidebarContext.Provider
+      value={{
+        collapsed: collapsed as boolean,
+        setCollapsed,
+        open: open as boolean,
+        setOpen,
+      }}
+    >
       <Component
         aria-label={props["aria-label"] ?? "Sidebar"}
         className={cn(base({ collapsed, className }))}
         data-collapsed={collapsed}
+        data-open={open}
         {...props}
       >
         {children}
       </Component>
-    </SidebarProvider>
+      {overlayProp && (
+        <div
+          onClick={() => setOpen(false)}
+          id="overlay"
+          className={cn(overlayStyles({ open: open }))}
+        />
+      )}
+    </SidebarContext.Provider>
   );
 };
 SidebarComponent.displayName = "Sidebar";

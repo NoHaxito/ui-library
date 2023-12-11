@@ -4,10 +4,13 @@ import { type ReactNode, createContext, useContext } from "react";
 
 export interface SidebarContextProps {
   collapsed: boolean;
+  open: boolean;
+  setOpen?: (value: boolean) => void;
   setCollapsed?: (value: boolean) => void;
 }
 const SidebarContext = createContext<SidebarContextProps>({
   collapsed: false,
+  open: false,
 });
 
 export const SidebarProvider: ({
@@ -28,7 +31,10 @@ export const SidebarProvider: ({
   );
 };
 
-export const useSidebarContext: () => SidebarContextProps = () => {
+export const useSidebarContext: () => {
+  context: SidebarContextProps;
+  SidebarContext: React.Context<SidebarContextProps>;
+} = () => {
   const context = useContext(SidebarContext);
-  return context;
+  return { context, SidebarContext };
 };

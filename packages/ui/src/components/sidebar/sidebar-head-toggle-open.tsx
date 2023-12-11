@@ -2,15 +2,16 @@
 
 import type { ComponentProps, Ref } from "react";
 import { forwardRef, useId } from "react";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, X } from "lucide-react";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
+import { cn } from "../../utils";
 
-export type SidebarHeadToggleProps = Omit<ComponentProps<"button">, "ref">;
+export type SidebarHeadToggleOpenProps = Omit<ComponentProps<"button">, "ref">;
 
-export const SidebarHeadToggle = forwardRef<
+export const SidebarHeadToggleOpen = forwardRef<
   HTMLButtonElement,
-  SidebarHeadToggleProps
+  SidebarHeadToggleOpenProps
 >(({ className, ...props }, ref?: Ref<HTMLButtonElement>) => {
   const id = useId();
   const {
@@ -20,11 +21,13 @@ export const SidebarHeadToggle = forwardRef<
   const { headToggle, headToggleIcon } = sidebar();
   return (
     <button
-      className={headToggle({ className })}
-      data-collapsed={collapsed ? "true" : "false"}
+      className={headToggle({
+        className: cn("md:hidden flex -translate-x-1/2", className),
+      })}
+      data-open={open ? "true" : "false"}
       id={id}
       onClick={(event) => {
-        setCollapsed && setCollapsed(!collapsed);
+        setOpen && setOpen(!open);
         if (props.onClick) {
           props.onClick(event);
         }
@@ -33,9 +36,9 @@ export const SidebarHeadToggle = forwardRef<
       type="button"
       {...props}
     >
-      <ChevronLeft className={headToggleIcon({ collapsed })} />
+      <X className={headToggleIcon()} />
     </button>
   );
 });
 
-SidebarHeadToggle.displayName = "Sidebar.Head.Toggle";
+SidebarHeadToggleOpen.displayName = "Sidebar.Head.ToggleOpen";
