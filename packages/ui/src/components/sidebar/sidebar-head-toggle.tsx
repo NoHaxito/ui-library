@@ -19,6 +19,7 @@ export const SidebarHeadToggle = forwardRef<
   return (
     <button
       className={headToggle({ className })}
+      data-collapsed={collapsed ? "true" : "false"}
       id={id}
       onClick={(event) => {
         setCollapsed && setCollapsed(!collapsed);
@@ -26,7 +27,6 @@ export const SidebarHeadToggle = forwardRef<
           props.onClick(event);
         }
       }}
-
       ref={ref}
       type="button"
       {...props}
