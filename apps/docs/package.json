@@ -1,5 +1,5 @@
 {
-  "name": "@repo/docs",
+  "name": "@sihaxito/docs",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -17,8 +17,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@sihaxito/eslint-config": "workspace:*",
+    "@sihaxito/typescript-config": "workspace:*",
     "@storybook/addon-actions": "^7.6.3",
     "@storybook/addon-docs": "^7.6.3",
     "@storybook/addon-essentials": "^7.6.3",
