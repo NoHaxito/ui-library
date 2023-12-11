@@ -34,7 +34,7 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: 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
 
       - name: Send a Slack notification if a publish happens
         if: steps.changesets.outputs.published == 'true'
