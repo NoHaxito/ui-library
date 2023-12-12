@@ -25,7 +25,7 @@ interface SidebarProps
 }
 const SidebarComponent: FC<SidebarProps> = ({
   children,
-  as: Component = "nav",
+  as: Component = "aside",
   collapsed: collapsedProp = false,
   className,
   onCollapsedChange,

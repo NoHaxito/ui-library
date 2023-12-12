@@ -49,7 +49,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     const { item, itemIcon, label: itemLabel } = sidebar();
     return (
       <li
-        className={cn("cursor-pointer")}
+        className={cn("cursor-pointer list-none")}
         ref={ref}
         data-active={isActive}
         id={id}
@@ -71,7 +71,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
               "transition-opacity duration-[300ms] flex items-center justify-between w-full",
             )}
           >
-            <span className={cn("text-left")}>{children}</span>
+            {children}
           </div>
         </Component>
       </li>

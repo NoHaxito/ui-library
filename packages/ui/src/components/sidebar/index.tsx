@@ -24,3 +24,5 @@ export {
   SidebarHeadToggleOpen,
   type SidebarHeadToggleOpenProps,
 } from "./sidebar-head-toggle-open";
+
+export { SidebarFooter } from "./sidebar-footer";

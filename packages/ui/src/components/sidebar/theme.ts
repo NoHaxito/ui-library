@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export const sidebar = tv({
   slots: {
-    base: "z-30 transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
+    base: "shadow-md shadow-neutral-300 dark:shadow-neutral-800 z-30 transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
     overlay: "fixed inset-0 z-20 bg-black/50",
     headBase:
       "transition-opacity dark:text-white top-0 w-full items-center min-h-[4rem] px-[20px] dark:border-neutral-800 border-b bg-inherit flex flex-nowrap truncate",
@@ -14,11 +14,13 @@ export const sidebar = tv({
     headToggleIcon:
       "h-full w-full transition transform duration-250 ease-in-out",
     items:
-      "my-4 px-3 [&::-webkit-scrollbar]:block [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-neutral-400 my-4 overflow-x-hidden flex flex-col gap-y-6",
-    itemGroup: "flex flex-col justify-center",
+      "my-0 first:my-4 px-3 [&::-webkit-scrollbar]:block [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-neutral-400 my-4 overflow-x-hidden flex flex-1 flex-col gap-y-6",
+    itemGroup: "flex flex-col",
     item: "border group truncate w-full min-h-[3rem] max-h-[3rem] flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-md py-2.5 gap-x-3",
     itemIcon: "h-6 w-6 flex-none flex items-center justify-center",
     label: "bg-indigo-500 rounded-md text-white text-xs p-1",
+    footer:
+      "truncate w-full items-center justify-center flex mt-auto min-h-[4rem] bg-inherit px-4 sticky bottom-0 border-t border-neutral-200 dark:border-neutral-800",
   },
   variants: {
     open: {
