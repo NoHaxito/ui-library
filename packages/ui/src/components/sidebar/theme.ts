@@ -14,7 +14,7 @@ export const sidebar = tv({
     headToggleIcon:
       "h-full w-full transition transform duration-250 ease-in-out",
     items:
-      "my-0 pr-2 first:my-4 px-3 lg:[&::-webkit-scrollbar]:h-2 lg:[&::-webkit-scrollbar]:w-1.5  lg:[&::-webkit-scrollbar-track]:bg-transparent lg:[&::-webkit-scrollbar-thumb]:rounded-full lg:[&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 lg:[&::-webkit-scrollbar-thumb]:bg-neutral-400 my-4 overflow-x-hidden flex flex-1 flex-col gap-y-6",
+      "my-0 pr-2 first:my-4 px-3 my-4 overflow-x-hidden flex flex-1 flex-col gap-y-6",
     itemGroup: "flex flex-col",
     item: "block border group truncate w-full min-h-[3rem] max-h-[3rem] flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-xl py-2.5 gap-x-3",
     itemIcon: "h-6 w-6 -ml-0.5 flex-none flex items-center justify-center",
@@ -38,7 +38,9 @@ export const sidebar = tv({
         headToggleIcon: ["rotate-180"],
       },
       false: {
-        items: [],
+        items: [
+          "md:[&::-webkit-scrollbar]:h-2 md:[&::-webkit-scrollbar]:w-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:rounded-full md:[&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 md:[&::-webkit-scrollbar-thumb]:bg-neutral-400",
+        ],
         item: ["border-transparent", "px-3", "rounded-xl"],
         headTitle: ["ml-2"],
         headToggleIcon: [],
