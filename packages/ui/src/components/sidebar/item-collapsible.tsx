@@ -56,10 +56,13 @@ export const SidebarItemCollapse = React.forwardRef<
           </div>
         </AccordionTrigger>
         <AccordionContent
-          asChild
-          className={cn("pb-0 px-4 py-1", classNames?.contentCollapsed)}
+          className={cn(
+            context.collapsed && "!px-0",
+            "px-4 pb-0 py-1",
+            classNames?.contentCollapsed,
+          )}
         >
-          <div>{children}</div>
+          {children}
         </AccordionContent>
       </AccordionItem>
     </Accordion>
