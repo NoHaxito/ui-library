@@ -6,11 +6,10 @@ import type {
   PropsWithChildren,
   ReactNode,
 } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef } from "react";
 import { cn } from "../../utils";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
-import { ChevronDownIcon } from "lucide-react";
 
 export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref"> {
   as?: ElementType;
@@ -45,14 +44,12 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     const {
       context: { collapsed },
     } = useSidebarContext();
-    const id = useId();
-    const { item, itemIcon, label: itemLabel } = sidebar();
+    const { item, itemIcon } = sidebar();
     return (
       <li
         className={cn("cursor-pointer list-none")}
         ref={ref}
         data-active={isActive}
-        id={id}
       >
         <Component
           className={item({ className, active: isActive, collapsed })}
@@ -72,6 +69,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
             )}
           >
             {children}
+            {label && <div>{label}</div>}
           </div>
         </Component>
       </li>

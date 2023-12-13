@@ -21,6 +21,22 @@
         "port": 3000
       }
     },
+    "dev:web": {
+      "name": "dev:web",
+      "command": "pnpm dev:web",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
+    },
+    "dev:docs": {
+      "name": "dev:docs",
+      "command": "pnpm dev:docs",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
+    },
     "lint": {
       "name": "lint",
       "command": "pnpm lint"

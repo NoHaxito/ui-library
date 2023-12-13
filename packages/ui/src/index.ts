@@ -3,6 +3,7 @@ import "./styles.css";
 export {
   Sidebar,
   SidebarItem,
+  SidebarItemCollapse,
   SidebarItemGroup,
   SidebarItems,
   SidebarHead,

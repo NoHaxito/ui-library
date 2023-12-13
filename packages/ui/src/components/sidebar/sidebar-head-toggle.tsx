@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, Ref } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef } from "react";
 import { ChevronLeft } from "lucide-react";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
@@ -12,7 +12,6 @@ export const SidebarHeadToggle = forwardRef<
   HTMLButtonElement,
   SidebarHeadToggleProps
 >(({ className, ...props }, ref?: Ref<HTMLButtonElement>) => {
-  const id = useId();
   const {
     context: { collapsed, setCollapsed, open, setOpen },
   } = useSidebarContext();
@@ -22,7 +21,6 @@ export const SidebarHeadToggle = forwardRef<
     <button
       className={headToggle({ className })}
       data-collapsed={collapsed ? "true" : "false"}
-      id={id}
       onClick={(event) => {
         setCollapsed && setCollapsed(!collapsed);
         if (props.onClick) {

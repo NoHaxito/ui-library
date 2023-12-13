@@ -24,8 +24,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SidebarContextProvider>
-            <div className="border-b">
-              <div className="duration-[400ms] flex-1 items-start md:grid md:grid-cols-[auto_minmax(0,1fr)]">
+            <div>
+              <div className="flex-1 items-start grid md:grid-cols-[auto_minmax(0,1fr)]">
                 <SidebarComp />
                 <div className="w-full">
                   <Navbar />

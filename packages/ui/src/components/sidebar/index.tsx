@@ -7,6 +7,8 @@ export {
   type SidebarItemGroupProps,
 } from "./sidebar-item-group";
 export { SidebarItem, type SidebarItemProps } from "./sidebar-item";
+export { SidebarItemCollapse } from "./item-collapsible";
+
 export { SidebarHead, type SidebarHeadProps } from "./sidebar-head";
 export {
   SidebarHeadLogo,

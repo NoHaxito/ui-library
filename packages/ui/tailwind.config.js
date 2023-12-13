@@ -1,3 +1,46 @@
-import sharedConfig from "@sihaxito/tailwind-config/tailwind.config";
+import colors from "tailwindcss/colors";
 
-export const presets = [sharedConfig];
+export default {
+  darkMode: ["class"],
+  content: [
+    // app content
+    `src/**/*.{js,ts,jsx,tsx,mdx}`,
+    // include packages if not transpiling
+    // "../../packages/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.blue[500],
+        secondary: colors.red[500],
+        warning: colors.yellow[500],
+        textColor: colors.slate[900],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        slideDown: {
+          from: { height: 0 },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        slideUp: {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.2s ease-out",
+        slideUp: "slideUp 0.2s ease-out",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwind-scrollbar")],
+};
