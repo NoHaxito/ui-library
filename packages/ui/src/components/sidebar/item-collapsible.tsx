@@ -9,11 +9,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../accordion/root";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../collapsible";
 import { useSidebarContext } from "./sidebar-context";
 import { sidebar } from "./theme";
 
@@ -23,12 +18,15 @@ interface SidebarItemCollapseProps
   defaultOpen?: boolean;
   icon?: React.ReactNode;
   itemTitle?: React.ReactNode;
+  classNames?: {
+    contentCollapsed?: string;
+  };
 }
 
 export const SidebarItemCollapse = React.forwardRef<
   HTMLDivElement,
   SidebarItemCollapseProps
->(({ asChild, children, className, ...props }, forwardedRef) => {
+>(({ classNames, asChild, children, className, ...props }, forwardedRef) => {
   const [open, setOpen] = React.useState(false);
   const id = React.useId();
   const { context } = useSidebarContext();
@@ -59,10 +57,7 @@ export const SidebarItemCollapse = React.forwardRef<
         </AccordionTrigger>
         <AccordionContent
           asChild
-          className={cn(
-            context.collapsed ? "mx-0 p-0" : "p-1 mt-1",
-            "bg-neutral-200 rounded-lg dark:bg-neutral-800",
-          )}
+          className={cn("pb-0 px-4 py-1", classNames?.contentCollapsed)}
         >
           <div>{children}</div>
         </AccordionContent>

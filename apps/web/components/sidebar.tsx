@@ -105,14 +105,14 @@ export function SidebarComp() {
           </SidebarItemCollapse>
         </SidebarItemGroup>
       </SidebarItems>
-      <SidebarFooter className="px-2 py-2">
+      <SidebarFooter className="px-2.5 py-2">
         <SidebarItem
           as="div"
           className="w-full flex-1 bg-neutral-200 hover:bg-neutral-300 dark:hover:bg-neutral-800 dark:bg-neutral-800/80"
           icon={
             <img
               src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
-              className="rounded-full ml-2"
+              className="rounded-full"
             />
           }
         >
