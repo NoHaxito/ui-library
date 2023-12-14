@@ -38,11 +38,13 @@
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-scroll-area": "^1.0.5",
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@radix-ui/react-use-controllable-state": "^1.0.1",
     "clsx": "^2.0.0",
     "lucide-react": "^0.294.0",
     "tailwind-merge": "^2.0.0",
     "tailwind-scrollbar": "^3.0.5",
-    "tailwind-variants": "^0.1.14"
+    "tailwind-variants": "^0.1.14",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

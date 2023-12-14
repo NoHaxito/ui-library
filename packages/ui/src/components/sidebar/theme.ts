@@ -32,14 +32,16 @@ export const sidebar = tv({
     },
     collapsed: {
       true: {
-        items: [],
+        items: [
+          "md:[&::-webkit-scrollbar]:h-2 md:[&::-webkit-scrollbar]:w-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:rounded-full md:[&::-webkit-scrollbar-thumb]:dark:bg-neutral-800 md:[&::-webkit-scrollbar-thumb]:bg-neutral-400",
+        ],
         item: ["border-transparent", "px-3", "justify-start", "rounded-xl"],
         headTitle: [],
         headToggleIcon: ["rotate-180"],
       },
       false: {
         items: [
-          "md:[&::-webkit-scrollbar]:h-2 md:[&::-webkit-scrollbar]:w-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:rounded-full md:[&::-webkit-scrollbar-thumb]:dark:bg-neutral-700 md:[&::-webkit-scrollbar-thumb]:bg-neutral-400",
+          "md:[&::-webkit-scrollbar]:h-2 md:[&::-webkit-scrollbar]:w-1.5 md:[&::-webkit-scrollbar-track]:bg-transparent md:[&::-webkit-scrollbar-thumb]:rounded-full md:[&::-webkit-scrollbar-thumb]:dark:bg-neutral-800 md:[&::-webkit-scrollbar-thumb]:bg-neutral-400",
         ],
         item: ["border-transparent", "px-3", "rounded-xl"],
         headTitle: ["ml-2"],

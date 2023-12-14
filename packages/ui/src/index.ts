@@ -13,3 +13,5 @@ export {
   SidebarHeadToggleOpen,
   SidebarFooter,
 } from "./components/sidebar";
+
+export * from "./components/tooltip";

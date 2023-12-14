@@ -9,6 +9,14 @@ import type {
 import { forwardRef } from "react";
 import { cn } from "../../utils";
 import { sidebar } from "./theme";
+import {
+  Tooltip,
+  type TooltipProps,
+  TooltipTrigger,
+  type TooltipTriggerProps,
+  TooltipContent,
+  type TooltipContentProps,
+} from "../tooltip";
 import { useSidebarContext } from "./sidebar-context";
 
 export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref"> {
@@ -17,15 +25,46 @@ export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref"> {
   icon?: ReactNode;
   active?: boolean;
   label?: ReactNode;
+  tooltip?: {
+    text: ReactNode;
+    rootProps?: TooltipProps;
+    triggerProps?: TooltipTriggerProps;
+    contentProps?: TooltipContentProps;
+  } | null;
 }
 const ListItem: FC<
   PropsWithChildren<{
-    id: string;
     collapsed: boolean;
     className?: string;
+    tooltip?: {
+      text: ReactNode;
+      rootProps?: TooltipProps;
+      triggerProps?: TooltipTriggerProps;
+      contentProps?: TooltipContentProps;
+    } | null;
   }>
-> = ({ collapsed, children: wrapperChildren, ...props }) => (
-  <li {...props}>{collapsed ? wrapperChildren : wrapperChildren}</li>
+> = ({ tooltip, collapsed, children: wrapperChildren, ...props }) => (
+  <>
+    {tooltip && collapsed ? (
+      <Tooltip {...tooltip.rootProps}>
+        <TooltipTrigger
+          className={cn(tooltip.triggerProps?.className)}
+          {...tooltip.triggerProps}
+        >
+          <li {...props}>{wrapperChildren}</li>
+        </TooltipTrigger>
+        <TooltipContent
+          sideOffset={4}
+          {...tooltip.contentProps}
+          className={cn(tooltip.contentProps?.className)}
+        >
+          <div>{tooltip?.text}</div>
+        </TooltipContent>
+      </Tooltip>
+    ) : (
+      <li {...props}>{wrapperChildren}</li>
+    )}
+  </>
 );
 
 export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
@@ -37,6 +76,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
       className,
       icon: Icon,
       label,
+      tooltip,
       ...props
     },
     ref,
@@ -46,13 +86,15 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     } = useSidebarContext();
     const { item, itemIcon } = sidebar();
     return (
-      <li
+      <ListItem
         className={cn("cursor-pointer list-none")}
-        ref={ref}
         data-active={isActive}
+        tooltip={tooltip}
+        collapsed={collapsed}
       >
         <Component
           className={item({ className, active: isActive, collapsed })}
+          ref={ref}
           data-active={isActive}
           {...props}
         >
@@ -72,7 +114,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
             {label && <div>{label}</div>}
           </div>
         </Component>
-      </li>
+      </ListItem>
     );
   },
 );
