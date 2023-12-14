@@ -24,6 +24,7 @@ import {
   MoreVertical,
   Send,
   Settings,
+  UserIcon,
   Users2,
   X,
 } from "lucide-react";
@@ -72,12 +73,26 @@ export function SidebarComp() {
         <SidebarHeadToggleOpen />
       </SidebarHead>
       <SidebarItems>
-        <SidebarItemGroup>
-          <SidebarItem icon={<Home />} active>
+        <SidebarItemGroup
+          tooltip={{
+            delayDuration: 0.6,
+          }}
+        >
+          <SidebarItem
+            tooltip={{ text: "Home", contentProps: { side: "right" } }}
+            icon={<Home />}
+            active
+          >
             Home
           </SidebarItem>
-          <SidebarItem icon={<Inbox />}>Inbox</SidebarItem>
           <SidebarItem
+            tooltip={{ text: "Inbox", contentProps: { side: "right" } }}
+            icon={<Inbox />}
+          >
+            Inbox
+          </SidebarItem>
+          <SidebarItem
+            tooltip={{ text: "Analytics", contentProps: { side: "right" } }}
             icon={<BarChartBig />}
             label={
               <span className="px-3 py-1 rounded-lg text-white bg-blue-500 text-xs">
@@ -87,8 +102,14 @@ export function SidebarComp() {
           >
             Analytics
           </SidebarItem>
-          <SidebarItem icon={<Users2 />}>Users</SidebarItem>
           <SidebarItem
+            tooltip={{ text: "Users", contentProps: { side: "right" } }}
+            icon={<Users2 />}
+          >
+            Users
+          </SidebarItem>
+          <SidebarItem
+            tooltip={{ text: "Notifications", contentProps: { side: "right" } }}
             icon={<Bell />}
             label={
               <span className="p-1 rounded-full text-white bg-red-500 text-xs">
@@ -98,25 +119,48 @@ export function SidebarComp() {
           >
             Notifications
           </SidebarItem>
-          <SidebarItem icon={<Settings />}>Settings</SidebarItem>
-          <SidebarItemCollapse icon={<MoreVertical />} itemTitle={"View more"}>
+          <SidebarItem
+            tooltip={{
+              text: "Settings",
+              contentProps: {
+                side: "right",
+              },
+            }}
+            icon={<Settings />}
+          >
+            Settings
+          </SidebarItem>
+          <SidebarItemCollapse
+            classNames={{
+              contentCollapsed:
+                "bg-neutral-200/50 dark:bg-neutral-800/80 rounded-lg",
+            }}
+            icon={<MoreVertical />}
+            itemTitle={"View more"}
+          >
             <SidebarItem icon={<List />}>Tasks</SidebarItem>
             <SidebarItem icon={<Send />}>Messages</SidebarItem>
+            <SidebarItem icon={<UserIcon />}>Profile</SidebarItem>
           </SidebarItemCollapse>
         </SidebarItemGroup>
       </SidebarItems>
-      <SidebarFooter className="px-2.5 py-2">
-        <SidebarItem
-          as="div"
-          className="w-full flex-1 bg-neutral-200 hover:bg-neutral-300 dark:hover:bg-neutral-800 dark:bg-neutral-800/80"
-          icon={
+      <SidebarFooter className="group px-2.5 py-2">
+        <div
+          className="block rounded-xl group truncate w-full min-h-[3rem] max-h-[3rem] flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-xl py-2.5 px-3 gap-x-3 bg-neutral-200 hover:bg-neutral-300 dark:hover:bg-neutral-800 dark:bg-neutral-800/80"
+          // icon={
+          //   <img
+          //     src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
+          //     className="rounded-full"
+          //   />
+          // }
+        >
+          <span>
             <img
               src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
-              className="rounded-full"
+              className="rounded-full min-h-[1.5rem] min-w-[1.5rem] max-h-[1.5rem] max-w-[1.5rem] h-7 w-7 flex-none flex items-center justify-center"
             />
-          }
-        >
-          <div className="flex-1 gap-3 flex justify-between items-center">
+          </span>
+          <div className="group-data-[collapsed=true]:hidden transition-opacity duration-[300ms] group-data-[collapsed=true]:opacity-0 flex justify-between items-center w-full">
             <div className="flex-1 w-full flex flex-col">
               <p className="font-bold dark:text-white text-black">NoHaxito</p>
               <span className="text-sm truncate text-neutral-500">
@@ -125,7 +169,7 @@ export function SidebarComp() {
             </div>
             <MoreVertical className="text-right min-h-[1.2rem] max-h-[1.2rem] min-w-[1.2rem] max-w-[1.2rem] " />
           </div>
-        </SidebarItem>
+        </div>
       </SidebarFooter>
     </Sidebar>
   );
