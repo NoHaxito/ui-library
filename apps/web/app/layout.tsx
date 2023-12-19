@@ -32,6 +32,9 @@ export default function RootLayout({
                   {children}
                 </div>
               </div>
+              <footer className="p-4 bg-neutral-800 border-t">
+                Deluxe UI :p
+              </footer>
             </div>
           </SidebarContextProvider>
         </ThemeProvider>

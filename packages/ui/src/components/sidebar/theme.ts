@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export const sidebar = tv({
   slots: {
-    base: "shadow-md shadow-neutral-300 dark:shadow-neutral-800 z-30 transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
+    base: "z-30 transition-width duration-[300ms] antialiased ease-in-out bg-neutral-50 dark:bg-neutral-900 flex flex-col",
     overlay: "fixed inset-0 z-20 bg-black/50",
     headBase:
       "transition-opacity dark:text-white top-0 w-full items-center min-h-[4rem] px-[20px] dark:border-neutral-800 bg-inherit flex flex-nowrap truncate",
