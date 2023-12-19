@@ -10,14 +10,15 @@ interface DropdownMenuContentProps
 export const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof Content>,
   DropdownMenuContentProps
->((props, forwardedRef) => {
+>(({ className, sideOffset = 2, ...props }, forwardedRef) => {
   const { content } = dropdownMenu();
   return (
     <Portal>
       <Content
         {...props}
-        className={cn(content({ className: props.className }))}
+        className={cn(content({ className: className }))}
         ref={forwardedRef}
+        sideOffset={sideOffset}
       />
     </Portal>
   );
