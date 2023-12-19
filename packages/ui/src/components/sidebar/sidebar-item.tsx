@@ -106,8 +106,8 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
           ) : null}
           <div
             className={cn(
-              collapsed ? "opacity-0 hidden" : "opacity-100",
-              "transition-opacity duration-[300ms] flex items-center justify-between w-full",
+              collapsed ? "opacity-0" : "opacity-100",
+              "transition-opacity duration-[800ms] flex items-center justify-between w-full",
             )}
           >
             {children}

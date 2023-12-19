@@ -48,8 +48,8 @@ export const SidebarItemCollapse = React.forwardRef<
           ) : null}
           <div
             className={cn(
-              context.collapsed ? "opacity-0 hidden" : "opacity-100",
-              "transition-opacity duration-[300ms] flex items-center justify-between w-full",
+              context.collapsed ? "opacity-0" : "opacity-100",
+              "transition-opacity duration-[400ms] flex items-center justify-between w-full",
             )}
           >
             {props.itemTitle}
