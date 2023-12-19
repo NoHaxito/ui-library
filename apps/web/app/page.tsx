@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Tooltip,
   TooltipContent,
@@ -10,105 +9,26 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuItemShortcut,
 } from "@sihaxito/deluxe-ui";
-import { useSidebarContext } from "../components/sidebar-context";
 import {
-  ArrowArcLeft,
-  Command,
-  Confetti,
-  Copy,
   CreditCard,
   Gear,
   GithubLogo,
   Keyboard,
-  PencilSimple,
   Plus,
-  PushPin,
   Question,
   SignOut,
-  Trash,
   User,
   UserPlus,
   Users,
 } from "@phosphor-icons/react";
+import { DiscordDropdownMenu } from "../components/discord-dropdown";
 
 export default function Home() {
-  const { context } = useSidebarContext();
   return (
     <main className="relative text-neutral-400 p-6 space-y-4 lg:p-8">
-      <div className="py-2 flex flex-wrap items-center gap-2">
-        <button
-          onClick={() => context.setOverlay(!context.overlay)}
-          className="flex items-center gap-2 justify-center px-4 py-2 rounded-lg bg-neutral-800 text-neutral-200 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-800 dark:hover:bg-neutral-300 dark:hover:text-neutral-900"
-        >
-          Toggle overlay
-        </button>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => context.setCollapsed(!context.collapsed)}
-                className="flex items-center gap-2 justify-center px-4 py-2 rounded-lg bg-neutral-800 text-neutral-200 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-800 dark:hover:bg-neutral-300 dark:hover:text-neutral-900"
-              >
-                Toggle Collapse
-              </button>
-            </TooltipTrigger>
-            <TooltipContent>Collapse sidebar :0</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
       <section className="space-y-1 space-x-2">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="transition-all duration-300 text-sm px-3 py-1 active:scale-[.97] bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:bg-neutral-900 rounded-md">
-            Open discord menu
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56" side="bottom" align="start">
-            <div className="my-2 flex items-center justify-center gap-2">
-              <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                😂
-              </div>
-              <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                😍
-              </div>
-              <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                👀
-              </div>
-              <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                ⚽️
-              </div>
-            </div>
-            <DropdownMenuItem>
-              <Confetti size={16} weight="fill" />
-              Agregar reaccion
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <PencilSimple size={16} weight="fill" />
-              Editar mensaje
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <PushPin size={16} weight="fill" />
-              Fijar mensaje
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <ArrowArcLeft size={16} weight="fill" />
-              Responder
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Copy size={16} weight="fill" />
-              Copiar texto
-            </DropdownMenuItem>
-            <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
-            <DropdownMenuItem variant="danger">
-              <Trash size={16} weight="fill" />
-              Eliminar mensaje
-              <DropdownMenuItemShortcut className="group-hover:text-neutral-300">
-                <Command size={16} />
-                Supr
-              </DropdownMenuItemShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <DiscordDropdownMenu />
         <DropdownMenu>
           <DropdownMenuTrigger className="transition-all duration-300 text-sm px-3 py-1 active:scale-[.97] bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:bg-neutral-900 rounded-md">
             Open user menu
