@@ -11,6 +11,7 @@
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0"
   },
   "dependencies": {
+    "@phosphor-icons/react": "github:phosphor-icons/react",
     "@sihaxito/deluxe-ui": "workspace:*",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",

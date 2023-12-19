@@ -15,3 +15,5 @@ export {
 } from "./components/sidebar";
 
 export * from "./components/tooltip";
+export * from "./components/switch";
+export * from "./components/dropdown-menu";

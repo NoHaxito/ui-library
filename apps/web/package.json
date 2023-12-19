@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.0.15",
     "@sihaxito/deluxe-ui": "workspace:*",
     "clsx": "^2.0.0",
     "lucide-react": "^0.294.0",
