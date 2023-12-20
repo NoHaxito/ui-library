@@ -56,6 +56,11 @@ export const sidebar = tv({
         item: ["border-transparent"],
       },
     },
+    variant: {
+      transparent: {
+        item: ["bg-transparent"],
+      },
+    },
   },
   compoundSlots: [
     {

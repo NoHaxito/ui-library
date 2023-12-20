@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "../components/providers/theme";
-import { SidebarComp } from "../components/sidebar";
-import "./globals.css";
+import { ThemeProvider } from "@/components/providers/theme";
+import { SidebarComp } from "@/components/examples/sidebar";
+import "../globals.css";
 import "@sihaxito/deluxe-ui/styles.css";
-import { Navbar } from "../components/navbar";
-import { SidebarContextProvider } from "../components/sidebar-context";
+import { Navbar } from "@/components/examples/navbar";
+import { SidebarContextProvider } from "@/components/sidebar-context";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -8,7 +8,7 @@ import type {
 } from "react";
 import { forwardRef } from "react";
 import { cn } from "../../utils";
-import { sidebar } from "./theme";
+import { SidebarVariant, sidebar } from "./theme";
 import {
   Tooltip,
   type TooltipProps,
@@ -19,7 +19,9 @@ import {
 } from "../tooltip";
 import { useSidebarContext } from "./sidebar-context";
 
-export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref"> {
+export interface SidebarItemProps
+  extends Omit<ComponentProps<"div">, "ref">,
+    Omit<SidebarVariant, "open" | "active" | "collapsed"> {
   as?: ElementType;
   href?: string;
   icon?: ReactNode;
@@ -77,6 +79,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
       icon: Icon,
       label,
       tooltip,
+      variant,
       ...props
     },
     ref,
@@ -93,7 +96,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
         collapsed={collapsed}
       >
         <Component
-          className={item({ className, active: isActive, collapsed })}
+          className={item({ className, active: isActive, collapsed, variant })}
           ref={ref}
           data-active={isActive}
           {...props}
