@@ -148,13 +148,15 @@ const components = {
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
     return (
-      <pre
-        className={cn(
-          "rounded-lg px-4 py-2 my-3 bg-neutral-100 overflow-hidden dark:bg-neutral-900 max-h-[650px] overflow-x-auto",
-          className,
-        )}
-        {...props}
-      />
+      <div className="max-w-[43vh] md:max-w-[50vh] lg:max-w-[657px] overflow-auto">
+        <pre
+          className={cn(
+            "rounded-lg my-3 dark:bg-neutral-900 max-h-[650px] overflow-x-auto",
+            className,
+          )}
+          {...props}
+        />
+      </div>
     );
   },
   Preview: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (

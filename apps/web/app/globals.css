@@ -1,110 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-[data-theme="light"] {
-  display: block;
+
+pre {
+  overflow-x: auto;
 }
 
-[data-theme="dark"] {
-  display: none;
+code[class*="language-"],
+pre[class*="language-"] {
+  background: #27212e;
+  color: #ffffff;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; /* this is the default */
+  /* The following properties are standard, please leave them as they are */
+  font-size: 1em;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  /* The following properties are also standard */
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-.dark [data-theme="light"] {
-  display: none;
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+  background: #eb64b927;
+  color: inherit;
 }
 
-.dark [data-theme="dark"] {
-  display: block;
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection {
+  background: #eb64b927;
+  color: inherit;
 }
 
-[data-rehype-pretty-code-fragment] {
-  @apply relative px-2;
+/* Properties specific to code blocks */
+pre[class*="language-"] {
+  padding: 1em; /* this is standard */
+  margin: 0.5em 0; /* this is the default */
+  overflow: auto; /* this is standard */
+  border-radius: 0.5em;
 }
 
-[data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
-  counter-reset: line;
-  box-decoration-break: clone;
+/* Properties specific to inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.2em 0.3em;
+  border-radius: 0.5rem;
+  white-space: normal; /* this is standard */
 }
 
-[data-rehype-pretty-code-fragment] .line {
-  @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: #91889b;
 }
 
-[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
-  @apply px-2;
+.token.punctuation {
+  color: #7b6995;
 }
 
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  @apply text-zinc-50/40 text-xs;
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 1.8rem;
-  margin-right: 1.4rem;
-  text-align: right;
-}
-[data-highlighted-chars] {
-  @apply bg-zinc-600/50 rounded;
-  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+.token.builtin,
+.token.constant,
+.token.boolean {
+  color: #ffe261;
 }
 
-[data-chars-id] {
-  @apply shadow-none p-1 border-b-2;
+.token.number {
+  color: #b381c5;
 }
 
-[data-chars-id] span {
-  @apply !text-inherit;
+.token.important,
+.token.atrule,
+.token.property,
+.token.keyword {
+  color: #40b4c4;
 }
 
-[data-chars-id="v"] {
-  @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+.token.doctype,
+.token.operator,
+.token.inserted,
+.token.tag,
+.token.class-name,
+.token.symbol {
+  color: #74dfc4;
 }
 
-[data-chars-id="s"] {
-  @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
+.token.attr-name,
+.token.function,
+.token.deleted,
+.token.selector {
+  color: #eb64b9;
 }
 
-[data-chars-id="i"] {
-  @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
+.token.attr-value,
+.token.regex,
+.token.char,
+.token.string {
+  color: #b4dce7;
 }
 
-[data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-zinc-700/50;
+.token.entity,
+.token.url,
+.token.variable {
+  color: #ffffff;
 }
 
-[data-rehype-pretty-code-fragment] .line-highlighted span {
-  @apply relative;
+/* The following rules are pretty similar across themes, but feel free to adjust them */
+.token.bold {
+  font-weight: bold;
 }
 
-[data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
+.token.italic {
+  font-style: italic;
 }
 
-.dark [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply bg-zinc-900;
+.token.entity {
+  cursor: help;
 }
 
-[data-rehype-pretty-code-title] {
-  @apply mt-2 rounded-lg bg-neutral-900 py-2.5 px-4 text-sm font-medium;
-}
-
-[data-rehype-pretty-code-title] + pre {
-  @apply mt-2;
-}
-
-.mdx > .steps:first-child > h3:first-child {
-  @apply mt-0;
-}
-
-@layer utilities {
-  .step {
-    counter-increment: step;
-  }
-
-  .step:before {
-    @apply absolute w-9 h-9 bg-neutral-100 dark:bg-neutral-800 rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border border-neutral-200 dark:border-neutral-700;
-    @apply ml-[-50px] mt-[-4px];
-    content: counter(step);
-  }
+.token.namespace {
+  opacity: 0.7;
 }
