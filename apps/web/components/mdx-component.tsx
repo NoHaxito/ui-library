@@ -10,14 +10,21 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
 } from "@sihaxito/deluxe-ui";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
+import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 
 const components = {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -156,13 +163,15 @@ const components = {
         "bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center",
       )}
     >
-      <CircleNotch size={16} className="animate-spin" />
+      {!props.children && <CircleNotch size={16} className="animate-spin" />}
+      {props.children}
     </div>
   ),
+  DiscordDropdownMenu,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded dark:bg-neutral-900 px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded-lg dark:bg-neutral-900 px-[0.3rem] py-[0.2rem] font-mono text-sm",
         className,
       )}
       {...props}

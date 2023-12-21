@@ -28,7 +28,7 @@ export default async function GettingStartedDocPage({
     notFound();
   }
   return (
-    <main className="relative p-6 mr-4 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
+    <main className="relative p-6 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
       <div>
         <div className="space-y-2">
           <h1 className={"scroll-m-20 text-4xl font-bold tracking-tight"}>
@@ -42,7 +42,7 @@ export default async function GettingStartedDocPage({
           <Mdx code={doc.body.code} />
         </div>
       </div>
-      <div className="hidden text-sm lg:flex">
+      <div className="hidden w-[275px] lg:block text-sm">
         <div className="sticky top-16 -mt-10 pt-4">
           <div className="sticky top-16 -mt-10 h-[calc(100vh-4rem)] py-12">
             <div className="space-y-2">

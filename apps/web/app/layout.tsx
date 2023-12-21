@@ -1,8 +1,9 @@
+import "./globals.css";
+import "@sihaxito/deluxe-ui/styles.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme";
-import "./globals.css";
-import "@sihaxito/deluxe-ui/styles.css";
 import { Navbar } from "@/components/navbar";
 // import { SidebarContextProvider } from "@/components/sidebar-context";
 
