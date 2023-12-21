@@ -11,7 +11,7 @@ import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 
 export default function Home() {
   return (
-    <main className="relative text-neutral-400 p-6 space-y-4 lg:p-8">
+    <main className="relative text-neutral-400 space-y-4 lg:p-8">
       <section className="space-y-1 space-x-2">
         <DiscordDropdownMenu />
            </section>

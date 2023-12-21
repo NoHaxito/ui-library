@@ -15,6 +15,99 @@ import { useSidebarContext } from "./sidebar-context";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const sidebarItems = [
+  {
+    title: "Getting Started",
+    items: [
+      {
+        title: "Installation",
+        href: "/docs/getting-started/installation",
+      },
+      {
+        title: "Customization",
+        href: "/docs/getting-started/customization",
+      },
+    ],
+  },
+  {
+    title: "Components",
+    items: [
+      {
+        title: "Accordion",
+        href: "/docs/components/accordion",
+      },
+      {
+        title: "Alert dialog",
+        href: "/docs/components/alert-dialog",
+      },
+      {
+        title: "Card",
+        href: "/docs/components/card",
+      },
+      {
+        title: "Checkbox",
+        href: "/docs/components/checkbox",
+      },
+      {
+        title: "Collapsible",
+        href: "/docs/components/collapsible",
+      },
+      {
+        title: "Context Menu",
+        href: "/docs/components/context-menu",
+      },
+      {
+        title: "Dialog",
+        href: "/docs/components/dialog",
+      },
+      {
+        title: "Dropdown Menu",
+        href: "/docs/components/dropdown-menu",
+      },
+      {
+        title: "Hover Card",
+        href: "/docs/components/hover-card",
+      },
+      {
+        title: "Input",
+        href: "/docs/components/input",
+      },
+      {
+        title: "Menubar",
+        href: "/docs/components/menubar",
+      },
+      {
+        title: "Popover",
+        href: "/docs/components/popover",
+      },
+      {
+        title: "Progress",
+        href: "/docs/components/progress",
+      },
+      {
+        title: "Radio Group",
+        href: "/docs/components/radio-group",
+      },
+      {
+        title: "Select",
+        href: "/docs/components/select",
+      },
+      {
+        title: "Switch",
+        href: "/docs/components/switch",
+      },
+      {
+        title: "Tabs",
+        href: "/docs/components/tabs",
+      },
+      {
+        title: "Tooltip",
+        href: "/docs/components/tooltip",
+      },
+    ],
+  },
+];
+
 export function SidebarComp() {
   const { context } = useSidebarContext();
   const pathname = usePathname();
@@ -40,98 +133,31 @@ export function SidebarComp() {
       open={context.open}
       onOpenChange={context.setOpen}
       className={cn(
-        "data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 data-[open=true]:min-w-full fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block",
+        "bg-transparent dark:bg-transparent border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 data-[open=true]:min-w-full fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block",
       )}
     >
       <SidebarItems>
         <SidebarItemGroup>
-          <SidebarItemCollapse
-            classNames={{ contentCollapsed: "grid gap-y-0.5" }}
-            defaultOpen
-            itemTitle="Guide"
-            className="font-bold dark:text-white"
-          >
-            <SidebarItem
-              as={Link}
-              href="/docs/getting-started"
-              active={pathname === "/docs/getting-started"}
-              className="list-disc min-h-[2rem] max-h-[2rem]"
+          {sidebarItems.map((item) => (
+            <SidebarItemCollapse
+              defaultOpen
+              key={item.title}
+              itemTitle={item.title}
+              className="font-bold dark:text-white"
             >
-              Getting started
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Customization
-            </SidebarItem>
-          </SidebarItemCollapse>
-          <SidebarItemCollapse
-            classNames={{ contentCollapsed: "grid gap-y-0.5" }}
-            defaultOpen
-            itemTitle="Components"
-            className="font-bold dark:text-white"
-          >
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Accordion
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Alert dialog
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Aspect ratio
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Card
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Checkbox
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Collapsible
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Context menu
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Dialog
-            </SidebarItem>
-            <SidebarItem
-              as={Link}
-              href="/docs/components/dropdown"
-              active={pathname === "/docs/components/dropdown"}
-              className="list-disc min-h-[2rem] max-h-[2rem]"
-            >
-              Dropdown Menu
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Hover card
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Input
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Menu bar
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Popover
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Progress
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Select
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Slider
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Switch
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Tabs
-            </SidebarItem>
-            <SidebarItem className="list-disc min-h-[2rem] max-h-[2rem]">
-              Tooltip
-            </SidebarItem>
-          </SidebarItemCollapse>
+              {item.items.map((item) => (
+                <SidebarItem
+                  key={item.title}
+                  as={Link}
+                  href={item.href}
+                  active={pathname === item.href}
+                  className="list-disc min-h-[2rem] max-h-[2rem]"
+                >
+                  {item.title}
+                </SidebarItem>
+              ))}
+            </SidebarItemCollapse>
+          ))}
         </SidebarItemGroup>
       </SidebarItems>
     </Sidebar>
