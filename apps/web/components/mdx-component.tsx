@@ -156,7 +156,7 @@ const components = {
   Preview: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <div
       className={cn(
-        "bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center"
+        "my-2 bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center"
       )}
     >
       {!props.children && <CircleNotch size={16} className="animate-spin" />}

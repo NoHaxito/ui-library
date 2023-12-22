@@ -38,7 +38,7 @@ export function CodeHighlighter({
       code={code}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div className="relative">
+        <div className="relative px-2">
           <pre
             style={style}
             className="relative grid scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full [scrollbar-gutter:stable] !bg-neutral-900 max-h-[350px] overflow-x-auto rounded-lg my-2 px-2 py-2"
@@ -51,7 +51,7 @@ export function CodeHighlighter({
                   className={cn(
                     highligthLines &&
                       highligthLines.some((e) => e === i + 1) &&
-                      "bg-neutral-700 w-full ",
+                      "bg-neutral-700 min-w-full w-max lg:w-full",
                     highligthLines &&
                       highligthLines.length > 1 &&
                       highligthLines.some((l) => l === i + 1) &&
@@ -77,7 +77,7 @@ export function CodeHighlighter({
                     </span>
                   )}
                   {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
+                    <span className="mr-3" key={key} {...getTokenProps({ token })} />
                   ))}
                 </div>
               ))}

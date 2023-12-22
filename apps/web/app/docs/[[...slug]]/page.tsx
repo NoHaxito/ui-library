@@ -1,4 +1,6 @@
 import { Mdx } from "@/components/mdx-component";
+import { DashboardTableOfContents } from "@/components/toc";
+import { getTableOfContents } from "@/lib/toc";
 import { allDocs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
@@ -27,6 +29,7 @@ export default async function GettingStartedDocPage({
   if (!doc) {
     notFound();
   }
+  const toc = await getTableOfContents(doc.body.raw);
   return (
     <main className="relative  p-6 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
       <div>
@@ -42,12 +45,10 @@ export default async function GettingStartedDocPage({
           <Mdx code={doc.body.code} />
         </div>
       </div>
-      <div className="hidden w-[275px] lg:block text-sm">
+      <div className="w-[275px] hidden lg:hidden md:flex text-sm">
         <div className="sticky top-16 -mt-10 pt-4">
           <div className="sticky top-16 -mt-10 h-[calc(100vh-4rem)] py-12">
-            <div className="space-y-2">
-              <p className="font-medium">On this page</p>
-            </div>
+            <DashboardTableOfContents toc={toc} />
           </div>
         </div>
       </div>

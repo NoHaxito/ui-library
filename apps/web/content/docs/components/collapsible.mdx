@@ -20,7 +20,7 @@ date: 2023-12-20
       <div className="rounded-md border dark:border-neutral-800 px-4 py-3 font-mono text-sm">
         @radix-ui/primitives
       </div>
-      <CollapsibleContent className="p-0 space-y-2 data-[state=open]:animate-collapsible-down transition-all data-[state=closed]:animate-collapsible-up">
+      <CollapsibleContent className="ease-out duration-500 space-y-2 data-[state=open]:animate-collapsible-down transition-all data-[state=closed]:animate-collapsible-up">
         <div className="rounded-md border dark:border-neutral-800 px-4 py-3 font-mono text-sm">
           @radix-ui/colors
         </div>
@@ -30,10 +30,12 @@ date: 2023-12-20
       </CollapsibleContent>
     </Collapsible>
 </Preview>
-## Usage
 
+## Usage
 <CodeHighlighter language="tsx" code={`import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@sihaxito/deluxe-ui"`} />
+
+## Examples
