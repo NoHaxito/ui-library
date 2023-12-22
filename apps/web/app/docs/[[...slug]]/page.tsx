@@ -28,7 +28,7 @@ export default async function GettingStartedDocPage({
     notFound();
   }
   return (
-    <main className="relative p-6 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
+    <main className="relative  p-6 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
       <div>
         <div className="space-y-2">
           <h1 className={"scroll-m-20 text-4xl font-bold tracking-tight"}>

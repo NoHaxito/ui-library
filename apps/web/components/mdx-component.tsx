@@ -16,6 +16,8 @@ import {
 } from "@sihaxito/deluxe-ui";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import { DiscordDropdownMenu } from "@/components/discord-dropdown";
+import { Copy, Hash } from "@phosphor-icons/react";
+import { CodeHighlighter } from "./code-highlighter";
 
 const components = {
   Accordion,
@@ -29,7 +31,7 @@ const components = {
     <h1
       className={cn(
         "font-heading mt-2 scroll-m-20 text-4xl font-bold",
-        className,
+        className
       )}
       {...props}
     />
@@ -38,25 +40,29 @@ const components = {
     <h2
       className={cn(
         "font-heading mt-12 scroll-m-20 border-b dark:border-neutral-800 pb-2 text-2xl font-semibold tracking-tight first:mt-0",
-        className,
+        className
       )}
       {...props}
-    />
+    >
+      <LinkHeading id={props.id}>{props.children}</LinkHeading>
+    </h2>
   ),
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
-    />
+    >
+      <LinkHeading id={props.id}>{props.children}</LinkHeading>
+    </h3>
   ),
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
         "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -65,7 +71,7 @@ const components = {
     <h5
       className={cn(
         "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -74,7 +80,7 @@ const components = {
     <h6
       className={cn(
         "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -132,7 +138,7 @@ const components = {
     <th
       className={cn(
         "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className,
+        className
       )}
       {...props}
     />
@@ -141,28 +147,16 @@ const components = {
     <td
       className={cn(
         "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className,
+        className
       )}
       {...props}
     />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
-    return (
-      <div className="max-w-[43vh] md:max-w-[50vh] lg:max-w-[657px] overflow-auto">
-        <pre
-          className={cn(
-            "rounded-lg my-3 dark:bg-neutral-900 max-h-[650px] overflow-x-auto",
-            className,
-          )}
-          {...props}
-        />
-      </div>
-    );
-  },
+  CodeHighlighter,
   Preview: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <div
       className={cn(
-        "bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center",
+        "bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center"
       )}
     >
       {!props.children && <CircleNotch size={16} className="animate-spin" />}
@@ -174,7 +168,7 @@ const components = {
     <code
       className={cn(
         "relative rounded-lg dark:bg-neutral-900 px-[0.3rem] py-[0.2rem] font-mono text-sm",
-        className,
+        className
       )}
       {...props}
     />
@@ -184,7 +178,7 @@ const components = {
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -206,7 +200,7 @@ const components = {
     <Link
       className={cn(
         "flex w-full flex-col items-center rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50 p-6 text-card-foreground shadow transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900 sm:p-10",
-        className,
+        className
       )}
       {...props}
     />
@@ -226,3 +220,29 @@ export function Mdx({ code }: MdxProps) {
     </div>
   );
 }
+
+const LinkHeading = ({
+  id,
+  children,
+  className,
+  ...props
+}: {
+  id: string;
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <Link
+    className={cn(
+      "relative w-fit flex items-center gap-1 group text-inherit",
+      className
+    )}
+    id={id}
+    href={`#${id}`}
+    {...props}
+  >
+    {children}
+    <span className="opacity-0 transition-opacity group-hover:opacity-100">
+      <Hash className="h-5 w-5" aria-hidden />
+    </span>
+  </Link>
+);

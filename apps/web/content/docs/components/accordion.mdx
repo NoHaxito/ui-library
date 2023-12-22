@@ -3,37 +3,38 @@ title: Accordion
 description: A vertically stacked set of interactive headings that each reveal a section of content.
 date: 2023-12-20
 ---
+
 <Preview>
   <Accordion type="single" collapsible className="w-full min-w-lg">
-      <AccordionItem value="item-1" className="border-b dark:border-neutral-800">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2" className="border-b dark:border-neutral-800">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&apos; aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3" className="border-b dark:border-neutral-800">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It&apos;s animated by default, but you can disable it if you
-          prefer.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem value="item-1" className="border-b dark:border-neutral-800">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It adheres to the WAI-ARIA design pattern.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2" className="border-b dark:border-neutral-800">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It comes with default styles that matches the other
+        components&apos; aesthetic.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3" className="border-b dark:border-neutral-800">
+      <AccordionTrigger>Is it animated?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It&apos;s animated by default, but you can disable it if you
+        prefer.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
 </Preview>
 ## Usage
-```tsx
-import {
+<CodeHighlighter
+  language="tsx"
+  code={`import {
   Accordion,
   AccordionItem,
   AccordionContent,
   AccordionTrigger
-} from "@sihaxito/deluxe-ui"
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas orci eget tellus ultrices laoreet.
-``` 
+} from "@sihaxito/deluxe-ui"`}
+/>

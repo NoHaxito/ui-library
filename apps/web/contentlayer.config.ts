@@ -1,7 +1,8 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
+// import remarkGfm from "remark-gfm";
+
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
   filePathPattern: `docs/**/*.mdx`,
@@ -28,6 +29,7 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrismPlus],
+    // remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug, rehypePrismPlus],
   },
 });

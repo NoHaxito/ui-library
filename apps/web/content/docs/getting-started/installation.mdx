@@ -10,15 +10,79 @@ date: 2023-12-20
 
 Para instalar Deluxe UI ejecuta el siguiente comando en tu terminal:
 
+<CodeHighlighter language="bash" code={`npm install @sihaxito/deluxe-ui`} />
 
 ### TailwindCSS setup
 
 Deluxe UI utiliza tailwindcss, por lo que deberás tenerlo instalado y configurado, puedes seguir la <a href="https://tailwindcss.com/docs/installation">guia oficial de instalacion</a> y añadir el siguiente codigo en tu tailwind.config.js:
 
+<CodeHighlighter
+  showLines
+  language="js"
+  highligthLines={[11]}
+  code={`// tailwind.config.js
+
+/\* @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+        // ...
+    ],
+    theme: {
+        extend: {},
+    },
+    darkMode: "class",
+    plugins: [],
+};`}
+/>
 
 ### Deluxe UI styles
 
 Importa los estilos de Deluxe UI desde `@sihaxito/deluxe-ui/styles.css`:
 
+<CodeHighlighter
+  showLines
+  language="tsx"
+  highligthLines={[4]}
+  code={`import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import '@sihaxito/deluxe-ui/stlyes.css'
 
+const root = document.getElementById('root)!
+
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)`}
+/>
+### Trying Deluxe UI
+<CodeHighlighter
+  showLines
+  highligthLines={[2,3,4,5,6,7]}
+  language="tsx"
+  code={`"use client";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@sihaxito/deluxe-ui";
+
+export function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+        <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+        <DropdownMenuContent>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>Subscription</DropdownMenuItem>
+        </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}`}
+/>
 </Steps>
