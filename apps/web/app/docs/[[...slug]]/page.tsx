@@ -1,4 +1,5 @@
 import { Mdx } from "@/components/mdx-component";
+import { Pager } from "@/components/pager";
 import { DashboardTableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
 import { allDocs } from "contentlayer/generated";
@@ -44,8 +45,12 @@ export default async function GettingStartedDocPage({
         <div className="pb-6 pt-8">
           <Mdx code={doc.body.code} />
         </div>
+        <Pager doc={doc} />
       </div>
-      <div data-hidden="yes" className="w-[275px] data-[hidden=yes]:hidden lg:!flex text-sm">
+      <div
+        data-hidden="yes"
+        className="w-[275px] data-[hidden=yes]:hidden lg:!flex text-sm"
+      >
         <div className="sticky h-[calc(100vh-4rem)] top-16 -mt-10 pt-8">
           <DashboardTableOfContents toc={toc} />
         </div>
