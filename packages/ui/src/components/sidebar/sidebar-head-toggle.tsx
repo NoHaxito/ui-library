@@ -13,7 +13,7 @@ export const SidebarHeadToggle = forwardRef<
   SidebarHeadToggleProps
 >(({ className, ...props }, ref?: Ref<HTMLButtonElement>) => {
   const {
-    context: { collapsed, setCollapsed, open, setOpen },
+    context: { collapsed, setCollapsed },
   } = useSidebarContext();
 
   const { headToggle, headToggleIcon } = sidebar();

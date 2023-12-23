@@ -3,9 +3,9 @@
 import type { ComponentProps, Ref } from "react";
 import { forwardRef } from "react";
 import { X } from "lucide-react";
+import { cn } from "../../utils";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
-import { cn } from "../../utils";
 
 export type SidebarHeadToggleOpenProps = Omit<ComponentProps<"button">, "ref">;
 
@@ -14,7 +14,7 @@ export const SidebarHeadToggleOpen = forwardRef<
   SidebarHeadToggleOpenProps
 >(({ className, ...props }, ref?: Ref<HTMLButtonElement>) => {
   const {
-    context: { collapsed, setCollapsed, open, setOpen },
+    context: { open, setOpen },
   } = useSidebarContext();
 
   const { headToggle, headToggleIcon } = sidebar();

@@ -1,22 +1,15 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import * as React from "react";
+import { CaretRight } from "@phosphor-icons/react";
 import { cn } from "../../utils";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../accordion/root";
-import { useSidebarContext } from "./sidebar-context";
-import { sidebar } from "./theme";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../collapsible";
-import { CaretRight } from "@phosphor-icons/react";
+import { useSidebarContext } from "./sidebar-context";
+import { sidebar } from "./theme";
 
 interface SidebarItemCollapseProps
   extends React.ComponentPropsWithoutRef<"div"> {
@@ -32,8 +25,7 @@ interface SidebarItemCollapseProps
 export const SidebarItemCollapse = React.forwardRef<
   HTMLDivElement,
   SidebarItemCollapseProps
->(({ classNames, asChild, children, className, ...props }, forwardedRef) => {
-  const id = React.useId();
+>(({ classNames, children, className, ...props }, forwardedRef) => {
   const { context } = useSidebarContext();
   const { item, itemIcon } = sidebar();
   return (
@@ -44,7 +36,7 @@ export const SidebarItemCollapse = React.forwardRef<
           collapsed: context.collapsed,
         })}
       >
-        {props.icon && <span className={itemIcon()}>{props.icon}</span>}
+        {props.icon ? <span className={itemIcon()}>{props.icon}</span> : null}
         {context.collapsed && !props.icon ? (
           <span className="font-bold">
             {(props.itemTitle as string).charAt(0).toLocaleUpperCase()}
@@ -53,7 +45,7 @@ export const SidebarItemCollapse = React.forwardRef<
         <div
           className={cn(
             context.collapsed ? "opacity-0" : "opacity-100",
-            "transition-opacity duration-[400ms] flex items-center justify-between w-full",
+            "transition-opacity duration-[400ms] flex items-center justify-between w-full"
           )}
         >
           {props.itemTitle}
@@ -66,8 +58,9 @@ export const SidebarItemCollapse = React.forwardRef<
         className={cn(
           context.collapsed && "!px-0",
           "px-4 pb-0 py-0.5 overflow-hidden text-sm transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down",
-          classNames?.contentCollapsed,
+          classNames?.contentCollapsed
         )}
+        ref={forwardedRef}
       >
         {children}
       </CollapsibleContent>

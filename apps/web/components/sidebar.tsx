@@ -113,18 +113,11 @@ export function SidebarComp() {
   const pathname = usePathname();
   const matches = useMediaQuery("(min-width: 768px)");
   useEffect(() => {
-    if (context.collapsed && context.open) {
-      context.setCollapsed(false);
-    }
-  }, [context.open]);
+    if (!context.open) return;
+    context.setOpen(false);
+  }, [pathname]);
   useEffect(() => {
-    if (context.open && context.collapsed) {
-      context.setCollapsed(false);
-    }
     if (!matches) {
-      if (context.collapsed) {
-        context.setCollapsed(false);
-      }
       context.setOpen(false);
     }
   }, [matches]);
@@ -133,7 +126,7 @@ export function SidebarComp() {
       open={context.open}
       onOpenChange={context.setOpen}
       className={cn(
-        "bg-transparent dark:bg-neutral-950 border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block",
+        "bg-transparent transition-[width,transform] dark:bg-neutral-950 border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block"
       )}
     >
       <SidebarItems>
@@ -143,7 +136,7 @@ export function SidebarComp() {
               defaultOpen
               key={item.title}
               itemTitle={item.title}
-              className="font-bold dark:text-white"
+              className="font-bold text-neutral-900 dark:text-white"
             >
               {item.items.map((item) => (
                 <SidebarItem

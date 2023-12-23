@@ -3,22 +3,15 @@ title: Dropdown Menu
 description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
 date: 2023-12-20
 ---
+import { dropdownMenu } from '../../examples/dropdown-menu'
 
-<Preview>
-  <DiscordDropdownMenu />
-</Preview>
+<Preview name="dropdown-basic" />
 
 ## Usage
 <CodeHighlighter
+  showLines
   language="tsx"
-  code={`import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut
-} from "@sihaxito/deluxe-ui"`}
+  code={dropdownMenu['dropdown-basic'].code}
 />
 
 ## Examples
@@ -31,3 +24,5 @@ date: 2023-12-20
 
 ### Checkboxes
 <Preview />
+
+## Useful links

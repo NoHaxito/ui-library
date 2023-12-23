@@ -1,17 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion -- todo */
+/* eslint-disable jsx-a11y/click-events-have-key-events -- todo*/
+/* eslint-disable jsx-a11y/no-static-element-interactions -- todo*/
 "use client";
 import {
   type ReactNode,
   type ComponentProps,
   type ElementType,
   type FC,
-  useState,
-  useEffect,
-  useRef,
 } from "react";
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import { cn } from "../../utils";
 import { sidebar, type SidebarVariant } from "./theme";
-import { SidebarProvider, useSidebarContext } from "./sidebar-context";
-import { useControllableState } from "@radix-ui/react-use-controllable-state";
+import { useSidebarContext } from "./sidebar-context";
 
 interface SidebarProps
   extends Omit<SidebarVariant, "active" | "open">,
@@ -46,14 +46,14 @@ const SidebarComponent: FC<SidebarProps> = ({
     onChange: onOpenChange,
   });
   const { base, overlay: overlayStyles } = sidebar();
-  const { context, SidebarContext } = useSidebarContext();
+  const { SidebarContext } = useSidebarContext();
 
   return (
     <SidebarContext.Provider
       value={{
-        collapsed: collapsed as boolean,
+        collapsed: collapsed!,
         setCollapsed,
-        open: open as boolean,
+        open: open!,
         setOpen,
       }}
     >
@@ -66,13 +66,15 @@ const SidebarComponent: FC<SidebarProps> = ({
       >
         {children}
       </Component>
-      {overlayProp && (
+      {overlayProp ? (
         <div
-          onClick={() => setOpen(false)}
+          className={cn(overlayStyles({ open }))}
           id="overlay"
-          className={cn(overlayStyles({ open: open }))}
+          onClick={() => {
+            setOpen(false);
+          }}
         />
-      )}
+      ) : null}
     </SidebarContext.Provider>
   );
 };

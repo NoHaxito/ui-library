@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import * as React from "react";
 import { useSidebarContext } from "./sidebar-context";
 import { sidebar } from "./theme";
 
@@ -14,9 +14,9 @@ export const SidebarFooter = React.forwardRef<
   const { footer } = sidebar();
   return (
     <div
-      ref={forwardedRef}
-      data-collapsed={collapsed ? "true" : "false"}
       className={footer({ className: props.className })}
+      data-collapsed={collapsed ? "true" : "false"}
+      ref={forwardedRef}
       {...props}
     >
       {children}

@@ -16,8 +16,9 @@ import {
 } from "@sihaxito/deluxe-ui";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import { DiscordDropdownMenu } from "@/components/discord-dropdown";
-import { Copy, Hash } from "@phosphor-icons/react";
 import { CodeHighlighter } from "./code-highlighter";
+import { Hash } from "@phosphor-icons/react";
+import ComponentPreview from "./component-preview";
 
 const components = {
   Accordion,
@@ -153,15 +154,12 @@ const components = {
     />
   ),
   CodeHighlighter,
-  Preview: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <div
-      className={cn(
-        "my-2 bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center"
-      )}
-    >
-      {!props.children && <CircleNotch size={16} className="animate-spin" />}
-      {props.children}
-    </div>
+  Preview: ({
+    className,
+    name,
+    ...props
+  }: React.HTMLAttributes<HTMLElement> & { name: string }) => (
+    <ComponentPreview name={name} />
   ),
   DiscordDropdownMenu,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (

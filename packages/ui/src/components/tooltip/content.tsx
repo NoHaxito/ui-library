@@ -1,13 +1,13 @@
 "use client";
 import * as React from "react";
-import { tooltip } from "./theme";
 import {
   TooltipArrow as TooltipPrimitiveArrow,
   TooltipContent as TooltipPrimitiveContent,
-  TooltipContentProps,
+  type TooltipContentProps,
   TooltipPortal as TooltipPrimitivePortal,
 } from "@radix-ui/react-tooltip";
 import { cn } from "../../utils";
+import { tooltip } from "./theme";
 
 interface ContentProps
   extends React.ComponentPropsWithoutRef<typeof TooltipPrimitiveContent> {
@@ -33,4 +33,5 @@ const TooltipContent = React.forwardRef<
     </TooltipPrimitivePortal>
   );
 });
+TooltipContent.displayName = "TooltipContent";
 export { TooltipContent, type TooltipContentProps };

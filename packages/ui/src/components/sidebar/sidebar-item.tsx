@@ -8,7 +8,6 @@ import type {
 } from "react";
 import { forwardRef } from "react";
 import { cn } from "../../utils";
-import { SidebarVariant, sidebar } from "./theme";
 import {
   Tooltip,
   type TooltipProps,
@@ -17,6 +16,7 @@ import {
   TooltipContent,
   type TooltipContentProps,
 } from "../tooltip";
+import { type SidebarVariant, sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
 
 export interface SidebarItemProps
@@ -60,7 +60,7 @@ const ListItem: FC<
           {...tooltip.contentProps}
           className={cn(tooltip.contentProps?.className)}
         >
-          <div>{tooltip?.text}</div>
+          <div>{tooltip.text}</div>
         </TooltipContent>
       </Tooltip>
     ) : (
@@ -82,7 +82,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
       variant,
       ...props
     },
-    ref,
+    ref
   ) => {
     const {
       context: { collapsed },
@@ -91,17 +91,17 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     return (
       <ListItem
         className={cn("cursor-pointer list-none")}
+        collapsed={collapsed}
         data-active={isActive}
         tooltip={tooltip}
-        collapsed={collapsed}
       >
         <Component
           className={item({ className, active: isActive, collapsed, variant })}
-          ref={ref}
           data-active={isActive}
+          ref={ref}
           {...props}
         >
-          {Icon && <span className={itemIcon()}>{Icon}</span>}
+          {Icon ? <span className={itemIcon()}>{Icon}</span> : null}
           {collapsed && !Icon ? (
             <span className="font-bold">
               {(children as string).charAt(0).toLocaleUpperCase()}
@@ -110,15 +110,15 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
           <div
             className={cn(
               collapsed ? "opacity-0" : "opacity-100",
-              "transition-opacity duration-[800ms] flex items-center justify-between w-full",
+              "transition-opacity duration-[800ms] flex items-center justify-between w-full"
             )}
           >
             {children}
-            {label && <div>{label}</div>}
+            {label ? <div>{label}</div> : null}
           </div>
         </Component>
       </ListItem>
     );
-  },
+  }
 );
 SidebarItem.displayName = "Sidebar.Item";

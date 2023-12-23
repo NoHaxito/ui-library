@@ -1,7 +1,7 @@
 "use client";
 import type { ComponentProps, FC } from "react";
+import { TooltipProvider, type TooltipProviderProps } from "../tooltip";
 import { sidebar } from "./theme";
-import { TooltipProvider, TooltipProviderProps } from "../tooltip";
 
 export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
   tooltip?: Omit<TooltipProviderProps, "children">;
