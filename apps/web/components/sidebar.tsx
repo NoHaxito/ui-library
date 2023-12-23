@@ -36,7 +36,7 @@ export function SidebarComp() {
       open={context.open}
       onOpenChange={context.setOpen}
       className={cn(
-        "bg-transparent transition-[width,transform] dark:bg-neutral-950 border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block"
+        "bg-white transition-[width,transform] dark:bg-neutral-950 border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink md:!sticky md:block"
       )}
     >
       <SidebarItems>
