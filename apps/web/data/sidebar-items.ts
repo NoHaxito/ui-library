@@ -24,6 +24,11 @@ export const sidebarItems = [
         href: "/docs/components/alert-dialog",
       },
       {
+        title: "Badge",
+        href: "/docs/components/badge",
+        label: "New",
+      },
+      {
         title: "Card",
         href: "/docs/components/card",
       },
@@ -58,6 +63,11 @@ export const sidebarItems = [
       {
         title: "Menubar",
         href: "/docs/components/menubar",
+      },
+      {
+        title: "Multi Select",
+        href: "/docs/components/multi-select",
+        label: "New"
       },
       {
         title: "Popover",

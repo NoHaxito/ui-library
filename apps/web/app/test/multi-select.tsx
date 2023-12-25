@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/badge";
 import { Check, X } from "@phosphor-icons/react";
 import { KeyboardEvent, useRef, useState } from "react";
 
@@ -100,19 +101,18 @@ export default function MultiSelect() {
       >
         <div className="flex w-full items-center gap-y-2 gap-x-1 flex-wrap">
           {values.map((value) => (
-            <span
+            <Badge
               key={value.value}
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-              className="flex items-center gap-x-1 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
             >
               {value.label}
               <button onClick={() => handleRemove(value.value)} className="">
                 <X />
               </button>
-            </span>
+            </Badge>
           ))}
           {values.length !== 0 && (
             <div className="h-4 mx-2 w-px bg-neutral-800" />
@@ -195,12 +195,12 @@ export default function MultiSelect() {
             </div>
           )}
           {values.length !== 0 && (
-            <div className="border-t dark:border-neutral-800 sticky -bottom-1 bg-neutral-100 dark:bg-neutral-900">
+            <div className="text-center w-full border-t dark:border-neutral-800 sticky py-1 -bottom-1.5 bg-neutral-100 dark:bg-neutral-900">
               <button
                 onClick={handleClear}
-                className=" w-full flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                className="justify-center w-full flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
               >
-                Clear selected values
+                Clear <strong>{values.length}</strong> selected values
               </button>
             </div>
           )}

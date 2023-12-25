@@ -15,6 +15,7 @@ import { useSidebarContext } from "./sidebar-context";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { sidebarItems } from "@/data/sidebar-items";
+import { Badge } from "./badge";
 
 export function SidebarComp() {
   const { context } = useSidebarContext();
@@ -54,6 +55,7 @@ export function SidebarComp() {
                   href={item.href}
                   active={pathname === item.href}
                   className="list-disc min-h-[2rem] max-h-[2rem]"
+                  label={item.label && <Badge>{item.label}</Badge>}
                 >
                   {item.title}
                 </SidebarItem>

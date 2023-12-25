@@ -19,6 +19,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "content/docs/components/multi-select.mdx"  ],
   "exclude": ["node_modules"]
 }

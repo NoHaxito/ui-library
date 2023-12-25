@@ -26,7 +26,7 @@ export default function ComponentPreview({ name }, { name: string }) {
   return (
     <div
       className={cn(
-        "my-2 bg-neutral-100 rounded-lg dark:bg-neutral-900 preview flex min-h-[350px] w-full justify-center p-10 items-center"
+        "my-2 bg-neutral-50 rounded-lg dark:bg-black preview flex min-h-[350px] w-full justify-center p-10 items-center"
       )}
     >
       <Suspense fallback={<CircleNotch size={16} className="animate-spin" />}>
