@@ -4,8 +4,7 @@ import { Portal, Content } from "@radix-ui/react-dropdown-menu";
 import { cn } from "../../utils";
 import { dropdownMenu } from "./theme";
 
-interface DropdownMenuContentProps
-  extends React.ComponentPropsWithoutRef<typeof Content> {}
+type DropdownMenuContentProps = React.ComponentProps<typeof Content>;
 
 export const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof Content>,
@@ -16,10 +15,11 @@ export const DropdownMenuContent = React.forwardRef<
     <Portal>
       <Content
         {...props}
-        className={cn(content({ className: className }))}
+        className={cn(content({ className }))}
         ref={forwardedRef}
         sideOffset={sideOffset}
       />
     </Portal>
   );
 });
+DropdownMenuContent.displayName = "DropdownMenuContent";
