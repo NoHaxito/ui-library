@@ -31,7 +31,7 @@ export default function RootLayout({
           <SidebarContextProvider>
             <div className="relative flex min-h-screen dark:bg-neutral-950 flex-col">
               <Navbar />
-              <div className="flex-1">{children}</div>
+              <main className="flex-1">{children}</main>
             </div>
           </SidebarContextProvider>
         </ThemeProvider>

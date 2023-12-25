@@ -1,21 +1,26 @@
+import { BookOpenText } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
 export default function DefaultPage() {
   return (
-    <main className="p-4">
-      <div>
-        <Link href="/docs">
-          <div className="hover:bg-neutral-100 dark:hover:bg-neutral-800 max-w-sm transition-colors duration-300 p-4 bg-white border border-neutral-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800">
-            <h5 className="mb-2 text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+    <div className="p-4 relative">
+      <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+        <Link
+          href="/docs"
+          className="relative flex flex-col dark:text-neutral-200 text-neutral-700 dark:bg-neutral-900/80 dark:hover:bg-neutral-900 bg-neutral-100/80 hover:bg-neutral-100 bg-clip-border rounded-xl"
+        >
+          <div className="p-6">
+            <BookOpenText className="w-12 h-12" weight="fill" />
+            <h5 className="block mb-2 text-xl antialiased font-semibold leading-snug tracking-normal dark:text-white text-neutral-900">
               Documentation
             </h5>
-            <p className="mb-3 text-sm font-normal text-neutral-700 dark:text-neutral-400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit
-              consectetur ratione exercitationem a corrupti eveniet.
+            <p className="dark:text-neutral-400 text-neutral-600 block text-base antialiased font-light leading-relaxed text-inherit">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae ea
+              laudantium.
             </p>
           </div>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
