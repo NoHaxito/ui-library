@@ -2,6 +2,9 @@
 import * as React from "react";
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import { useMultiSelectContext } from "./context";
+import { Popover, PopoverTrigger } from "../popover";
+import { pickChildren } from "../../lib/children";
+import { MultiSelectOptions } from "./options";
 
 interface MultiSelectProps
   extends Omit<React.ComponentProps<"div">, "defaultValue"> {
@@ -13,6 +16,8 @@ interface MultiSelectProps
   onValueChange?: (value: string[]) => void;
   disabled?: boolean;
   options?: string[];
+  inputValue?: string;
+  onInputValueChange?: (value: string) => void;
 }
 
 export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
@@ -28,17 +33,32 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       prop: props.value,
       onChange: props.onValueChange,
     });
+    const [inputValue, setInputValue] = useControllableState({
+      defaultProp: "",
+      prop: props.inputValue,
+      onChange: props.onInputValueChange,
+    });
+    const [options, setOptions] = React.useState(props.options ?? []);
     React.useEffect(() => {
-      if (props.options) {
-        context?.setOptions(
-          props.options.concat(
-            value!.filter(
-              (item) => props.options && props.options.indexOf(item) < 0
+      try {
+        if (props.options) {
+          setOptions(
+            props.options.concat(
+              (value as string[]).filter(
+                (item) => props.options && props.options.indexOf(item) < 0
+              )
             )
-          )
-        );
+          );
+        }
+      } catch (error) {
+        console.log(error);
       }
-    }, [context?.value]);
+    }, [value]);
+
+    const [childrenWithoutOptions, optionsComp] = pickChildren(
+      children,
+      MultiSelectOptions
+    );
     return (
       <MultiSelectContext.Provider
         value={{
@@ -48,14 +68,20 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           setOpen,
           defaultValue: props.defaultValue!,
           disabled: props.disabled,
-          options: props.options ?? undefined,
-          // eslint-disable-next-line @typescript-eslint/no-empty-function -- TODO
-          setOptions: (_options: string[]) => {},
+          options,
+          setOptions,
+          inputValue,
+          setInputValue,
         }}
       >
-        <div className="relative max-w-sm" ref={forwardedRef}>
-          {children}
-        </div>
+        <Popover open={open}>
+          <PopoverTrigger asChild>
+            <div className="relative" ref={forwardedRef}>
+              {childrenWithoutOptions}
+            </div>
+          </PopoverTrigger>
+          {optionsComp}
+        </Popover>
       </MultiSelectContext.Provider>
     );
   }

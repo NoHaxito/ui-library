@@ -9,6 +9,8 @@ interface MultiSelectContextProps {
   disabled?: boolean;
   options?: string[];
   setOptions: (options: string[]) => void;
+  inputValue?: string;
+  setInputValue?: (value: string) => void;
 }
 
 export const MultiSelectContext =

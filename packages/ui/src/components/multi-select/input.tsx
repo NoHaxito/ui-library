@@ -1,8 +1,9 @@
 "use client";
 import { X } from "@phosphor-icons/react";
 import * as React from "react";
-import { useMultiSelectContext } from "./context";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
+import { PopoverTrigger } from "../popover";
+import { useMultiSelectContext } from "./context";
 
 interface MultiSelectInputProps extends React.ComponentProps<"input"> {
   isClearable?: boolean;
@@ -12,11 +13,18 @@ export const MultiSelectInput = React.forwardRef<
   MultiSelectInputProps
 >(({ ...props }, forwardedRef) => {
   const { context } = useMultiSelectContext();
-  const { options, setOpen, value, setValue } = context!;
-  const [inputValue, setInputValue] = React.useState("");
+  const {
+    options,
+    setOpen,
+    value,
+    setValue,
+    inputValue,
+    setInputValue: setInputVal,
+  } = context!;
+  const setInputValue = setInputVal as (value: string) => void;
   const inputRef = React.useRef<HTMLInputElement>(null);
   const mixedRefs = useComposedRefs(inputRef, forwardedRef);
-
+  
   const handleSelect: (val: string) => void = (val: string) => {
     setValue([...value, val]);
   };
@@ -33,9 +41,9 @@ export const MultiSelectInput = React.forwardRef<
   ) => {
     if (inputRef.current === null) return;
     if (e.key === "Enter") {
-      if (inputValue.length === 0 || inputValue.trim().length === 0) return;
+      if (inputValue?.length === 0 || inputValue?.trim().length === 0) return;
       const exists = value.find(
-        (s) => inputValue.toLowerCase() === s.toLowerCase()
+        (s) => inputValue?.toLowerCase() === s.toLowerCase()
       );
       if (exists !== undefined) {
         setInputValue("");
@@ -43,14 +51,14 @@ export const MultiSelectInput = React.forwardRef<
       }
       const isSelectable =
         options !== undefined
-          ? options.find((v) => v.includes(inputValue.toLowerCase()))
+          ? options.find((v) => v.includes(inputValue?.toLowerCase() as string))
           : false;
       e.preventDefault();
       if (isSelectable) {
         setInputValue("");
         handleSelect(isSelectable);
       } else {
-        const toAdd = inputValue;
+        const toAdd = inputValue as string;
         handleSelect(toAdd);
       }
 
@@ -58,6 +66,7 @@ export const MultiSelectInput = React.forwardRef<
       setInputValue("");
     }
     if (e.key === "Delete" || e.key === "Backspace") {
+      if (value.length === 0) return;
       if (inputValue === "") {
         e.preventDefault();
         handleRemoveLast();
@@ -95,6 +104,10 @@ export const MultiSelectInput = React.forwardRef<
           onClick={() => {
             handleClear();
             inputRef.current?.focus();
+          }}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
           }}
           type="button"
         >

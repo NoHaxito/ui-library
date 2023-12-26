@@ -12,13 +12,14 @@ export const PopoverContent = React.forwardRef<
   React.ElementRef<typeof RadixPopoverContent>,
   PopoverContentProps
 >(({ ...props }, forwardedRef) => {
-  const { content } = popover();
+  const { content } = popover;
   return (
     <RadixPopoverPortal>
       <RadixPopoverContent
-        className={cn(content, props.className)}
         ref={forwardedRef}
+        sideOffset={5}
         {...props}
+        className={cn(content, props.className)}
       />
     </RadixPopoverPortal>
   );
