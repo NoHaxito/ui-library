@@ -26,11 +26,11 @@ import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 
 export default function Home() {
   return (
-    <main className="relative text-neutral-400 p-6 space-y-4 lg:p-8">
-      <section className="space-y-1 space-x-2">
+    <main className="relative space-y-4 p-6 text-neutral-400 lg:p-8">
+      <section className="space-x-2 space-y-1">
         <DiscordDropdownMenu />
         <DropdownMenu>
-          <DropdownMenuTrigger className="transition-all duration-300 text-sm px-3 py-1 active:scale-[.97] bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:bg-neutral-900 rounded-md">
+          <DropdownMenuTrigger className="rounded-md bg-neutral-100 px-3 py-1 text-sm transition-all duration-300 hover:bg-neutral-200 active:scale-[.97] dark:bg-neutral-900 dark:hover:bg-neutral-800">
             Open user menu
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start" side="top">
@@ -50,7 +50,7 @@ export default function Home() {
               <Keyboard size={16} weight="fill" />
               Atajos de teclado
             </DropdownMenuItem>
-            <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
+            <hr className="my-1 h-px border-0 bg-neutral-200 dark:bg-neutral-800" />
             <DropdownMenuItem>
               <Users size={16} weight="fill" />
               Equipo
@@ -63,7 +63,7 @@ export default function Home() {
               <Plus size={16} />
               Nuevo equipo
             </DropdownMenuItem>
-            <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
+            <hr className="my-1 h-px border-0 bg-neutral-200 dark:bg-neutral-800" />
             <DropdownMenuItem>
               <Question size={16} weight="fill" />
               Soporte
@@ -72,7 +72,7 @@ export default function Home() {
               <GithubLogo size={16} weight="fill" />
               Github
             </DropdownMenuItem>
-            <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
+            <hr className="my-1 h-px border-0 bg-neutral-200 dark:bg-neutral-800" />
             <DropdownMenuItem>
               <SignOut size={16} weight="fill" />
               Cerrar sesión
@@ -83,20 +83,20 @@ export default function Home() {
       <section className="space-y-1">
         <div className="relative w-max">
           <input
-            className="text-sm h-10 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-neutral-700 transition-[border] duration-300 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 placeholder:dark:text-neutral-500 focus:dark:border-neutral-800"
+            className="h-10 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-sm text-neutral-700 transition-[border] duration-300 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 placeholder:dark:text-neutral-500 focus:dark:border-neutral-800"
             placeholder="Input example"
           />
         </div>
         <div className="relative w-max">
           <input
             type="password"
-            className="text-sm h-10 pr-7 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-neutral-700 transition-[border] duration-300 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 placeholder:dark:text-neutral-500 focus:dark:border-neutral-800"
+            className="h-10 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 pr-7 text-sm text-neutral-700 transition-[border] duration-300 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 placeholder:dark:text-neutral-500 focus:dark:border-neutral-800"
             placeholder="Input example"
           />
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="absolute inset-y-0 right-0 justify-center flex items-center pr-2">
+                <button className="absolute inset-y-0 right-0 flex items-center justify-center pr-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

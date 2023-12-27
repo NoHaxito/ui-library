@@ -26,11 +26,11 @@ import {
 export function DiscordDropdownMenu() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="transition-all duration-300 text-sm px-3 py-1 active:scale-[.97] bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:bg-neutral-900 rounded-md">
+      <DropdownMenuTrigger className="rounded-md bg-neutral-100 px-3 py-1 text-sm transition-all duration-300 hover:bg-neutral-200 active:scale-[.97] dark:bg-neutral-900 dark:hover:bg-neutral-800">
         Open discord menu
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 grid grid-cols-subgrid grid-cols-1"
+        className="grid-cols-subgrid grid w-56 grid-cols-1"
         side="bottom"
         align="start"
       >
@@ -38,7 +38,7 @@ export function DiscordDropdownMenu() {
           <TooltipProvider delayDuration={0.9}>
             <Tooltip>
               <TooltipTrigger>
-                <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
                   😂
                 </div>
               </TooltipTrigger>
@@ -46,7 +46,7 @@ export function DiscordDropdownMenu() {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger>
-                <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
                   😍
                 </div>
               </TooltipTrigger>
@@ -54,7 +54,7 @@ export function DiscordDropdownMenu() {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger>
-                <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
                   👀
                 </div>
               </TooltipTrigger>
@@ -62,7 +62,7 @@ export function DiscordDropdownMenu() {
             </Tooltip>
             <Tooltip>
               <TooltipTrigger>
-                <div className="cursor-pointer w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
                   ⚽️
                 </div>
               </TooltipTrigger>
@@ -108,7 +108,7 @@ export function DiscordDropdownMenu() {
               <span className="h-[16px] w-[16px]">🤡</span>
               clown
             </DropdownMenuItem>
-            <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
+            <hr className="my-1 h-px border-0 bg-neutral-200 dark:bg-neutral-800" />
             <DropdownMenuItem>
               <Smiley size={16} weight="fill" />
               Ver más
@@ -131,7 +131,7 @@ export function DiscordDropdownMenu() {
           <Copy size={16} weight="fill" />
           Copiar texto
         </DropdownMenuItem>
-        <hr className="my-1 border-0 bg-neutral-200 h-px dark:bg-neutral-800" />
+        <hr className="my-1 h-px border-0 bg-neutral-200 dark:bg-neutral-800" />
         <DropdownMenuItem variant="danger">
           <Trash size={16} weight="fill" />
           Eliminar mensaje

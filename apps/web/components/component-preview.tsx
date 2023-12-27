@@ -13,7 +13,7 @@ export default function ComponentPreview({ name }, { name: string }) {
       return (
         <p className="text-sm text-neutral-500">
           Example{" "}
-          <code className="relative rounded bg-neutral-200 dark:bg-neutral-800 px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          <code className="relative rounded bg-neutral-200 px-[0.3rem] py-[0.2rem] font-mono text-sm dark:bg-neutral-800">
             {name}
           </code>{" "}
           not found.
@@ -26,7 +26,7 @@ export default function ComponentPreview({ name }, { name: string }) {
   return (
     <div
       className={cn(
-        "my-2 bg-neutral-50 rounded-lg dark:bg-black preview flex min-h-[350px] w-full justify-center p-10 items-center"
+        "preview my-2 flex min-h-[350px] w-full items-center justify-center rounded-lg bg-neutral-50 p-10 dark:bg-black",
       )}
     >
       <Suspense fallback={<CircleNotch size={16} className="animate-spin" />}>

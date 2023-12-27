@@ -8,7 +8,7 @@ import {
 
 export default function AccordionDemo() {
   return (
-    <Accordion type="single" collapsible className="w-full min-w-lg">
+    <Accordion type="single" collapsible className="min-w-lg w-full">
       <AccordionItem
         value="item-1"
         className="border-b dark:border-neutral-800"

@@ -67,7 +67,7 @@ export const sidebarItems = [
       {
         title: "Multi Select",
         href: "/docs/components/multi-select",
-        label: "New"
+        label: "New",
       },
       {
         title: "Popover",

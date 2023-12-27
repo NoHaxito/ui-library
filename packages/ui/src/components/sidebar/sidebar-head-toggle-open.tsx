@@ -21,7 +21,7 @@ export const SidebarHeadToggleOpen = forwardRef<
   return (
     <button
       className={headToggle({
-        className: cn("md:hidden flex -translate-x-1/2", className),
+        className: cn("flex -translate-x-1/2 md:hidden", className),
       })}
       data-open={open ? "true" : "false"}
       onClick={(event) => {

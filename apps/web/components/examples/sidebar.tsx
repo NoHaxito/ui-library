@@ -61,7 +61,7 @@ export function SidebarComp() {
       onCollapsedChange={context.setCollapsed}
       // className="data-[open=false]:!-translate-y-[200%] data-[open=true]:translate-y-0 -translate-y-[200%] data-[open=true]:h-64 rounded-b-2xl md:rounded-none min-w-full md:data-[collapsed=false]:min-w-[16rem] data-[collapsed=true]:min-w-[4.5rem] md:transition-all transition-[transform] md:translate-x-0 md:data-[open=false]:translate-y-0 border-r dark:border-neutral-800 fixed top-0 duration-500 z-30 md:h-[calc(100vh)] w-full shrink-0 md:!sticky md:!block"
       className={cn(
-        "data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 data-[open=true]:min-w-full fixed md:translate-x-0 top-0 duration-500 md:duration-300 z-30 h-[calc(100vh)] w-full shrink md:!sticky md:block",
+        "fixed top-0 z-30 h-[calc(100vh)] w-full shrink -translate-x-[200%] border-r duration-500 data-[open=true]:min-w-full data-[open=true]:translate-x-0 dark:border-neutral-800 md:!sticky md:block md:translate-x-0 md:duration-300",
       )}
     >
       <SidebarHead>
@@ -95,7 +95,7 @@ export function SidebarComp() {
             tooltip={{ text: "Analytics", contentProps: { side: "right" } }}
             icon={<BarChartBig />}
             label={
-              <span className="px-3 py-1 rounded-lg text-white bg-blue-500 text-xs">
+              <span className="rounded-lg bg-blue-500 px-3 py-1 text-xs text-white">
                 Pro
               </span>
             }
@@ -112,7 +112,7 @@ export function SidebarComp() {
             tooltip={{ text: "Notifications", contentProps: { side: "right" } }}
             icon={<Bell />}
             label={
-              <span className="p-1 rounded-full text-white bg-red-500 text-xs">
+              <span className="rounded-full bg-red-500 p-1 text-xs text-white">
                 +3
               </span>
             }
@@ -146,21 +146,21 @@ export function SidebarComp() {
         </SidebarItemGroup>
       </SidebarItems>
       <SidebarFooter className="group px-2.5 py-2">
-        <div className="block rounded-xl group truncate w-full min-h-[3rem] max-h-[3rem] flex items-center text-sm outline-none ring-inset focus-visible:ring-2 focus-visible:rounded-xl py-2.5 px-3 gap-x-3 bg-neutral-200 hover:bg-neutral-300 dark:hover:bg-neutral-800 dark:bg-neutral-800/80">
+        <div className="group block flex max-h-[3rem] min-h-[3rem] w-full items-center gap-x-3 truncate rounded-xl bg-neutral-200 px-3 py-2.5 text-sm outline-none ring-inset hover:bg-neutral-300 focus-visible:rounded-xl focus-visible:ring-2 dark:bg-neutral-800/80 dark:hover:bg-neutral-800">
           <span>
             <img
               src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
-              className="rounded-full min-h-[1.5rem] min-w-[1.5rem] max-h-[1.5rem] max-w-[1.5rem] h-7 w-7 flex-none flex items-center justify-center"
+              className="flex h-7 max-h-[1.5rem] min-h-[1.5rem] w-7 min-w-[1.5rem] max-w-[1.5rem] flex-none items-center justify-center rounded-full"
             />
           </span>
-          <div className="group-data-[collapsed=true]:hidden transition-opacity duration-[300ms] group-data-[collapsed=true]:opacity-0 flex justify-between items-center w-full">
-            <div className="flex-1 w-full flex flex-col">
-              <p className="font-bold dark:text-white text-black">NoHaxito</p>
-              <span className="text-sm truncate text-neutral-500">
+          <div className="flex w-full items-center justify-between transition-opacity duration-[300ms] group-data-[collapsed=true]:hidden group-data-[collapsed=true]:opacity-0">
+            <div className="flex w-full flex-1 flex-col">
+              <p className="font-bold text-black dark:text-white">NoHaxito</p>
+              <span className="truncate text-sm text-neutral-500">
                 nohaxito@gmail.com
               </span>
             </div>
-            <MoreVertical className="text-right min-h-[1.2rem] max-h-[1.2rem] min-w-[1.2rem] max-w-[1.2rem] " />
+            <MoreVertical className="max-h-[1.2rem] min-h-[1.2rem] min-w-[1.2rem] max-w-[1.2rem] text-right " />
           </div>
         </div>
       </SidebarFooter>

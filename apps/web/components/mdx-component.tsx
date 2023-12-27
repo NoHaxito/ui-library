@@ -32,7 +32,7 @@ const components = {
     <h1
       className={cn(
         "font-heading mt-2 scroll-m-20 text-4xl font-bold",
-        className
+        className,
       )}
       {...props}
     />
@@ -40,8 +40,8 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b dark:border-neutral-800 pb-2 text-2xl font-semibold tracking-tight first:mt-0",
-        className
+        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0 dark:border-neutral-800",
+        className,
       )}
       {...props}
     >
@@ -52,7 +52,7 @@ const components = {
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     >
@@ -63,7 +63,7 @@ const components = {
     <h4
       className={cn(
         "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -72,7 +72,7 @@ const components = {
     <h5
       className={cn(
         "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -81,7 +81,7 @@ const components = {
     <h6
       className={cn(
         "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -122,7 +122,7 @@ const components = {
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr className="my-4 md:my-8 border-0 dark:border-neutral-800" {...props} />
+    <hr className="my-4 border-0 dark:border-neutral-800 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -131,7 +131,7 @@ const components = {
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className={cn("m-0 border-t p-0 even:bg-muted", className)}
+      className={cn("even:bg-muted m-0 border-t p-0", className)}
       {...props}
     />
   ),
@@ -139,7 +139,7 @@ const components = {
     <th
       className={cn(
         "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
+        className,
       )}
       {...props}
     />
@@ -148,7 +148,7 @@ const components = {
     <td
       className={cn(
         "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
+        className,
       )}
       {...props}
     />
@@ -165,8 +165,8 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded-lg dark:bg-neutral-900 px-[0.3rem] py-[0.2rem] font-mono text-sm",
-        className
+        "relative rounded-lg px-[0.3rem] py-[0.2rem] font-mono text-sm dark:bg-neutral-900",
+        className,
       )}
       {...props}
     />
@@ -176,14 +176,14 @@ const components = {
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 ml-4 border-l border-neutral-200 dark:border-neutral-800 pl-8 [counter-reset:step]"
+      className="[&>h3]:step steps mb-12 ml-4 border-l border-neutral-200 pl-8 [counter-reset:step] dark:border-neutral-800"
       {...props}
     />
   ),
@@ -197,8 +197,8 @@ const components = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "flex w-full flex-col items-center rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50 p-6 text-card-foreground shadow transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900 sm:p-10",
-        className
+        "text-card-foreground flex w-full flex-col items-center rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 shadow transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-10",
+        className,
       )}
       {...props}
     />
@@ -231,8 +231,8 @@ const LinkHeading = ({
 }) => (
   <Link
     className={cn(
-      "relative w-fit flex items-center gap-1 group text-inherit",
-      className
+      "group relative flex w-fit items-center gap-1 text-inherit",
+      className,
     )}
     id={id}
     href={`#${id}`}

@@ -45,9 +45,9 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           setOptions(
             props.options.concat(
               (value as string[]).filter(
-                (item) => props.options && props.options.indexOf(item) < 0
-              )
-            )
+                (item) => props.options && props.options.indexOf(item) < 0,
+              ),
+            ),
           );
         }
       } catch (error) {
@@ -57,7 +57,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
 
     const [childrenWithoutOptions, optionsComp] = pickChildren(
       children,
-      MultiSelectOptions
+      MultiSelectOptions,
     );
     return (
       <MultiSelectContext.Provider
@@ -84,6 +84,6 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         </Popover>
       </MultiSelectContext.Provider>
     );
-  }
+  },
 );
 MultiSelect.displayName = "MultiSelect";

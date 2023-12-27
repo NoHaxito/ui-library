@@ -6,13 +6,13 @@ import { Children, isValidElement, type ReactNode } from "react";
 
 export function getValidChildren(children: React.ReactNode) {
   return Children.toArray(children).filter((child) =>
-    isValidElement(child)
+    isValidElement(child),
   ) as React.ReactElement[];
 }
 
 export const pickChildren = <T = ReactNode>(
   children: T | undefined,
-  targetChild: React.ElementType
+  targetChild: React.ElementType,
 ): [T | undefined, T[] | undefined] => {
   let target: T[] = [];
 

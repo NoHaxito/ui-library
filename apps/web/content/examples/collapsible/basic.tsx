@@ -12,7 +12,7 @@ export default function CollapsibleDemo() {
         <h4 className="text-sm font-semibold">
           @peduarte starred 3 repositories
         </h4>
-        <CollapsibleTrigger className="rounded-lg h-6 w-6 p-2 flex items-center justify-center bg-neutral-100 dark:bg-neutral-800">
+        <CollapsibleTrigger className="flex h-6 w-6 items-center justify-center rounded-lg bg-neutral-100 p-2 dark:bg-neutral-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -25,14 +25,14 @@ export default function CollapsibleDemo() {
           <span className="sr-only">Toggle</span>
         </CollapsibleTrigger>
       </div>
-      <div className="rounded-md border dark:border-neutral-800 px-4 py-3 font-mono text-sm">
+      <div className="rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800">
         @radix-ui/primitives
       </div>
-      <CollapsibleContent className="ease-out duration-500 space-y-2 data-[state=open]:animate-collapsible-down transition-all data-[state=closed]:animate-collapsible-up">
-        <div className="rounded-md border dark:border-neutral-800 px-4 py-3 font-mono text-sm">
+      <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up space-y-2 transition-all duration-500 ease-out">
+        <div className="rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800">
           @radix-ui/colors
         </div>
-        <div className="rounded-md border dark:border-neutral-800 px-4 py-3 font-mono text-sm">
+        <div className="rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800">
           @stitches/react
         </div>
       </CollapsibleContent>

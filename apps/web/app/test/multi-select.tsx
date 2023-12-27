@@ -34,7 +34,7 @@ export default function MultiSelect() {
   const [open, setOpen] = useState(false);
 
   const selectables = autocomplete.concat(
-    values.filter((item) => autocomplete.indexOf(item) < 0)
+    values.filter((item) => autocomplete.indexOf(item) < 0),
   );
 
   const handleSelect = (value: string | { value: string; label: string }) => {
@@ -89,7 +89,7 @@ export default function MultiSelect() {
     }
   };
   return (
-    <div className="max-w-sm relative">
+    <div className="relative max-w-sm">
       <div
         onMouseDown={(e) => {
           if (open) {
@@ -97,9 +97,9 @@ export default function MultiSelect() {
             e.stopPropagation();
           }
         }}
-        className="transition-[height] duration-300 w-full px-3 py-2 flex border border-neutral-300 dark:border-neutral-800 rounded-md items-center gap-1"
+        className="flex w-full items-center gap-1 rounded-md border border-neutral-300 px-3 py-2 transition-[height] duration-300 dark:border-neutral-800"
       >
-        <div className="flex w-full items-center gap-y-2 gap-x-1 flex-wrap">
+        <div className="flex w-full flex-wrap items-center gap-x-1 gap-y-2">
           {values.map((value) => (
             <Badge
               key={value.value}
@@ -115,9 +115,9 @@ export default function MultiSelect() {
             </Badge>
           ))}
           {values.length !== 0 && (
-            <div className="h-4 mx-2 w-px bg-neutral-800" />
+            <div className="mx-2 h-4 w-px bg-neutral-800" />
           )}
-          <div className="flex-1 relative">
+          <div className="relative flex-1">
             <input
               onKeyDown={onKeyDown}
               ref={inputRef}
@@ -125,7 +125,7 @@ export default function MultiSelect() {
               onChange={(e) => setInputValue(e.currentTarget.value)}
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
-              className="min-w-[50px] pr-6 outline-none text-sm w-full h-full bg-transparent text-neutral-700 placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
+              className="h-full w-full min-w-[50px] bg-transparent pr-6 text-sm text-neutral-700 outline-none placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
               placeholder="Add a tag..."
               required
             />
@@ -147,18 +147,18 @@ export default function MultiSelect() {
             e.preventDefault();
             e.stopPropagation();
           }}
-          className="max-h-52 overflow-y-auto translate-y-1 duration-1000 grid gap-y-2 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-20 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 slide-in-from-top-4 transition-all dark:bg-neutral-900 bg-neutral-100 rounded-lg shadow-md z-50 data-[state=closed]:slide-out-from-top-4 px-3 py-2 w-full mt-1 absolute top-full"
+          className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-20 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 slide-in-from-top-4 data-[state=closed]:slide-out-from-top-4 absolute top-full z-50 mt-1 grid max-h-52 w-full translate-y-1 gap-y-2 overflow-y-auto rounded-lg bg-neutral-100 px-3 py-2 shadow-md transition-all duration-1000 dark:bg-neutral-900"
         >
           {selectables.filter((value) =>
-            value.label.toLowerCase().includes(inputValue.toLowerCase())
+            value.label.toLowerCase().includes(inputValue.toLowerCase()),
           ).length !== 0 ? (
             selectables
               .filter((value) =>
-                value.label.toLowerCase().includes(inputValue.toLowerCase())
+                value.label.toLowerCase().includes(inputValue.toLowerCase()),
               )
               .map((complete) => {
                 const isSelected = values.some(
-                  (v) => v.value === complete.value
+                  (v) => v.value === complete.value,
                 );
                 return (
                   <button
@@ -173,7 +173,7 @@ export default function MultiSelect() {
                         handleSelect(complete);
                       }
                     }}
-                    className="flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                    className="flex items-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
                     key={complete.value}
                   >
                     {complete.label}
@@ -195,10 +195,10 @@ export default function MultiSelect() {
             </div>
           )}
           {values.length !== 0 && (
-            <div className="text-center w-full border-t dark:border-neutral-800 sticky py-1 -bottom-1.5 bg-neutral-100 dark:bg-neutral-900">
+            <div className="sticky -bottom-1.5 w-full border-t bg-neutral-100 py-1 text-center dark:border-neutral-800 dark:bg-neutral-900">
               <button
                 onClick={handleClear}
-                className="justify-center w-full flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
               >
                 Clear <strong>{values.length}</strong> selected values
               </button>

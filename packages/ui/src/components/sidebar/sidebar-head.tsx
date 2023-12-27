@@ -16,6 +16,6 @@ export const SidebarHead = forwardRef<HTMLDivElement, SidebarHeadProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 SidebarHead.displayName = "Sidebar.Head";

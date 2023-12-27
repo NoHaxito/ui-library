@@ -45,20 +45,20 @@ export const SidebarItemCollapse = React.forwardRef<
         <div
           className={cn(
             context.collapsed ? "opacity-0" : "opacity-100",
-            "transition-opacity duration-[400ms] flex items-center justify-between w-full"
+            "flex w-full items-center justify-between transition-opacity duration-[400ms]",
           )}
         >
           {props.itemTitle}
           <span className="ml-auto">
-            <CaretRight className="group-data-[state=open]:rotate-90 transition" />
+            <CaretRight className="transition group-data-[state=open]:rotate-90" />
           </span>
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent
         className={cn(
           context.collapsed && "!px-0",
-          "px-4 pb-0 py-0.5 overflow-hidden text-sm transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down",
-          classNames?.contentCollapsed
+          "data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden px-4 py-0.5 pb-0 text-sm transition-all",
+          classNames?.contentCollapsed,
         )}
         ref={forwardedRef}
       >

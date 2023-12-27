@@ -82,7 +82,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
       variant,
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       context: { collapsed },
@@ -110,7 +110,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
           <div
             className={cn(
               collapsed ? "opacity-0" : "opacity-100",
-              "transition-opacity duration-[800ms] flex items-center justify-between w-full"
+              "flex w-full items-center justify-between transition-opacity duration-[800ms]",
             )}
           >
             {children}
@@ -119,6 +119,6 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
         </Component>
       </ListItem>
     );
-  }
+  },
 );
 SidebarItem.displayName = "Sidebar.Item";

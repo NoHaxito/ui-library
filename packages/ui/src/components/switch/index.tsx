@@ -11,14 +11,14 @@ const Switch = React.forwardRef<
   <Root
     className={cn(
       "group peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-neutral-800 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-neutral-900",
-      className
+      className,
     )}
     {...props}
     ref={ref}
   >
     <Thumb
       className={cn(
-        "transition-all pointer-events-none block h-5 w-5 group-active:w-6 data-[state=checked]:group-active:translate-x-4 rounded-full bg-white shadow-lg ring-0 data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
+        "pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-all group-active:w-6 data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0 data-[state=checked]:group-active:translate-x-4",
       )}
     />
   </Root>

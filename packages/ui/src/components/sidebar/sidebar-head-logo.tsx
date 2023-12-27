@@ -18,7 +18,7 @@ export const SidebarHeadLogo = forwardRef<HTMLDivElement, SidebarHeadLogoProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 SidebarHeadLogo.displayName = "Sidebar.Head.Logo";

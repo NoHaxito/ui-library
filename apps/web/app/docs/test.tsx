@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function DefaultPage() {
   return (
-    <main className="relative p-6 lg:p-8 grid lg:gap-10 lg:grid-cols-[1fr_275px]">
-      <div className="h-max grid sm:grid-cols-2 gap-2">
+    <main className="relative grid p-6 lg:grid-cols-[1fr_275px] lg:gap-10 lg:p-8">
+      <div className="grid h-max gap-2 sm:grid-cols-2">
         <Link href="/docs">
-          <div className="hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-300 p-4 bg-white border border-neutral-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800">
+          <div className="rounded-lg border border-neutral-200 bg-white p-4 shadow transition-colors duration-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800">
             <h5 className="mb-2 text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
               Documentation
             </h5>
@@ -17,7 +17,7 @@ export default function DefaultPage() {
           </div>
         </Link>
         <Link href="/examples">
-          <div className="hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-300 p-4 bg-white border border-neutral-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800">
+          <div className="rounded-lg border border-neutral-200 bg-white p-4 shadow transition-colors duration-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800">
             <h5 className="mb-2 text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
               Examples
             </h5>

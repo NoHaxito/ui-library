@@ -21,7 +21,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
         : [],
-    [toc]
+    [toc],
   );
   const activeHeading = useActiveItem(itemIds);
   const mounted = useMounted();
@@ -29,12 +29,12 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   if (!toc?.items) {
     return null;
   }
-  if(!mounted){
-    return <CircleNotch className="animate-spin h-5 w-5" />
+  if (!mounted) {
+    return <CircleNotch className="h-5 w-5 animate-spin" />;
   }
   return (
     <div className="space-y-2">
-      <p className="font-bold text-lg">On This Page</p>
+      <p className="text-lg font-bold">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   );
@@ -52,7 +52,7 @@ function useActiveItem(itemIds: string[]) {
           }
         });
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: `0% 0% -80% 0%` },
     );
 
     itemIds?.forEach((id) => {
@@ -93,7 +93,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
                 "inline-block no-underline transition-colors hover:text-neutral-800 dark:hover:text-neutral-50",
                 item.url === `#${activeItem}`
                   ? "font-medium text-neutral-800 dark:text-neutral-50"
-                  : "text-neutral-500"
+                  : "text-neutral-500",
               )}
             >
               {item.title}

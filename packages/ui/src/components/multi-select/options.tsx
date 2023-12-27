@@ -32,13 +32,13 @@ export const MultiSelectOptions: ({
   };
   const filteredOptions = React.useMemo(() => {
     return context?.options?.filter((opt) =>
-      opt.toLowerCase().includes(context.inputValue!.toLowerCase())
+      opt.toLowerCase().includes(context.inputValue!.toLowerCase()),
     );
   }, [context?.options, context?.inputValue]);
   if (children && typeof children === "function") {
     return (
       <PopoverContent
-        className="max-h-52 overflow-hidden overflow-y-auto transition-all w-[calc(var(--radix-popover-trigger-width))]"
+        className="max-h-52 w-[calc(var(--radix-popover-trigger-width))] overflow-hidden overflow-y-auto transition-all"
         onFocusOutside={(e) => {
           e.preventDefault();
         }}
@@ -61,7 +61,7 @@ export const MultiSelectOptions: ({
             options: filteredOptions!,
             selected: context!.value,
             setValue: context!.setValue,
-          })
+          }),
         )}
       </PopoverContent>
     );
@@ -69,7 +69,7 @@ export const MultiSelectOptions: ({
   if (context?.options) {
     return (
       <PopoverContent
-        className="max-h-52 overflow-hidden overflow-y-auto transition-all w-[calc(var(--radix-popover-trigger-width))]"
+        className="max-h-52 w-[calc(var(--radix-popover-trigger-width))] overflow-hidden overflow-y-auto transition-all"
         onFocusOutside={(e) => {
           e.preventDefault();
         }}
@@ -99,7 +99,7 @@ export const MultiSelectOptions: ({
               const isSelected = context.value.some((v) => v === option);
               return (
                 <button
-                  className="w-full flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
                   key={option}
                   onClick={() => {
                     if (isSelected) {
@@ -123,7 +123,7 @@ export const MultiSelectOptions: ({
             })
           ) : (
             <button
-              className="w-full flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800"
+              className="flex w-full items-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
               onClick={() => {
                 handleSelect(context.inputValue!);
                 context.setInputValue!("");

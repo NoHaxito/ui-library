@@ -24,7 +24,7 @@ export const MultiSelectInput = React.forwardRef<
   const setInputValue = setInputVal as (value: string) => void;
   const inputRef = React.useRef<HTMLInputElement>(null);
   const mixedRefs = useComposedRefs(inputRef, forwardedRef);
-  
+
   const handleSelect: (val: string) => void = (val: string) => {
     setValue([...value, val]);
   };
@@ -37,13 +37,13 @@ export const MultiSelectInput = React.forwardRef<
     setValue([]);
   };
   const onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void = (
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (inputRef.current === null) return;
     if (e.key === "Enter") {
       if (inputValue?.length === 0 || inputValue?.trim().length === 0) return;
       const exists = value.find(
-        (s) => inputValue?.toLowerCase() === s.toLowerCase()
+        (s) => inputValue?.toLowerCase() === s.toLowerCase(),
       );
       if (exists !== undefined) {
         setInputValue("");
@@ -96,7 +96,7 @@ export const MultiSelectInput = React.forwardRef<
         type="text"
         value={inputValue}
         {...props}
-        className="min-w-[50px] flex-1 pr-6 outline-none text-sm w-full h-full bg-transparent text-neutral-700 placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
+        className="h-full w-full min-w-[50px] flex-1 bg-transparent pr-6 text-sm text-neutral-700 outline-none placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
       />
       {value.length !== 0 && props.isClearable ? (
         <button

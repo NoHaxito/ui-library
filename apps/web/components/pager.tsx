@@ -14,7 +14,7 @@ export function Pager({ doc }: { doc: Doc }) {
       {pager?.prev?.href ? (
         <Link
           href={pager.prev.href}
-          className="transition-colors text-sm text-neutral-500 dark:hover:text-neutral-200 hover:text-neutral-700 flex items-center gap-2 px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded-lg"
+          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-900 dark:hover:text-neutral-200"
         >
           <CaretLeft className="h-4 w-4" />
           {pager.prev.title}
@@ -25,10 +25,10 @@ export function Pager({ doc }: { doc: Doc }) {
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className="transition-colors text-sm text-neutral-500 dark:hover:text-neutral-200 hover:text-neutral-700 flex items-center gap-2 px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded-lg"
+          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-900 dark:hover:text-neutral-200"
         >
           {pager.next.title}
-          <CaretLeft className="rotate-180 h-4 w-4" />
+          <CaretLeft className="h-4 w-4 rotate-180" />
         </Link>
       )}
     </div>
@@ -38,7 +38,7 @@ export function Pager({ doc }: { doc: Doc }) {
 export function getPagerForDoc(doc: Doc) {
   const flattenedLinks = [null, ...flatten(sidebarItems), null];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href
+    (link) => doc.slug === link?.href,
   );
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =

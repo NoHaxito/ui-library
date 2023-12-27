@@ -34,9 +34,8 @@ export function SidebarComp() {
     <Sidebar
       open={context.open}
       onOpenChange={context.setOpen}
-      
       className={cn(
-        "left-0 md:-ml-4 bg-white transition-[width,transform] dark:bg-neutral-950 border-none data-[open=true]:translate-x-0 -translate-x-[200%] border-r dark:border-neutral-800 fixed md:translate-x-0 top-[4rem] duration-500 md:duration-300 z-30 h-[calc(100vh-4rem)] w-full shrink-0 md:!sticky md:block"
+        "fixed left-0 top-[4rem] z-30 h-[calc(100vh-4rem)] w-full shrink-0 -translate-x-[200%] border-r border-none bg-white transition-[width,transform] duration-500 data-[open=true]:translate-x-0 dark:border-neutral-800 dark:bg-neutral-950 md:!sticky md:-ml-4 md:block md:translate-x-0 md:duration-300",
       )}
     >
       <SidebarItems>
@@ -54,7 +53,7 @@ export function SidebarComp() {
                   as={Link}
                   href={item.href}
                   active={pathname === item.href}
-                  className="list-disc min-h-[2rem] max-h-[2rem]"
+                  className="max-h-[2rem] min-h-[2rem] list-disc"
                   label={item.label && <Badge>{item.label}</Badge>}
                 >
                   {item.title}

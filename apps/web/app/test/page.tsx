@@ -7,12 +7,12 @@ import { CheckCircle, Circle } from "@phosphor-icons/react";
 
 export default function TestPage() {
   return (
-    <div className="p-4 relative max-w-sm">
+    <div className="relative max-w-sm p-4">
       <p>Default select options</p>
       <MultiSelect
         options={["Backlog", "Todo", "In progress", "Done", "Cancelled"]}
       >
-        <div className="duration-300 flex-wrap w-full px-3 py-2 flex border border-neutral-300 dark:border-neutral-800 rounded-md items-center gap-1">
+        <div className="flex w-full flex-wrap items-center gap-1 rounded-md border border-neutral-300 px-3 py-2 duration-300 dark:border-neutral-800">
           <MultiSelectValues />
           <MultiSelectInput isClearable placeholder="Add tag..." />
         </div>
@@ -22,7 +22,7 @@ export default function TestPage() {
       <MultiSelect
         options={["Backlog", "Todo", "In progress", "Done", "Cancelled"]}
       >
-        <div className="duration-300 flex-wrap w-full px-3 py-2 flex border border-neutral-300 dark:border-neutral-800 rounded-md items-center gap-1">
+        <div className="flex w-full flex-wrap items-center gap-1 rounded-md border border-neutral-300 px-3 py-2 duration-300 dark:border-neutral-800">
           <MultiSelectValues />
           <MultiSelectInput isClearable placeholder="Add tag..." />
         </div>
@@ -33,7 +33,7 @@ export default function TestPage() {
                 const isSelected = selected.find((s) => s.includes(option));
                 return (
                   <button
-                    className="w-full flex items-center gap-2 px-2 py-1"
+                    className="flex w-full items-center gap-2 px-2 py-1"
                     onClick={() => {
                       if (!isSelected) {
                         setValue([...selected, option]);

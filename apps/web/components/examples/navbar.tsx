@@ -7,12 +7,12 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
   const { context } = useSidebarContext();
   return (
-    <nav className="px-4 gap-2 border-b dark:border-neutral-800 h-[4rem] bg-neutral-50 dark:bg-neutral-900 w-full sticky top-0 z-50 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 flex h-[4rem] w-full items-center justify-between gap-2 border-b bg-neutral-50 px-4 dark:border-neutral-800 dark:bg-neutral-900">
       <div className="">
-        <div className="inline-flex font-bold text-xl items-center gap-2">
+        <div className="inline-flex items-center gap-2 text-xl font-bold">
           <button
             onClick={() => context.setOpen(!context.open)}
-            className="md:hidden active:scale-90 ease-in-out duration-300 transform inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 border border-neutral-200 bg-transparent hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800 dark:hover:text-neutral-50 h-8 w-8"
+            className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
           >
             <Menu className="h-[1.2rem] w-[1.2rem]" />
           </button>
@@ -20,12 +20,12 @@ export function Navbar() {
           Deluxe UI
         </div>
       </div>
-      <div className="hidden md:flex h-8 active:scale-[.98] border dark:border-neutral-800 transition items-center gap-2 dark:hover:bg-neutral-800 text-sm max-w-xs w-full px-4 py-2 rounded-md text-neutral-700 hover:bg-neutral-100 dark:text-neutral-400">
-        <Search className="min-h-[1rem] min-w-[1rem] max-w-[1rem] max-h-[1rem] h-4 w-4" />
+      <div className="hidden h-8 w-full max-w-xs items-center gap-2 rounded-md border px-4 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100 active:scale-[.98] dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800 md:flex">
+        <Search className="h-4 max-h-[1rem] min-h-[1rem] w-4 min-w-[1rem] max-w-[1rem]" />
         <p className="line-clamp-1  ">Buscar en toda la pagina</p>
       </div>
       <div className="inline-flex items-center gap-2">
-        <button className="flex md:hidden active:scale-90 ease-in-out duration-300 transform items-center justify-center rounded-md text-sm font-medium ring-offset-white transition gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 border border-neutral-200 bg-transparent hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800 dark:hover:text-neutral-50 h-8 w-8">
+        <button className="flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden">
           <Search className="h-[1.2rem] w-[1.2rem]" />
         </button>
         <button
@@ -39,7 +39,7 @@ export function Navbar() {
               setTheme("light");
             }
           }}
-          className=" active:scale-90 ease-in-out duration-300 transform inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 border border-neutral-200 bg-transparent hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800 dark:hover:text-neutral-50 h-8 w-8"
+          className=" inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

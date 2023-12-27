@@ -24,16 +24,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SidebarContextProvider>
-            
-              <div className="flex-1 items-start">
-                  <Navbar />
-                {/* <div className="h-[calc(100vh-4rem)] md:gap-10 grid md:grid-cols-[auto_minmax(0,1fr)]">
+            <div className="flex-1 items-start">
+              <Navbar />
+              {/* <div className="h-[calc(100vh-4rem)] md:gap-10 grid md:grid-cols-[auto_minmax(0,1fr)]">
                 <SidebarComp />
                   {children}
                 </div> */}
-                {children}
-                {/* <footer className="h-16 px-4 py-2 border-t bg-neutral-50 dark:bg-neutral-900 dark:border-neutral-800">MUEJEJE</footer> */}
-              </div>
+              {children}
+              {/* <footer className="h-16 px-4 py-2 border-t bg-neutral-50 dark:bg-neutral-900 dark:border-neutral-800">MUEJEJE</footer> */}
+            </div>
           </SidebarContextProvider>
         </ThemeProvider>
       </body>

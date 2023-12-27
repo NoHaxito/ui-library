@@ -25,14 +25,14 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SidebarContextProvider>
             <div>
-              <div className="flex-1 items-start grid md:grid-cols-[auto_minmax(0,1fr)]">
+              <div className="grid flex-1 items-start md:grid-cols-[auto_minmax(0,1fr)]">
                 <SidebarComp />
                 <div className="w-full">
                   <Navbar />
                   {children}
                 </div>
               </div>
-              <footer className="p-4 bg-neutral-800 border-t">
+              <footer className="border-t bg-neutral-800 p-4">
                 Deluxe UI :p
               </footer>
             </div>
