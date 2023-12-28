@@ -1,9 +1,10 @@
 "use client";
 import { MultiSelectValues } from "@sihaxito/deluxe-ui";
-import MultiS from "./multi-select";
+import { getHighlighter } from "shikiji";
 import { MultiSelect, MultiSelectInput } from "@sihaxito/deluxe-ui";
 import { MultiSelectOptions } from "@sihaxito/deluxe-ui";
 import { CheckCircle, Circle } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 
 export default function TestPage() {
   return (

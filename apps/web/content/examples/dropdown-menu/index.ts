@@ -4,6 +4,7 @@ export const dropdownMenu = {
   "dropdown-basic": {
     component: React.lazy(() => import("./basic")),
     code: `"use client";
+    
     import {
       DropdownMenu,
       DropdownMenuTrigger,

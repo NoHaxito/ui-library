@@ -6,16 +6,22 @@ import { useSidebarContext } from "./sidebar-context";
 import Link from "next/link";
 import { List, MagnifyingGlass, SquaresFour, X } from "@phosphor-icons/react";
 import { usePathname } from "next/navigation";
+import GithubIcon from "./icons/github";
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const { context } = useSidebarContext();
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
+    <header className="sticky top-0 z-50 w-full border-b bg-neutral-50/90 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90">
       <div className="container flex h-[4rem] max-w-screen-2xl items-center justify-between">
         <div className="mr-4 flex items-center gap-x-1">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <SquaresFour className="h-8 w-8 rotate-45 hover:-rotate-90 ease-in duration-500 transition-transform" weight="fill" />
+            <div className="group flex h-8 w-8 items-center justify-center rounded-[10px] bg-black">
+              <SquaresFour
+                className="h-6 w-6 rotate-45 text-white transition-transform duration-500 ease-in group-hover:-rotate-90"
+                weight="fill"
+              />
+            </div>
             <span className="text-lg font-bold">Deluxe UI</span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">
@@ -52,10 +58,22 @@ export function Navbar() {
             />
           </div>
           <nav className="flex items-center gap-2">
-            <button className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden">
+            <button className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden">
               <MagnifyingGlass className="h-[1.2rem] w-[1.2rem]" />
               <span className="sr-only">Toggle search</span>
             </button>
+            <Link
+              href="https://github.com/nohaxito/ui-library"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+            >
+              <GithubIcon
+                size={19.2}
+                className="opacity-80 group-hover:opacity-100 "
+              />
+              <span className="sr-only">DeluxeUI Github </span>
+            </Link>
             <button
               onClick={() => {
                 if (theme === "dark") {
@@ -67,10 +85,16 @@ export function Navbar() {
                   setTheme("light");
                 }
               }}
-              className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+              className="inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
             >
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Sun
+                weight="fill"
+                className="h-[1.2rem] w-[1.2rem] dark:hidden"
+              />
+              <Moon
+                weight="fill"
+                className="absolute hidden h-[1.2rem] w-[1.2rem] dark:block"
+              />
               <span className="sr-only">Toggle theme</span>
             </button>
             {pathname.startsWith("/docs/") && (
@@ -78,7 +102,7 @@ export function Navbar() {
                 onClick={() => {
                   context.setOpen(!context.open);
                 }}
-                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
               >
                 {!context.open && <List className="h-5 w-5" />}
                 {context.open && <X />}

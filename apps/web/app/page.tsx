@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function DefaultPage() {
   return (
-    <div className="relative p-4">
+    <div className="container relative mx-auto py-4">
       <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
         <Link
           href="/docs"

@@ -8,8 +8,14 @@
   }
 
   .step:before {
-    @apply absolute w-9 h-9 bg-neutral-100 dark:bg-neutral-900 rounded-full font-medium text-center text-base inline-flex items-center justify-center -indent-px;
+    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 text-center -indent-px text-base font-medium dark:bg-neutral-900;
     @apply ml-[-50px];
     content: counter(step);
+  }
+  span.line {
+    @apply !space-y-0 py-1;
+  }
+  .line.highlighted {
+    @apply !bg-neutral-600;
   }
 }

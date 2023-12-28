@@ -38,12 +38,12 @@ export function CodeHighlighter({
       code={code}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div className="relative px-2">
+        <div className="group relative px-2">
           <pre
             style={style}
-            className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full relative my-2 grid max-h-[350px] overflow-x-auto rounded-lg !bg-neutral-900 px-2 py-2 [scrollbar-gutter:stable]"
+            className="md:scrollbar-none group-hover:md:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full relative my-2 grid max-h-[350px] overflow-x-auto rounded-lg !bg-neutral-900 px-2 py-2 [scrollbar-gutter:stable]"
           >
-            <code className="min-w-full flex-none">
+            <code className="mr-1 flex-none">
               {tokens.map((line, i) => (
                 <div
                   key={i}
@@ -51,7 +51,7 @@ export function CodeHighlighter({
                   className={cn(
                     highligthLines &&
                       highligthLines.some((e) => e === i + 1) &&
-                      "w-max min-w-full bg-neutral-700 lg:w-full",
+                      "bg-neutral-700 ",
                     highligthLines &&
                       highligthLines.length > 1 &&
                       highligthLines.some((l) => l === i + 1) &&
@@ -65,7 +65,7 @@ export function CodeHighlighter({
                       "!rounded-b-md",
                     i === 0 && "rounded-t-md",
                     i === tokens.length - 1 && "rounded-b-md",
-                    "px-4",
+                    "pl-1",
                     highligthLines &&
                       highligthLines.length === 1 &&
                       "rounded-l-md rounded-r-md",
@@ -77,11 +77,7 @@ export function CodeHighlighter({
                     </span>
                   )}
                   {line.map((token, key) => (
-                    <span
-                      className="mr-3"
-                      key={key}
-                      {...getTokenProps({ token })}
-                    />
+                    <span key={key} {...getTokenProps({ token })} />
                   ))}
                 </div>
               ))}
@@ -89,7 +85,7 @@ export function CodeHighlighter({
           </pre>
           <button
             onClick={handleCopy}
-            className="absolute right-4 top-1 flex h-8 w-8 items-center justify-center gap-2 rounded-lg bg-neutral-100 transition-transform duration-300 ease-in-out active:scale-95 dark:bg-neutral-800"
+            className="absolute right-4 top-1 flex h-8 w-8 items-center justify-center gap-2 rounded-lg bg-neutral-100 opacity-0 transition-[transform,opacity] duration-300 ease-in-out active:scale-95 group-hover:opacity-100 dark:bg-neutral-800"
           >
             {copied ? <Check /> : <Copy />}
           </button>

@@ -14,7 +14,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@sihaxito/deluxe-ui";
-import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
+
 import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 import { CodeHighlighter } from "./code-highlighter";
 import { Hash } from "@phosphor-icons/react";
@@ -161,16 +161,25 @@ const components = {
   }: React.HTMLAttributes<HTMLElement> & { name: string }) => (
     <ComponentPreview name={name} />
   ),
-  DiscordDropdownMenu,
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <code
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
+    <pre
       className={cn(
-        "relative rounded-lg px-[0.3rem] py-[0.2rem] font-mono text-sm dark:bg-neutral-900",
+        "mb-4 mt-6 max-h-[650px] min-w-full overflow-x-auto rounded-lg border bg-zinc-900 px-2 dark:border-neutral-900 ",
         className,
       )}
       {...props}
     />
   ),
+  DiscordDropdownMenu,
+  // code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+  //   <code
+  //     className={cn(
+  //       "!w-full h-max",
+  //       className,
+  //     )}
+  //     {...props}
+  //   />
+  // ),
   Image,
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3

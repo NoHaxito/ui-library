@@ -56,7 +56,7 @@ export default async function GettingStartedDocPage({
   }
   const toc = await getTableOfContents(doc.body.raw);
   return (
-    <main className="relative px-2 py-6 lg:grid lg:grid-cols-[1fr_275px] lg:gap-10 lg:p-8">
+    <main className="relative px-1 py-6 lg:grid lg:grid-cols-[1fr_275px] lg:gap-10 lg:p-8">
       <div>
         <div className="space-y-2">
           <h1 className={"scroll-m-20 text-4xl font-bold tracking-tight"}>
