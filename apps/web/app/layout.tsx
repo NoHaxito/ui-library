@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme";
 import { Navbar } from "@/components/navbar";
 import { SidebarContextProvider } from "@/components/sidebar-context";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -69,8 +70,8 @@ export default function RootLayout({
       style={{ scrollBehavior: "smooth" }}
       suppressHydrationWarning
     >
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={cn(inter.className, "")}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SidebarContextProvider>
             <div className="relative flex min-h-screen flex-col dark:bg-neutral-950">
               <Navbar />

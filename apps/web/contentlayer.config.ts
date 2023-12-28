@@ -39,4 +39,5 @@ export default makeSource({
       rehypeStringify as any,
     ],
   },
+  contentDirExclude: ["./content/examples"],
 });

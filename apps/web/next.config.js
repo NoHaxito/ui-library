@@ -11,6 +11,16 @@ const nextConfig = {
         destination: "/docs/getting-started/installation",
         permanent: true,
       },
+      {
+        source: "/docs/installation",
+        destination: "/docs/installation/nextjs",
+        permanent: true,
+      },
+      {
+        source: "/docs/components",
+        destination: "/docs/components/accordion",
+        permanent: true,
+      },
     ];
   },
 };

@@ -12,10 +12,4 @@
     @apply ml-[-50px];
     content: counter(step);
   }
-  span.line {
-    @apply !space-y-0 py-1;
-  }
-  .line.highlighted {
-    @apply !bg-neutral-600;
-  }
 }

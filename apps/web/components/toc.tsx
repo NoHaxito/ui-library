@@ -2,10 +2,9 @@
 "use client";
 
 import * as React from "react";
-
-import { TableOfContents } from "@/lib/toc";
-import { cn } from "@/lib/utils";
 import { CircleNotch } from "@phosphor-icons/react";
+import type { TableOfContents } from "@/lib/toc";
+import { cn } from "@/lib/utils";
 
 interface TocProps {
   toc: TableOfContents;
@@ -16,7 +15,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
     () =>
       toc.items
         ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+            .flatMap((item) => [item.url, item.items?.map((item) => item.url)])
             .flat()
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
@@ -26,7 +25,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   const activeHeading = useActiveItem(itemIds);
   const mounted = useMounted();
 
-  if (!toc?.items) {
+  if (!toc.items) {
     return null;
   }
   if (!mounted) {
@@ -35,7 +34,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   return (
     <div className="space-y-2">
       <p className="text-lg font-bold">On This Page</p>
-      <Tree tree={toc} activeItem={activeHeading} />
+      <Tree activeItem={activeHeading} tree={toc} />
     </div>
   );
 }
@@ -55,7 +54,7 @@ function useActiveItem(itemIds: string[]) {
       { rootMargin: `0% 0% -80% 0%` },
     );
 
-    itemIds?.forEach((id) => {
+    itemIds.forEach((id) => {
       const element = document.getElementById(id);
       if (element) {
         observer.observe(element);
@@ -63,7 +62,7 @@ function useActiveItem(itemIds: string[]) {
     });
 
     return () => {
-      itemIds?.forEach((id) => {
+      itemIds.forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
           observer.unobserve(element);
@@ -82,24 +81,24 @@ interface TreeProps {
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
-  return tree?.items?.length && level < 3 ? (
+  return tree.items?.length && level < 3 ? (
     <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
       {tree.items.map((item, index) => {
         return (
-          <li key={index} className={cn("mt-0 pt-2")}>
+          <li className={cn("mt-0 pt-2")} key={index}>
             <a
-              href={item.url}
               className={cn(
                 "inline-block no-underline transition-colors hover:text-neutral-800 dark:hover:text-neutral-50",
                 item.url === `#${activeItem}`
                   ? "font-medium text-neutral-800 dark:text-neutral-50"
                   : "text-neutral-500",
               )}
+              href={item.url}
             >
               {item.title}
             </a>
             {item.items?.length ? (
-              <Tree tree={item} level={level + 1} activeItem={activeItem} />
+              <Tree activeItem={activeItem} level={level + 1} tree={item} />
             ) : null}
           </li>
         );

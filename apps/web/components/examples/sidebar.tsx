@@ -13,7 +13,6 @@ import {
   SidebarFooter,
   SidebarItemCollapse,
 } from "@sihaxito/deluxe-ui";
-
 import {
   Award,
   BarChartBig,
@@ -26,7 +25,6 @@ import {
   Settings,
   UserIcon,
   Users2,
-  X,
 } from "lucide-react";
 import { useEffect } from "react";
 import { useMediaQuery } from "@/lib/use-mediaquery";
@@ -54,15 +52,15 @@ export function SidebarComp() {
   }, [matches]);
   return (
     <Sidebar
-      open={context.open}
-      onOpenChange={context.setOpen}
-      overlay={context.overlay}
-      collapsed={context.collapsed}
-      onCollapsedChange={context.setCollapsed}
-      // className="data-[open=false]:!-translate-y-[200%] data-[open=true]:translate-y-0 -translate-y-[200%] data-[open=true]:h-64 rounded-b-2xl md:rounded-none min-w-full md:data-[collapsed=false]:min-w-[16rem] data-[collapsed=true]:min-w-[4.5rem] md:transition-all transition-[transform] md:translate-x-0 md:data-[open=false]:translate-y-0 border-r dark:border-neutral-800 fixed top-0 duration-500 z-30 md:h-[calc(100vh)] w-full shrink-0 md:!sticky md:!block"
       className={cn(
         "fixed top-0 z-30 h-[calc(100vh)] w-full shrink -translate-x-[200%] border-r duration-500 data-[open=true]:min-w-full data-[open=true]:translate-x-0 dark:border-neutral-800 md:!sticky md:block md:translate-x-0 md:duration-300",
       )}
+      collapsed={context.collapsed}
+      onCollapsedChange={context.setCollapsed}
+      onOpenChange={context.setOpen}
+      open={context.open}
+      overlay={context.overlay}
+      // className="data-[open=false]:!-translate-y-[200%] data-[open=true]:translate-y-0 -translate-y-[200%] data-[open=true]:h-64 rounded-b-2xl md:rounded-none min-w-full md:data-[collapsed=false]:min-w-[16rem] data-[collapsed=true]:min-w-[4.5rem] md:transition-all transition-[transform] md:translate-x-0 md:data-[open=false]:translate-y-0 border-r dark:border-neutral-800 fixed top-0 duration-500 z-30 md:h-[calc(100vh)] w-full shrink-0 md:!sticky md:!block"
     >
       <SidebarHead>
         <SidebarHeadLogo>
@@ -79,54 +77,54 @@ export function SidebarComp() {
           }}
         >
           <SidebarItem
-            tooltip={{ text: "Home", contentProps: { side: "right" } }}
-            icon={<Home />}
             active
+            icon={<Home />}
+            tooltip={{ text: "Home", contentProps: { side: "right" } }}
           >
             Home
           </SidebarItem>
           <SidebarItem
-            tooltip={{ text: "Inbox", contentProps: { side: "right" } }}
             icon={<Inbox />}
+            tooltip={{ text: "Inbox", contentProps: { side: "right" } }}
           >
             Inbox
           </SidebarItem>
           <SidebarItem
-            tooltip={{ text: "Analytics", contentProps: { side: "right" } }}
             icon={<BarChartBig />}
             label={
               <span className="rounded-lg bg-blue-500 px-3 py-1 text-xs text-white">
                 Pro
               </span>
             }
+            tooltip={{ text: "Analytics", contentProps: { side: "right" } }}
           >
             Analytics
           </SidebarItem>
           <SidebarItem
-            tooltip={{ text: "Users", contentProps: { side: "right" } }}
             icon={<Users2 />}
+            tooltip={{ text: "Users", contentProps: { side: "right" } }}
           >
             Users
           </SidebarItem>
           <SidebarItem
-            tooltip={{ text: "Notifications", contentProps: { side: "right" } }}
             icon={<Bell />}
             label={
               <span className="rounded-full bg-red-500 p-1 text-xs text-white">
                 +3
               </span>
             }
+            tooltip={{ text: "Notifications", contentProps: { side: "right" } }}
           >
             Notifications
           </SidebarItem>
           <SidebarItem
+            icon={<Settings />}
             tooltip={{
               text: "Settings",
               contentProps: {
                 side: "right",
               },
             }}
-            icon={<Settings />}
           >
             Settings
           </SidebarItem>
@@ -136,7 +134,7 @@ export function SidebarComp() {
                 "bg-neutral-200/50 dark:bg-neutral-800/80 rounded-lg",
             }}
             icon={<MoreVertical />}
-            itemTitle={"View more"}
+            itemTitle="View more"
           >
             <SidebarItem icon={<List />}>Tasks</SidebarItem>
             <SidebarItem icon={<Send />}>Messages</SidebarItem>
@@ -146,11 +144,12 @@ export function SidebarComp() {
         </SidebarItemGroup>
       </SidebarItems>
       <SidebarFooter className="group px-2.5 py-2">
-        <div className="group block flex max-h-[3rem] min-h-[3rem] w-full items-center gap-x-3 truncate rounded-xl bg-neutral-200 px-3 py-2.5 text-sm outline-none ring-inset hover:bg-neutral-300 focus-visible:rounded-xl focus-visible:ring-2 dark:bg-neutral-800/80 dark:hover:bg-neutral-800">
+        <div className="group flex max-h-[3rem] min-h-[3rem] w-full items-center gap-x-3 truncate rounded-xl bg-neutral-200 px-3 py-2.5 text-sm outline-none ring-inset hover:bg-neutral-300 focus-visible:rounded-xl focus-visible:ring-2 dark:bg-neutral-800/80 dark:hover:bg-neutral-800">
           <span>
             <img
-              src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
+              alt="papayita"
               className="flex h-7 max-h-[1.5rem] min-h-[1.5rem] w-7 min-w-[1.5rem] max-w-[1.5rem] flex-none items-center justify-center rounded-full"
+              src="https://cdn.discordapp.com/avatars/405799482492583936/f7c53710b2f12372efd68c36e3bd2c2e.png?size=2048"
             />
           </span>
           <div className="flex w-full items-center justify-between transition-opacity duration-[300ms] group-data-[collapsed=true]:hidden group-data-[collapsed=true]:opacity-0">

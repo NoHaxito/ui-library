@@ -1,3 +1,7 @@
 {
-  "extends": ["@sihaxito/eslint-config/next.js"]
+  "extends": ["next/core-web-vitals", "next"],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
 }

@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-has-content  -- TODO */
+/* eslint-disable jsx-a11y/heading-has-content  -- TODO */
 "use client";
 
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -14,13 +15,23 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@sihaxito/deluxe-ui";
-
+import { Hash } from "@phosphor-icons/react";
+import { cn } from "@/lib/utils";
 import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 import { CodeHighlighter } from "./code-highlighter";
-import { Hash } from "@phosphor-icons/react";
 import ComponentPreview from "./component-preview";
+import AstroIcon from "./icons/astro";
+import NextJsIcon from "./icons/nextjs";
+import ReactIcon from "./icons/react";
+import RemixIcon from "./icons/remix";
+import ViteJsIcon from "./icons/vite";
 
 const components = {
+  AstroIcon,
+  NextJsIcon,
+  ReactIcon,
+  RemixIcon,
+  ViteJsIcon,
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -45,7 +56,7 @@ const components = {
       )}
       {...props}
     >
-      <LinkHeading id={props.id}>{props.children}</LinkHeading>
+      <LinkHeading id={props.id ?? "link-h2"}>{props.children}</LinkHeading>
     </h2>
   ),
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -56,7 +67,7 @@ const components = {
       )}
       {...props}
     >
-      <LinkHeading id={props.id}>{props.children}</LinkHeading>
+      <LinkHeading id={props.id ?? "link-h3"}>{props.children}</LinkHeading>
     </h3>
   ),
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -118,8 +129,8 @@ const components = {
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
+    // eslint-disable-next-line @next/next/no-img-element -- TODO
+    <img alt={alt} className={cn("rounded-md", className)} {...props} />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-4 border-0 dark:border-neutral-800 md:my-8" {...props} />
@@ -154,11 +165,7 @@ const components = {
     />
   ),
   CodeHighlighter,
-  Preview: ({
-    className,
-    name,
-    ...props
-  }: React.HTMLAttributes<HTMLElement> & { name: string }) => (
+  Preview: ({ name }: React.HTMLAttributes<HTMLElement> & { name: string }) => (
     <ComponentPreview name={name} />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
@@ -206,7 +213,7 @@ const components = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "text-card-foreground flex w-full flex-col items-center rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 shadow transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-10",
+        "duration-300 ease flex w-full flex-col items-center gap-y-1 rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 opacity-60 shadow transition-[colors,opacity,transform] hover:bg-neutral-100 hover:opacity-100 active:scale-95 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-8",
         className,
       )}
       {...props}
@@ -228,7 +235,7 @@ export function Mdx({ code }: MdxProps) {
   );
 }
 
-const LinkHeading = ({
+function LinkHeading({
   id,
   children,
   className,
@@ -237,19 +244,21 @@ const LinkHeading = ({
   id: string;
   children: React.ReactNode;
   className?: string;
-}) => (
-  <Link
-    className={cn(
-      "group relative flex w-fit items-center gap-1 text-inherit",
-      className,
-    )}
-    id={id}
-    href={`#${id}`}
-    {...props}
-  >
-    {children}
-    <span className="opacity-0 transition-opacity group-hover:opacity-100">
-      <Hash className="h-5 w-5" aria-hidden />
-    </span>
-  </Link>
-);
+}) {
+  return (
+    <Link
+      className={cn(
+        "group relative flex w-fit items-center gap-1 text-inherit",
+        className,
+      )}
+      href={`#${id}`}
+      id={id}
+      {...props}
+    >
+      {children}
+      <span className="opacity-0 transition-opacity group-hover:opacity-100">
+        <Hash aria-hidden className="h-5 w-5" />
+      </span>
+    </Link>
+  );
+}

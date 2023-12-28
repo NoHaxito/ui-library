@@ -1,8 +1,9 @@
 "use client";
 
-import { Badge } from "@/components/badge";
 import { Check, X } from "@phosphor-icons/react";
-import { KeyboardEvent, useRef, useState } from "react";
+import type { KeyboardEvent} from "react";
+import { useRef, useState } from "react";
+import { Badge } from "@/components/badge";
 
 const autocomplete = [
   {
@@ -34,7 +35,7 @@ export default function MultiSelect() {
   const [open, setOpen] = useState(false);
 
   const selectables = autocomplete.concat(
-    values.filter((item) => autocomplete.indexOf(item) < 0),
+    values.filter((item) => !autocomplete.includes(item)),
   );
 
   const handleSelect = (value: string | { value: string; label: string }) => {
@@ -91,13 +92,13 @@ export default function MultiSelect() {
   return (
     <div className="relative max-w-sm">
       <div
+        className="flex w-full items-center gap-1 rounded-md border border-neutral-300 px-3 py-2 transition-[height] duration-300 dark:border-neutral-800"
         onMouseDown={(e) => {
           if (open) {
             e.preventDefault();
             e.stopPropagation();
           }
         }}
-        className="flex w-full items-center gap-1 rounded-md border border-neutral-300 px-3 py-2 transition-[height] duration-300 dark:border-neutral-800"
       >
         <div className="flex w-full flex-wrap items-center gap-x-1 gap-y-2">
           {values.map((value) => (
@@ -109,7 +110,7 @@ export default function MultiSelect() {
               }}
             >
               {value.label}
-              <button onClick={() => handleRemove(value.value)} className="">
+              <button className="" onClick={() => { handleRemove(value.value); }}>
                 <X />
               </button>
             </Badge>
@@ -119,20 +120,20 @@ export default function MultiSelect() {
           )}
           <div className="relative flex-1">
             <input
-              onKeyDown={onKeyDown}
-              ref={inputRef}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.currentTarget.value)}
-              onBlur={() => setOpen(false)}
-              onFocus={() => setOpen(true)}
               className="h-full w-full min-w-[50px] bg-transparent pr-6 text-sm text-neutral-700 outline-none placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
+              onBlur={() => { setOpen(false); }}
+              onChange={(e) => { setInputValue(e.currentTarget.value); }}
+              onFocus={() => { setOpen(true); }}
+              onKeyDown={onKeyDown}
               placeholder="Add a tag..."
+              ref={inputRef}
               required
+              value={inputValue}
             />
             {values.length !== 0 && (
               <button
-                onClick={handleClear}
                 className="absolute inset-y-0 right-0 flex items-center pr-3"
+                onClick={handleClear}
               >
                 <X />
               </button>
@@ -140,14 +141,13 @@ export default function MultiSelect() {
           </div>
         </div>
       </div>
-      {open && (
-        <div
+      {open ? <div
+          className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-20 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 slide-in-from-top-4 data-[state=closed]:slide-out-from-top-4 absolute top-full z-50 mt-1 grid max-h-52 w-full translate-y-1 gap-y-2 overflow-y-auto rounded-lg bg-neutral-100 px-3 py-2 shadow-md transition-all duration-1000 dark:bg-neutral-900"
           data-state={!open ? "closed" : "open"}
           onMouseDown={(e) => {
             e.preventDefault();
             e.stopPropagation();
           }}
-          className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-20 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 slide-in-from-top-4 data-[state=closed]:slide-out-from-top-4 absolute top-full z-50 mt-1 grid max-h-52 w-full translate-y-1 gap-y-2 overflow-y-auto rounded-lg bg-neutral-100 px-3 py-2 shadow-md transition-all duration-1000 dark:bg-neutral-900"
         >
           {selectables.filter((value) =>
             value.label.toLowerCase().includes(inputValue.toLowerCase()),
@@ -162,10 +162,8 @@ export default function MultiSelect() {
                 );
                 return (
                   <button
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
+                    className="flex items-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                    key={complete.value}
                     onClick={(e) => {
                       if (isSelected) {
                         handleRemove(complete.value);
@@ -173,11 +171,13 @@ export default function MultiSelect() {
                         handleSelect(complete);
                       }
                     }}
-                    className="flex items-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
-                    key={complete.value}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
                   >
                     {complete.label}
-                    <span className="ml-auto">{isSelected && <Check />}</span>
+                    <span className="ml-auto">{isSelected ? <Check /> : null}</span>
                   </button>
                 );
               })
@@ -197,15 +197,14 @@ export default function MultiSelect() {
           {values.length !== 0 && (
             <div className="sticky -bottom-1.5 w-full border-t bg-neutral-100 py-1 text-center dark:border-neutral-800 dark:bg-neutral-900">
               <button
-                onClick={handleClear}
                 className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-1 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                onClick={handleClear}
               >
                 Clear <strong>{values.length}</strong> selected values
               </button>
             </div>
           )}
-        </div>
-      )}
+        </div> : null}
     </div>
   );
 }

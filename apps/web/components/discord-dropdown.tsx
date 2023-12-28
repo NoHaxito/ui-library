@@ -23,6 +23,7 @@ import {
   Smiley,
   Trash,
 } from "@phosphor-icons/react";
+
 export function DiscordDropdownMenu() {
   return (
     <DropdownMenu>
@@ -30,9 +31,9 @@ export function DiscordDropdownMenu() {
         Open discord menu
       </DropdownMenuTrigger>
       <DropdownMenuContent
+        align="start"
         className="grid-cols-subgrid grid w-56 grid-cols-1"
         side="bottom"
-        align="start"
       >
         <div className="my-2 flex items-center justify-center gap-2">
           <TooltipProvider delayDuration={0.9}>

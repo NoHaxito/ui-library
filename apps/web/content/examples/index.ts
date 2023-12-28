@@ -10,7 +10,4 @@ export const examples = {
   ...tooltip,
 };
 
-export type ExampleComponent = {
-  component: any;
-  code: string;
-};
+export type Examples = typeof examples;

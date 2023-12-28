@@ -13,6 +13,31 @@ export const sidebarItems = [
     ],
   },
   {
+    title: "Installation",
+    items: [
+      {
+        title: "Next.js",
+        href: "/docs/installation/nextjs",
+      },
+      {
+        title: "Vite",
+        href: "/docs/installation/vite",
+      },
+      {
+        title: "Remix",
+        href: "/docs/installation/remix",
+      },
+      {
+        title: "Astro",
+        href: "/docs/installation/astro",
+      },
+      {
+        title: "Manual",
+        href: "/docs/installation/manual",
+      },
+    ],
+  },
+  {
     title: "Components",
     items: [
       {

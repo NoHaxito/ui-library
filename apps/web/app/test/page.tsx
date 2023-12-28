@@ -1,8 +1,6 @@
 "use client";
-import { MultiSelectValues } from "@sihaxito/deluxe-ui";
+import { MultiSelectValues , MultiSelect, MultiSelectInput , MultiSelectOptions } from "@sihaxito/deluxe-ui";
 import { getHighlighter } from "shikiji";
-import { MultiSelect, MultiSelectInput } from "@sihaxito/deluxe-ui";
-import { MultiSelectOptions } from "@sihaxito/deluxe-ui";
 import { CheckCircle, Circle } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
@@ -35,6 +33,7 @@ export default function TestPage() {
                 return (
                   <button
                     className="flex w-full items-center gap-2 px-2 py-1"
+                    key={option}
                     onClick={() => {
                       if (!isSelected) {
                         setValue([...selected, option]);
@@ -43,7 +42,6 @@ export default function TestPage() {
                         setValue(newValues);
                       }
                     }}
-                    key={option}
                   >
                     {option}
                     {isSelected ? (

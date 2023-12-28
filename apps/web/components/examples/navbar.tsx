@@ -1,8 +1,8 @@
 "use client";
-import { Award, Command, Menu, Moon, Search, Sun, X } from "lucide-react";
+import { Award, Menu, Moon, Search, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
 import { useSidebarContext } from "../sidebar-context";
+
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const { context } = useSidebarContext();
@@ -11,8 +11,11 @@ export function Navbar() {
       <div className="">
         <div className="inline-flex items-center gap-2 text-xl font-bold">
           <button
-            onClick={() => context.setOpen(!context.open)}
             className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+            onClick={() => {
+              context.setOpen(!context.open);
+            }}
+            type="button"
           >
             <Menu className="h-[1.2rem] w-[1.2rem]" />
           </button>
@@ -25,10 +28,14 @@ export function Navbar() {
         <p className="line-clamp-1  ">Buscar en toda la pagina</p>
       </div>
       <div className="inline-flex items-center gap-2">
-        <button className="flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden">
+        <button
+          className="flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+          type="button"
+        >
           <Search className="h-[1.2rem] w-[1.2rem]" />
         </button>
         <button
+          className=" inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
           onClick={() => {
             if (theme === "dark") {
               setTheme("light");
@@ -39,7 +46,7 @@ export function Navbar() {
               setTheme("light");
             }
           }}
-          className=" inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md border border-neutral-200 bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+          type="button"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

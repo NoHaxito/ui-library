@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -12,12 +12,12 @@ export default function Github({
 }: IconProps) {
   return (
     <svg
+      fill="currentColor"
+      height={height || size}
+      preserveAspectRatio="xMidYMid"
       viewBox="0 0 256 250"
       width={width || size}
-      height={height || size}
-      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
       {...props}
     >
       <path

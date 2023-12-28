@@ -1,6 +1,8 @@
 {
   "extends": "@sihaxito/typescript-config/nextjs.json",
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "plugins": [
       {

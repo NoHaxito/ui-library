@@ -1,21 +1,32 @@
 "use client";
-import { Moon, Sun } from "@phosphor-icons/react";
+import {
+  Moon,
+  Sun,
+  List,
+  MagnifyingGlass,
+  SquaresFour,
+  X,
+  Command,
+} from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "../lib/utils";
 import { useSidebarContext } from "./sidebar-context";
-import Link from "next/link";
-import { List, MagnifyingGlass, SquaresFour, X } from "@phosphor-icons/react";
-import { usePathname } from "next/navigation";
 import GithubIcon from "./icons/github";
+
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const { context } = useSidebarContext();
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-neutral-50/90 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/90 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90">
       <div className="container flex h-[4rem] max-w-screen-2xl items-center justify-between">
-        <div className="mr-4 flex items-center gap-x-1">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+        <div className="mr-1 flex items-center gap-x-1">
+          <Link
+            className="flex items-center space-x-2 transition-transform ease-in active:scale-95"
+            href="/"
+          >
             <div className="group flex h-8 w-8 items-center justify-center rounded-[10px] bg-black">
               <SquaresFour
                 className="h-6 w-6 rotate-45 text-white transition-transform duration-500 ease-in group-hover:-rotate-90"
@@ -24,57 +35,63 @@ export function Navbar() {
             </div>
             <span className="text-lg font-bold">Deluxe UI</span>
           </Link>
-          <nav className="hidden items-center gap-6 text-sm md:flex">
+          <nav className="ml-10 hidden items-center gap-6 text-sm md:flex">
             <Link
-              href="/docs"
               className={cn(
-                "text-neutral-600 transition-colors hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200",
+                "text-neutral-600 transition-[transform,colors] ease-in hover:text-neutral-800 active:scale-95 dark:text-neutral-400 dark:hover:text-neutral-200",
               )}
+              href="/docs"
             >
               Docs
             </Link>
             <Link
-              href="/docs/components"
               className={cn(
-                "transition-colors hover:text-neutral-800 dark:hover:text-neutral-200",
-                pathname?.startsWith("/docs/components")
-                  ? "text-neutral-800 dark:text-neutral-200"
+                "transition-[transform,colors] ease-in hover:text-neutral-800 active:scale-95 dark:hover:text-neutral-200",
+                pathname.startsWith("/docs/components")
+                  ? "font-bold text-neutral-800 dark:text-neutral-200"
                   : "text-neutral-600 dark:text-neutral-400",
               )}
+              href="/docs/components"
             >
               Components
             </Link>
           </nav>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="relative hidden md:!block">
-            <div className="absolute inset-y-0 left-0 flex items-center justify-center pl-3">
+        <div className="flex items-center gap-1">
+          <button
+            className="hidden h-8 w-56 items-center justify-between gap-2 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-sm text-neutral-700 transition-[border,transform] duration-300 focus:border-neutral-200 focus:outline-none active:scale-95 dark:bg-neutral-900 dark:text-neutral-200 focus:dark:border-neutral-800 md:flex"
+            type="button"
+          >
+            <div className=" flex items-center gap-x-2 text-neutral-600 dark:text-neutral-400">
               <MagnifyingGlass className="h-4 w-4" />
+              Search
             </div>
-            <input
-              className="h-8 w-24 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 !pl-8 text-sm text-neutral-700 transition-[border] duration-300 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 placeholder:dark:text-neutral-500 focus:dark:border-neutral-800 sm:w-max"
-              placeholder="Search..."
-              required
-            />
-          </div>
-          <nav className="flex items-center gap-2">
-            <button className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden">
+            <kbd className="flex items-center rounded-md bg-neutral-200 px-1 text-sm text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+              <Command className="h-4 w-4" /> K
+            </kbd>
+          </button>
+          <nav className="flex items-center gap-1">
+            <button
+              className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+              type="button"
+            >
               <MagnifyingGlass className="h-[1.2rem] w-[1.2rem]" />
               <span className="sr-only">Toggle search</span>
             </button>
             <Link
+              className="group inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
               href="https://github.com/nohaxito/ui-library"
-              target="_blank"
               rel="noreferrer"
-              className="group inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+              target="_blank"
             >
               <GithubIcon
-                size={19.2}
                 className="opacity-80 group-hover:opacity-100 "
+                size={19.2}
               />
               <span className="sr-only">DeluxeUI Github </span>
             </Link>
             <button
+              className="inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
               onClick={() => {
                 if (theme === "dark") {
                   setTheme("light");
@@ -85,27 +102,25 @@ export function Navbar() {
                   setTheme("light");
                 }
               }}
-              className="inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+              type="button"
             >
-              <Sun
-                weight="fill"
-                className="h-[1.2rem] w-[1.2rem] dark:hidden"
-              />
-              <Moon
-                weight="fill"
-                className="absolute hidden h-[1.2rem] w-[1.2rem] dark:block"
-              />
+              {theme === "light" ? (
+                <Sun className="h-[1.2rem] w-[1.2rem]" weight="fill" />
+              ) : (
+                <Moon className="h-[1.2rem] w-[1.2rem]" weight="fill" />
+              )}
               <span className="sr-only">Toggle theme</span>
             </button>
             {pathname.startsWith("/docs/") && (
               <button
+                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
                 onClick={() => {
                   context.setOpen(!context.open);
                 }}
-                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-90 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+                type="button"
               >
                 {!context.open && <List className="h-5 w-5" />}
-                {context.open && <X />}
+                {context.open ? <X /> : null}
                 <span className="sr-only">Toggle sidebar</span>
               </button>
             )}
