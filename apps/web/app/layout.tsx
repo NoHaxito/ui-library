@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Deluxe UI",
     images: [
       {
-        url: "https://ui.shadcn.com/og.jpg",
+        url: "https://ui-library-web.vercel.app/api/og",
         width: 1200,
         height: 630,
         alt: "Deluxe UI",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Deluxe UI",
     description: "Beautiful components for React with TailwindCSS",
-    images: ["https://ui.shadcn.com/og.jpg"],
+    images: ["https://ui-library-web.vercel.app/api/og"],
   },
 };
 
