@@ -8,13 +8,13 @@ import { cn } from "../../utils";
 
 const Tabs = TabsPrimitive.Root;
 
-export interface TabsList
+export interface TabsListProps
   extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
   variant: "solid" | "underline";
 }
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
-  TabsList
+  TabsListProps
 >(({ className, variant = "solid", ...props }, ref) => {
   const id = React.useId();
   const [activeTab, setActiveTab] = React.useState<{
@@ -97,7 +97,7 @@ const TabsTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-300 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-neutral-200 data-[state=active]:text-neutral-900 dark:focus-visible:ring-white dark:data-[state=active]:bg-neutral-800 dark:data-[state=active]:text-white transition-colors duration-300",
+      "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-300 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-neutral-200 data-[state=active]:text-neutral-900 dark:focus-visible:ring-white dark:data-[state=active]:bg-neutral-800 dark:data-[state=active]:text-white",
       className,
     )}
     ref={ref}
