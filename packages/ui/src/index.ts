@@ -21,3 +21,4 @@ export * from "./components/dropdown-menu";
 export * from "./components/popover";
 export * from "./components/multi-select";
 export * from "./components/scroll-area";
+export * from "./components/tabs";
