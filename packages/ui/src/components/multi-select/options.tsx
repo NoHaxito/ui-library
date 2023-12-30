@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion -- TODO */
 "use client";
 import * as React from "react";
 import { Check } from "@phosphor-icons/react";

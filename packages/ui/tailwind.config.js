@@ -1,3 +1,4 @@
+/* eslint-disable no-undef -- 🤷‍♂️ */
 export default {
   darkMode: ["class"],
   content: [

@@ -26,9 +26,9 @@ const TooltipContent = React.forwardRef<
         className={cn(tooltip().content, className)}
       >
         {props.children}
-        {arrow && !props.asChild && (
+        {arrow && !props.asChild ? (
           <TooltipPrimitiveArrow className={tooltip().arrow} />
-        )}
+        ) : null}
       </TooltipPrimitiveContent>
     </TooltipPrimitivePortal>
   );

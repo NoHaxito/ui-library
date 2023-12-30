@@ -1,10 +1,11 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-import rehypeShikiji from "rehype-shikiji";
-// import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
-import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+
+import { addCode, postProcess, preProcess } from "./lib/rehype";
+import { visit } from "unist-util-visit";
+
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
   filePathPattern: `docs/**/*.mdx`,
@@ -27,16 +28,34 @@ export const Doc = defineDocumentType(() => ({
   },
 }));
 
+const prettyCodeOptions: Options = {
+  defaultLang: {
+    block: "tsx",
+    inline: "tsx",
+  },
+  theme: "vitesse-dark",
+};
+
 export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
-    remarkPlugins: [remarkParse as any],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      preProcess,
       rehypeSlug,
-      rehypePrismPlus,
-      [rehypeShikiji as any, { theme: "vitesse-dark" }],
-      rehypeStringify as any,
+      addCode,
+      // @ts-expect-error rehype-pretty-code types are wrong
+      [rehypePrettyCode, prettyCodeOptions],
+      postProcess,
+      () => (tree) => {
+        visit(tree, (node) => {
+          if (node?.type === "element" && node?.tagName === "figcaption") {
+            // console.log(node);
+            ("adadasdsad");
+          }
+        });
+      },
     ],
   },
   contentDirExclude: ["./content/examples"],

@@ -72,17 +72,11 @@ export default function TestPage() {
       <section className="my-4 max-w-full space-y-4">
         <h2>Tabs</h2>
         <div className="grid gap-2 sm:grid-cols-2">
-          <Tabs defaultValue="npm">
-            <TabsList variant="solid" className="relative shrink-0">
-              <TabsTrigger value="npm" className="!bg-transparent">
-                npm
-              </TabsTrigger>
-              <TabsTrigger className="!bg-transparent" value="yarn">
-                yarn
-              </TabsTrigger>
-              <TabsTrigger className="!bg-transparent" value="pnpm">
-                pnpm
-              </TabsTrigger>
+          <Tabs variant="solid" defaultValue="npm">
+            <TabsList>
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
             </TabsList>
             <TabsContent value="npm" className="p-0">
               <CodeHighlighter
@@ -106,29 +100,11 @@ export default function TestPage() {
               />
             </TabsContent>
           </Tabs>
-          <Tabs defaultValue="npm">
-            <TabsList
-              variant="underline"
-              className="relative flex w-full shrink-0 justify-start rounded-none border-b !bg-transparent dark:border-neutral-900"
-            >
-              <TabsTrigger
-                value="npm"
-                className="h-10 rounded-none !bg-transparent"
-              >
-                npm
-              </TabsTrigger>
-              <TabsTrigger
-                className="h-10 rounded-none !bg-transparent"
-                value="yarn"
-              >
-                yarn
-              </TabsTrigger>
-              <TabsTrigger
-                className="h-10 rounded-none !bg-transparent"
-                value="pnpm"
-              >
-                pnpm
-              </TabsTrigger>
+          <Tabs variant="underline" defaultValue="npm">
+            <TabsList>
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
             </TabsList>
             <TabsContent value="npm" className="!p-0">
               <CodeHighlighter

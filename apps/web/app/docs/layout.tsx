@@ -1,5 +1,5 @@
 import { SidebarComp } from "@/components/sidebar";
-
+import "@/styles/mdx.scss";
 export default function DocsLayout({
   children,
 }: {

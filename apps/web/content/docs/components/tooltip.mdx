@@ -3,24 +3,28 @@ title: Tooltip
 description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 date: 2023-12-20
 ---
-import { tooltip } from '../../examples/tooltip'
 
-
-<Preview name="tooltip-basic" />
+<ComponentPreview name="tooltip/basic" />
 
 ## Usage
-<CodeHighlighter
-  showLines
-  language="tsx"
-  code={tooltip['tooltip-basic'].code}
-/>
+
+```tsx
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@sihaxito/deluxe-ui";
+```
 
 ## Examples
 
 ### Multiple tooltips
-<Preview name="tooltip-multiple" />
 
-### Open delay 
-<Preview name="tooltip-custom-delay" />
+<ComponentPreview name="tooltip/multiple" />
+
+### Open delay
+
+<ComponentPreview name="tooltip-custom-delay" />
 
 ## Useful links

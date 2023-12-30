@@ -8,17 +8,20 @@ import { cn } from "@/lib/utils";
 
 bashLang(Prism);
 
+export interface HighlighterProps extends HTMLPreElement {
+  language: "javascript" | "tsx" | "jsx" | "bash";
+  code: string;
+  highligthLines: number[];
+  showLines?: boolean;
+}
+
 export function CodeHighlighter({
   language,
   code,
   highligthLines = [],
   showLines = false,
-}: {
-  language: "javascript" | "tsx" | "jsx" | "bash";
-  code: string;
-  highligthLines: number[];
-  showLines?: boolean;
-}) {
+  ...props
+}: HighlighterProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -39,9 +42,12 @@ export function CodeHighlighter({
       theme={themes.oneDark}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
-        <div className="group relative grid px-2">
+        <div className="group relative grid">
           <pre
-            className="md:scrollbar-none group-hover:md:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full relative my-2 grid max-h-[350px] overflow-x-auto rounded-lg !bg-neutral-900 py-2 [scrollbar-gutter:stable]"
+            className={cn(
+              props.className,
+              "md:scrollbar-none group-hover:md:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full relative my-2 grid max-h-[350px] overflow-x-auto rounded-lg !bg-neutral-900 px-2 py-2 [scrollbar-gutter:stable]",
+            )}
             style={style}
           >
             <code className="flex-none">

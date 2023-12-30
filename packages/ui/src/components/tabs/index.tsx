@@ -1,87 +1,128 @@
-/* eslint-disable @typescript-eslint/no-explicit-any -- TODO */
-/* eslint-disable import/no-extraneous-dependencies -- TODO */
+/* eslint-disable react-hooks/exhaustive-deps -- TODO */
 "use client";
-
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import { cn } from "../../utils";
+import { type TabsVariant, tabs } from "./theme";
 
-const Tabs = TabsPrimitive.Root;
+const { indicator, list, trigger } = tabs();
 
-export interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
-  variant: "solid" | "underline";
+interface TabsContextProps {
+  value: string | null;
+  variant: TabsVariant["variant"];
 }
+
+const TabsContext = React.createContext<TabsContextProps>({
+  value: null,
+  variant: "solid",
+});
+function useTabsContext(): { context: TabsContextProps } {
+  const context = React.useContext(TabsContext);
+
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TODO
+  if (!context) {
+    throw new Error(
+      "Tabs components must be used within a Tabs or Tabs.Root component",
+    );
+  }
+
+  return { context };
+}
+
+export interface TabsProps
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
+  variant?: "solid" | "underline";
+}
+const Tabs = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Root>,
+  TabsProps
+>(({ activationMode = "automatic", children, variant, ...props }, ref) => {
+  const [value, setValue] = useControllableState({
+    defaultProp: props.defaultValue,
+    prop: props.value,
+    onChange: props.onValueChange,
+  });
+  return (
+    <TabsPrimitive.Root
+      activationMode={activationMode}
+      onValueChange={setValue}
+      ref={ref}
+      value={value}
+      {...props}
+    >
+      <TabsContext.Provider value={{ value: value ?? null, variant }}>
+        {children}
+      </TabsContext.Provider>
+    </TabsPrimitive.Root>
+  );
+});
+Tabs.displayName = TabsPrimitive.Root.displayName;
+
+export type TabsListProps = React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.List
+>;
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   TabsListProps
->(({ className, variant = "solid", ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const id = React.useId();
+  const { context } = useTabsContext();
   const [activeTab, setActiveTab] = React.useState<{
-    width: null | number;
-    height: null | number;
-    top: null | number;
-    left: null | number;
+    width: undefined | null | number;
+    height: undefined | null | number;
+    top: undefined | null | number;
+    left: undefined | null | number;
   }>({
     width: null,
     height: null,
     top: null,
     left: null,
   });
-  const variantClasses = {
-    solid:
-      "relative z-10 inline-flex h-10 items-center justify-center rounded-lg bg-neutral-100 p-1 text-neutral-500 dark:bg-neutral-900",
-    underline:
-      "relative inline-flex h-10 items-center justify-center p-1 text-neutral-500",
-  };
-  const indicatorClasses = {
-    solid:
-      "absolute -z-[2] flex rounded-lg items-center left-0 h-[var(--radix-tab-active-height)] w-[var(--radix-tab-active-width)] translate-x-[var(--radix-tab-active-left)] bg-neutral-200 px-3 transition-[width,transform] duration-300 dark:bg-neutral-800",
-    underline:
-      "absolute bottom-0 left-0 h-[2px] w-[var(--radix-tab-active-width)] translate-x-[var(--radix-tab-active-left)] bg-black px-3 transition-[width,transform] duration-300 dark:bg-white",
-  };
   React.useEffect(() => {
-    setInterval(() => {
-      const childNodes = document
+    if (context.value === null) {
+      const activeNode = document
         .getElementById(id)
-        ?.querySelectorAll<HTMLButtonElement>(
-          `[role="tab"][data-state="active"]`,
-        );
-      childNodes?.forEach((childNode) => {
-        const dataState = childNode.getAttribute("data-state");
-        const isActive = dataState === "active";
-        if (isActive) {
-          setActiveTab({
-            width: childNode.offsetWidth,
-            height: childNode.offsetHeight,
-            top: childNode.offsetTop,
-            left: childNode.offsetLeft,
-          });
-        }
+        ?.querySelectorAll<HTMLButtonElement>(`[role="tab"]`);
+      setActiveTab({
+        width: activeNode?.[0].offsetWidth,
+        height: activeNode?.[0].offsetHeight,
+        top: activeNode?.[0].offsetTop,
+        left: activeNode?.[0].offsetLeft,
       });
-    }, 200);
-  }, []);
+    } else {
+      const activeNode = document
+        .getElementById(id)
+        ?.querySelector<HTMLButtonElement>(`[role="tab"][data-state="active"]`);
+      setActiveTab({
+        width: activeNode?.offsetWidth,
+        height: activeNode?.offsetHeight,
+        top: activeNode?.offsetTop,
+        left: activeNode?.offsetLeft,
+      });
+    }
+  }, [context.value]);
   return (
     <TabsPrimitive.List
-      className={cn(variantClasses[variant], className)}
+      className={cn(list({ variant: context.variant, className }))}
       id={id}
       ref={ref}
       {...props}
     >
-      {props.children}
+      {children}
       <div
-        className={cn(indicatorClasses[variant])}
+        className={cn(indicator({ variant: context.variant }))}
         style={{
-          ["--radix-tab-active-width" as any]: !activeTab.width
+          ["--radix-tab-active-width" as string]: !activeTab.width
             ? null
             : `${activeTab.width}px`,
-          ["--radix-tab-active-height" as any]: !activeTab.height
+          ["--radix-tab-active-height" as string]: !activeTab.height
             ? null
             : `${activeTab.height}px`,
-          ["--radix-tab-active-left" as any]: !activeTab.left
+          ["--radix-tab-active-left" as string]: !activeTab.left
             ? null
             : `${activeTab.left}px`,
-          ["--radix-tab-active-top" as any]: !activeTab.top
+          ["--radix-tab-active-top" as string]: !activeTab.top
             ? null
             : `${activeTab.top}px`,
         }}
@@ -94,16 +135,16 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-300 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-neutral-200 data-[state=active]:text-neutral-900 dark:focus-visible:ring-white dark:data-[state=active]:bg-neutral-800 dark:data-[state=active]:text-white",
-      className,
-    )}
-    ref={ref}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const { context } = useTabsContext();
+  return (
+    <TabsPrimitive.Trigger
+      className={cn(trigger({ variant: context.variant, className }))}
+      ref={ref}
+      {...props}
+    />
+  );
+});
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
 const TabsContent = React.forwardRef<

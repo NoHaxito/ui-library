@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { Item } from "@radix-ui/react-dropdown-menu";
-import { DropdownMenuTheme, dropdownMenu } from "./theme";
+import { type DropdownMenuTheme, dropdownMenu } from "./theme";
 
 interface DropdownMenuItemProps
   extends React.ComponentPropsWithoutRef<typeof Item>,

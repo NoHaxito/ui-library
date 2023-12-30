@@ -3,13 +3,30 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel.
 date: 2023-12-20
 ---
-import {collapsible} from '../../examples/collapsible'
 
-<Preview name="collapsible-basic" />
+<ComponentPreview name="collapsible/basic" />
 
 ## Usage
-<CodeHighlighter language="tsx" code={collapsible['collapsible-basic'].code} />
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@sihaxito/deluxe-ui";
+```
+
+```tsx showLineNumbers
+<Collapsible>
+  <CollapsibleTrigger>Click me</CollapsibleTrigger>
+  <CollapsibleContent>Collapsed element</CollapsibleContent>
+</Collapsible>
+```
 
 ## Examples
+
+### Controlled state
+
+<ComponentPreview name="collapsible/controlled" />
 
 ## Useful links

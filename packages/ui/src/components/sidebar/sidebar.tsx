@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion -- todo */
 /* eslint-disable jsx-a11y/click-events-have-key-events -- todo*/
 /* eslint-disable jsx-a11y/no-static-element-interactions -- todo*/
 "use client";

@@ -3,18 +3,39 @@ title: Accordion
 description: A vertically stacked set of interactive headings that each reveal a section of content.
 date: 2023-12-20
 ---
-import { accordion } from '../../examples/accordion'
 
-<Preview name="accordion-basic" />
+<ComponentPreview name="accordion/basic" />
 
 ## Usage
 
-<CodeHighlighter
-  language="tsx"
-  showLines
-  code={accordion['accordion-basic'].code}
-/>
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@sihaxito/deluxe-ui";
+```
+
+```tsx showLineNumbers
+<Accordion type="single">
+  <AccordionItem>
+    <AccordionTrigger value="element-1">Element 1</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
 
 ## Examples
+
+### Multiple expanded
+
+<ComponentPreview name="accordion/multiple" />
+
+### Controlled state
+
+<ComponentPreview name="accordion/controlled" />
 
 ## Useful links

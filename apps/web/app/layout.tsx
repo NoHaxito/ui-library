@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import "@sihaxito/deluxe-ui/styles.css";
 
 import type { Metadata } from "next";

@@ -2,7 +2,7 @@
 
 import type { ComponentProps, Ref } from "react";
 import { forwardRef } from "react";
-import { ChevronLeft } from "lucide-react";
+import { CaretLeft } from "@phosphor-icons/react";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
 
@@ -31,7 +31,7 @@ export const SidebarHeadToggle = forwardRef<
       type="button"
       {...props}
     >
-      <ChevronLeft className={headToggleIcon({ collapsed })} />
+      <CaretLeft className={headToggleIcon({ collapsed })} />
     </button>
   );
 });

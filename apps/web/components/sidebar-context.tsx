@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 import { createContext, useContext, useState } from "react";
 
 interface SidebarContextProps {
@@ -21,11 +21,7 @@ const SidebarContext = createContext<SidebarContextProps>({
   setOverlay: () => {},
 });
 
-export function SidebarContextProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function SidebarContextProvider({ children }: { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
   const [overlay, setOverlay] = useState(false);

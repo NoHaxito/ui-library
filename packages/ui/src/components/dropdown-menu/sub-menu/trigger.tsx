@@ -2,7 +2,7 @@
 import * as React from "react";
 import { SubTrigger } from "@radix-ui/react-dropdown-menu";
 import { CaretRight } from "@phosphor-icons/react";
-import { DropdownMenuTheme, dropdownMenu } from "../theme";
+import { type DropdownMenuTheme, dropdownMenu } from "../theme";
 
 export interface DropdownMenuSubTriggerProps
   extends React.ComponentPropsWithoutRef<typeof SubTrigger>,
@@ -16,8 +16,8 @@ export const DropdownMenuSubTrigger = React.forwardRef<
   return (
     <SubTrigger
       {...props}
-      ref={forwardedRef}
       className={item({ className, variant })}
+      ref={forwardedRef}
     >
       {children}
       <CaretRight className="ml-auto h-4 w-4" />

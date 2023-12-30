@@ -12,10 +12,10 @@ export const DropdownMenuSubContent = React.forwardRef<
     <Portal>
       <SubContent
         {...props}
-        ref={forwardedRef}
-        sideOffset={sideOffset}
         alignOffset={alignOffset}
         className={subContent({ className })}
+        ref={forwardedRef}
+        sideOffset={sideOffset}
       />
     </Portal>
   );

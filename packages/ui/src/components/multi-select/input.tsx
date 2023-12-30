@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain -- TODO */
 "use client";
 import { X } from "@phosphor-icons/react";
 import * as React from "react";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
-import { PopoverTrigger } from "../popover";
 import { useMultiSelectContext } from "./context";
 
 interface MultiSelectInputProps extends React.ComponentProps<"input"> {
@@ -11,7 +11,7 @@ interface MultiSelectInputProps extends React.ComponentProps<"input"> {
 export const MultiSelectInput = React.forwardRef<
   HTMLInputElement,
   MultiSelectInputProps
->(({ ...props }, forwardedRef) => {
+>(({ isClearable, ...props }, forwardedRef) => {
   const { context } = useMultiSelectContext();
   const {
     options,
@@ -51,14 +51,14 @@ export const MultiSelectInput = React.forwardRef<
       }
       const isSelectable =
         options !== undefined
-          ? options.find((v) => v.includes(inputValue?.toLowerCase() as string))
+          ? options.find((v) => v.includes(inputValue?.toLowerCase()!))
           : false;
       e.preventDefault();
       if (isSelectable) {
         setInputValue("");
         handleSelect(isSelectable);
       } else {
-        const toAdd = inputValue as string;
+        const toAdd = inputValue!;
         handleSelect(toAdd);
       }
 
@@ -98,7 +98,7 @@ export const MultiSelectInput = React.forwardRef<
         {...props}
         className="h-full w-full min-w-[50px] flex-1 bg-transparent pr-6 text-sm text-neutral-700 outline-none placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
       />
-      {value.length !== 0 && props.isClearable ? (
+      {value.length !== 0 && isClearable ? (
         <button
           className="absolute inset-y-0 right-0 flex items-center pr-3"
           onClick={() => {

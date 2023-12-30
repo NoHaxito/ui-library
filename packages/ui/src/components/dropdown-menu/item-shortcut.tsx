@@ -3,7 +3,7 @@
 import * as React from "react";
 import { dropdownMenu } from "./theme";
 
-interface DropdownItemShortcutProps extends React.ComponentProps<"div"> {}
+type DropdownItemShortcutProps = React.ComponentProps<"div">;
 
 export const DropdownMenuItemShortcut = ({
   ...props

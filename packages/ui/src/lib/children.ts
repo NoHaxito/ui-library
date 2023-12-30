@@ -4,7 +4,9 @@
 
 import { Children, isValidElement, type ReactNode } from "react";
 
-export function getValidChildren(children: React.ReactNode) {
+export function getValidChildren(
+  children: React.ReactNode,
+): React.ReactElement[] {
   return Children.toArray(children).filter((child) =>
     isValidElement(child),
   ) as React.ReactElement[];
@@ -14,7 +16,7 @@ export const pickChildren = <T = ReactNode>(
   children: T | undefined,
   targetChild: React.ElementType,
 ): [T | undefined, T[] | undefined] => {
-  let target: T[] = [];
+  const target: T[] = [];
 
   const withoutTargetChildren = Children.map(children, (item) => {
     if (!isValidElement(item)) return item;

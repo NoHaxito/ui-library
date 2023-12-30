@@ -11,9 +11,14 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        md: "100%",
+        xl: "80rem",
+      },
+      padding: {
+        DEFAULT: "1.5rem",
+        md: "2.5rem",
+        xl: "2.5rem",
       },
     },
     extend: {
@@ -43,6 +48,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [
+    require("tailwind-scrollbar")({ nocompatible: true }),
+    require("@tailwindcss/typography"),
+  ],
 };
 export default config;

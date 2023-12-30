@@ -14,17 +14,22 @@ import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
 } from "@sihaxito/deluxe-ui";
-import { Hash } from "@phosphor-icons/react";
+import { Copy, Hash } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { DiscordDropdownMenu } from "@/components/discord-dropdown";
 import { CodeHighlighter } from "./code-highlighter";
-import ComponentPreview from "./component-preview";
+import { ComponentPreview } from "./component-preview";
 import AstroIcon from "./icons/astro";
 import NextJsIcon from "./icons/nextjs";
 import ReactIcon from "./icons/react";
 import RemixIcon from "./icons/remix";
 import ViteJsIcon from "./icons/vite";
+import { CopyButton } from "./copy-button";
 
 const components = {
   AstroIcon,
@@ -39,6 +44,10 @@ const components = {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -165,28 +174,55 @@ const components = {
     />
   ),
   CodeHighlighter,
-  Preview: ({ name }: React.HTMLAttributes<HTMLElement> & { name: string }) => (
-    <ComponentPreview name={name} />
-  ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
+  ComponentPreview,
+  pre: ({
+    children,
+    className,
+    raw,
+    title,
+    ...otherProps
+  }: React.HTMLAttributes<HTMLPreElement> & {
+    raw?: string;
+    title?: string;
+  }) => {
+    return (
+      <div>
+        {title !== undefined && (
+          <div className="-mb-2 mt-2 flex w-full items-center justify-between gap-x-3 rounded-t-lg border-l border-r border-t bg-zinc-200 px-5 py-2 text-[13px] font-medium text-neutral-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-neutral-200">
+            {title}
+            <CopyButton
+              className="border border-neutral-400 !bg-transparent hover:!bg-neutral-300 dark:border-neutral-800 dark:!bg-transparent dark:hover:!bg-neutral-950"
+              content={raw!}
+            />
+          </div>
+        )}
+        <pre
+          className={cn(
+            "not-prose my-2 max-h-[650px] overflow-x-auto border bg-zinc-100 py-4 leading-6 dark:border-zinc-700 dark:bg-zinc-900",
+            raw && "!bg-zinc-100 dark:!bg-zinc-800",
+            className,
+            title !== undefined ? "rounded-b-lg border-t-0" : "rounded-lg",
+          )}
+          {...otherProps}
+        >
+          {children}
+          {raw && title === undefined ? (
+            <CopyButton className="absolute right-3 top-3" content={raw} />
+          ) : null}
+        </pre>
+      </div>
+    );
+  },
+  DiscordDropdownMenu,
+  code: ({ className, ...otherProps }: React.HTMLAttributes<HTMLElement>) => (
+    <code
       className={cn(
-        "mb-4 mt-6 max-h-[650px] min-w-full overflow-x-auto rounded-lg border bg-zinc-900 px-2 dark:border-neutral-900 ",
+        "not-prose relative rounded bg-zinc-100 px-[0.3rem] py-[0.15rem] font-mono text-[13px] leading-6 text-neutral-800 dark:bg-zinc-800 dark:text-neutral-200",
         className,
       )}
-      {...props}
+      {...otherProps}
     />
   ),
-  DiscordDropdownMenu,
-  // code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-  //   <code
-  //     className={cn(
-  //       "!w-full h-max",
-  //       className,
-  //     )}
-  //     {...props}
-  //   />
-  // ),
   Image,
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -213,7 +249,7 @@ const components = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "duration-300 ease flex w-full flex-col items-center gap-y-1 rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 opacity-60 shadow transition-[colors,opacity,transform] hover:bg-neutral-100 hover:opacity-100 active:scale-95 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-8",
+        "ease flex w-full flex-col items-center gap-y-1 rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 opacity-60 shadow transition-[colors,opacity,transform] duration-300 hover:bg-neutral-100 hover:opacity-100 active:scale-95 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-8",
         className,
       )}
       {...props}

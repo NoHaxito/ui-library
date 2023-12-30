@@ -4,35 +4,53 @@ description: "Guide to install Deluxe UI in a Next.js application"
 date: 2023-12-28
 ---
 
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@sihaxito/deluxe-ui";
+
 Deluxe UI components are built with the 'use client' directive, allowing for both server-side and client-side usage, and compatibility with both the App Router and Pages Router.
 
 <Steps>
 
 ### Install Deluxe UI
 
-
-<CodeHighlighter language="bash" code={`npm install @sihaxito/deluxe-ui`} />
-{/* <CodeHighlighter language="bash" code={`yarn add @sihaxito/deluxe-ui`} />
-<CodeHighlighter language="bash" code={`pnpm install @sihaxito/deluxe-ui`} />
-<CodeHighlighter language="bash" code={`bun install @sihaxito/deluxe-ui`} /> */}
+{/* prettier-ignore */}
+<Tabs variant="underline" defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash 
+    npm install @sihaxito/deluxe-ui 
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash 
+    yarn add @sihaxito/deluxe-ui 
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash 
+    pnpm install @sihaxito/deluxe-ui 
+    ```
+  </TabsContent>
+</Tabs>
+{/* prettier-ignore */}
 
 ### Tailwind CSS Setup
 
 Deluxe UI requires Tailwind CSS to be used. If you don't have it installed, you can follow the instructions in the <a className="text-blue-600 dark:text-blue-400 hover:underline" href="https://tailwindcss.com/docs/guides/nextjs" target="_blank" rel="reopenner">official Tailwind CSS installation guide</a>.
 
-Once you have installed Tailwind CSS you will need to update your `tailwind.config` file.
+Once you have installed Tailwind CSS you will need to update your <strong className="px-1 rounded-lg bg-neutral-300 dark:bg-neutral-800">tailwind.config</strong> file.
 
-<CodeHighlighter
-  showLines
-  language="js"
-  highligthLines={[11]}
-  code={`/** @type {import('tailwindcss').Config} */
+```tsx {11} showLineNumbers title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
- 
+
     // Or if using 'src' directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -41,20 +59,23 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}`}
-/>
+};
+```
 
 ### Import Deluxe UI styles
 
-<CodeHighlighter
-  showLines
-  language="tsx"
-  highligthLines={[3]}
-  code={`import { Inter } from 'next/font/google'
-import './globals.css'
-import '@sihaxito/deluxe-ui/styles.css'
+<Tabs defaultValue="app_router" variant="underline">
+  <TabsList>
+    <TabsTrigger value="app_router">App router</TabsTrigger>
+    <TabsTrigger value="pages_router">Pages router</TabsTrigger>
+  </TabsList>
+  <TabsContent value="app_router">
+  ```tsx {3} showLineNumbers title="layout.jsx"
+import { Inter } from "next/font/google";
+import "./globals.css";
+import "@sihaxito/deluxe-ui/styles.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -66,21 +87,32 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
-  )
-}`}
-/>
+  );
+}
+```
+</TabsContent>
+  <TabsContent value="pages_router">
+  ```jsx {2} showLineNumbers title="_app.jsx"
+  import '@/styles/globals.css'
+  import '@sihaxito/deluxe-ui/styles.css'
+
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+  ```
+  </TabsContent>
+</Tabs>
+
 ### Trying Deluxe UI
 
 Now that the installation and configuration of Deluxe UI has been successfully completed, you are ready to use the components in your application.
 
-<CodeHighlighter
-  showLines
-  highligthLines={[1,4]}
-  language="tsx"
-  code={`import { Badge } from "@sihaxito/deluxe-ui";
+```tsx {1,4} showLineNumbers
+import { Badge } from "@sihaxito/deluxe-ui";
 
 export function Example() {
-  return <Badge>Deluxe UI</Badge>
-}`}
-/>
+  return <Badge>Deluxe UI</Badge>;
+}
+```
+
 </Steps>

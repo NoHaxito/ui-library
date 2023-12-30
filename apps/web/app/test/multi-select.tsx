@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, X } from "@phosphor-icons/react";
-import type { KeyboardEvent} from "react";
+import type { KeyboardEvent } from "react";
 import { useRef, useState } from "react";
 import { Badge } from "@/components/badge";
 
@@ -110,7 +110,12 @@ export default function MultiSelect() {
               }}
             >
               {value.label}
-              <button className="" onClick={() => { handleRemove(value.value); }}>
+              <button
+                className=""
+                onClick={() => {
+                  handleRemove(value.value);
+                }}
+              >
                 <X />
               </button>
             </Badge>
@@ -121,9 +126,15 @@ export default function MultiSelect() {
           <div className="relative flex-1">
             <input
               className="h-full w-full min-w-[50px] bg-transparent pr-6 text-sm text-neutral-700 outline-none placeholder:text-neutral-500 dark:text-neutral-200 placeholder:dark:text-neutral-500"
-              onBlur={() => { setOpen(false); }}
-              onChange={(e) => { setInputValue(e.currentTarget.value); }}
-              onFocus={() => { setOpen(true); }}
+              onBlur={() => {
+                setOpen(false);
+              }}
+              onChange={(e) => {
+                setInputValue(e.currentTarget.value);
+              }}
+              onFocus={() => {
+                setOpen(true);
+              }}
               onKeyDown={onKeyDown}
               placeholder="Add a tag..."
               ref={inputRef}
@@ -141,7 +152,8 @@ export default function MultiSelect() {
           </div>
         </div>
       </div>
-      {open ? <div
+      {open ? (
+        <div
           className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-20 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 slide-in-from-top-4 data-[state=closed]:slide-out-from-top-4 absolute top-full z-50 mt-1 grid max-h-52 w-full translate-y-1 gap-y-2 overflow-y-auto rounded-lg bg-neutral-100 px-3 py-2 shadow-md transition-all duration-1000 dark:bg-neutral-900"
           data-state={!open ? "closed" : "open"}
           onMouseDown={(e) => {
@@ -177,7 +189,9 @@ export default function MultiSelect() {
                     }}
                   >
                     {complete.label}
-                    <span className="ml-auto">{isSelected ? <Check /> : null}</span>
+                    <span className="ml-auto">
+                      {isSelected ? <Check /> : null}
+                    </span>
                   </button>
                 );
               })
@@ -204,7 +218,8 @@ export default function MultiSelect() {
               </button>
             </div>
           )}
-        </div> : null}
+        </div>
+      ) : null}
     </div>
   );
 }
