@@ -9,12 +9,11 @@ import {
   TabsTrigger,
   TabsContent,
 } from "@sihaxito/deluxe-ui";
-import { CheckCircle, Circle } from "@phosphor-icons/react";
-import { CodeHighlighter } from "@/components/code-highlighter";
+import { Bell, CheckCircle, Circle, Gear, User } from "@phosphor-icons/react";
 
 export default function TestPage() {
   return (
-    <div className="relative space-y-1 p-4">
+    <div className="container mx-auto relative space-y-1 py-4">
       <section className="my-4 max-w-sm space-y-1">
         <h2>Multi Select</h2>
         <p>Default select options</p>
@@ -69,64 +68,42 @@ export default function TestPage() {
           </MultiSelectOptions>
         </MultiSelect>
       </section>
-      <section className="my-4 max-w-full space-y-4">
+      <section className="my-4 space-y-4">
         <h2>Tabs</h2>
-        <div className="grid gap-2 sm:grid-cols-2">
-          <Tabs variant="solid" defaultValue="npm">
+        <div className="flex flex-wrap gap-12">
+          <Tabs defaultValue="account">
             <TabsList>
-              <TabsTrigger value="npm">npm</TabsTrigger>
-              <TabsTrigger value="yarn">yarn</TabsTrigger>
-              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="account">
+                <User /> Account
+              </TabsTrigger>
+              <TabsTrigger value="settings">
+                <Gear /> Settings
+              </TabsTrigger>
+              <TabsTrigger value="notifications">
+                <Bell />
+                Notifications
+              </TabsTrigger>
             </TabsList>
-            <TabsContent value="npm" className="p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="npm install @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
-            <TabsContent value="yarn" className="p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="yarn add @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
-            <TabsContent value="pnpm" className="p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="pnpm install @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
+            <TabsContent value="account">Account tab</TabsContent>
+            <TabsContent value="settings">Settings tab</TabsContent>
+            <TabsContent value="notifications">Notifications tab</TabsContent>
           </Tabs>
-          <Tabs variant="underline" defaultValue="npm">
+          <Tabs variant="underline" defaultValue="account">
             <TabsList>
-              <TabsTrigger value="npm">npm</TabsTrigger>
-              <TabsTrigger value="yarn">yarn</TabsTrigger>
-              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="account">
+                <User /> Account
+              </TabsTrigger>
+              <TabsTrigger value="settings">
+                <Gear /> Settings
+              </TabsTrigger>
+              <TabsTrigger value="notifications">
+                <Bell />
+                Notifications
+              </TabsTrigger>
             </TabsList>
-            <TabsContent value="npm" className="!p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="npm install @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
-            <TabsContent value="yarn" className="!p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="yarn add @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
-            <TabsContent value="pnpm" className="!p-0">
-              <CodeHighlighter
-                highligthLines={[]}
-                code="pnpm install @sihaxito/deluxe-ui"
-                language="bash"
-              />
-            </TabsContent>
+            <TabsContent value="account">Account tab</TabsContent>
+            <TabsContent value="settings">Settings tab</TabsContent>
+            <TabsContent value="notifications">Notifications tab</TabsContent>
           </Tabs>
         </div>
       </section>
