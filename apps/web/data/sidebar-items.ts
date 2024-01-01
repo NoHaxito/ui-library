@@ -111,6 +111,11 @@ export const sidebarItems = [
         href: "/docs/components/select",
       },
       {
+        title: "Sidebar",
+        href: "/docs/components/sidebar",
+        label: "New"
+      },
+      {
         title: "Switch",
         href: "/docs/components/switch",
       },

@@ -114,7 +114,7 @@ const components = {
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-7 text-neutral-500 [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
@@ -218,6 +218,15 @@ const components = {
     <code
       className={cn(
         "not-prose relative rounded bg-zinc-100 px-[0.3rem] py-[0.15rem] font-mono text-[13px] leading-6 text-neutral-800 dark:bg-zinc-800 dark:text-neutral-200",
+        className,
+      )}
+      {...otherProps}
+    />
+  ),
+  Code2: ({ className, ...otherProps }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "dark:!bg-neutral-800 !w-max !rounded-lg !bg-neutral-200 !px-1 text-black dark:text-white",
         className,
       )}
       {...otherProps}

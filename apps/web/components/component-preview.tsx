@@ -15,9 +15,6 @@ import { cn } from "@/lib/utils";
 type PreviewProps = TabsProps & {
   align?: "start" | "center" | "end";
 
-  /**
-   * Name of the demo component defined in `@/examples/index.ts`.
-   */
   name: string;
 };
 
@@ -57,7 +54,7 @@ export function ComponentPreview({
       <TabsContent value="preview" className="my-4">
         <div
           className={cn(
-            "flex min-h-[350px] w-full items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 p-10 dark:border-zinc-800 dark:bg-zinc-900",
+            "relative flex min-h-[350px] w-full items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 p-10 dark:border-zinc-800 dark:bg-zinc-900",
           )}
         >
           <Suspense

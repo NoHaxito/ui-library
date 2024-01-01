@@ -1,10 +1,26 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 
 import { addCode, postProcess, preProcess } from "./lib/rehype";
 import { visit } from "unist-util-visit";
+
+const LinkProperties = defineNestedType(() => ({
+  name: "LinkProperties",
+  fields: {
+    radix: {
+      type: "string",
+    },
+    source: {
+      type: "string",
+    },
+  },
+}));
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -14,6 +30,17 @@ export const Doc = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string", required: false },
     date: { type: "date", required: false },
+    links: {
+      type: "nested",
+      of: LinkProperties,
+      description: "",
+      required: false,
+    },
+    toc: {
+      type: "boolean",
+      default: true,
+      required: false,
+    },
   },
   computedFields: {
     slug: {

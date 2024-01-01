@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export const tabs = tv({
   slots: {
-    list: "group relative z-10 inline-flex h-10 items-center justify-center p-1 text-neutral-500",
+    list: "group relative z-10 inline-flex h-10 items-center p-1 text-neutral-500",
     trigger:
       "gap-2 inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-300 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-neutral-900 dark:focus-visible:ring-white  dark:data-[state=active]:text-white",
     indicator:
@@ -25,9 +25,18 @@ export const tabs = tv({
         trigger: "",
       },
     },
+    disableAnimation: {
+      true: {
+        indicator: "transition-none",
+      },
+      false: {
+        indicator: "",
+      },
+    },
   },
   defaultVariants: {
     variant: "solid",
+    disableAnimation: false,
   },
 });
 

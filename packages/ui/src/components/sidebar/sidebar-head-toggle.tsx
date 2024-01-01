@@ -12,17 +12,15 @@ export const SidebarHeadToggle = forwardRef<
   HTMLButtonElement,
   SidebarHeadToggleProps
 >(({ className, ...props }, ref?: Ref<HTMLButtonElement>) => {
-  const {
-    context: { collapsed, setCollapsed },
-  } = useSidebarContext();
+  const { context } = useSidebarContext();
 
   const { headToggle, headToggleIcon } = sidebar();
   return (
     <button
       className={headToggle({ className })}
-      data-collapsed={collapsed ? "true" : "false"}
+      data-collapsed={context.collapsed ? "true" : "false"}
       onClick={(event) => {
-        setCollapsed && setCollapsed(!collapsed);
+        context.setCollapsed && context.setCollapsed(!context.collapsed);
         if (props.onClick) {
           props.onClick(event);
         }
@@ -31,7 +29,7 @@ export const SidebarHeadToggle = forwardRef<
       type="button"
       {...props}
     >
-      <CaretLeft className={headToggleIcon({ collapsed })} />
+      <CaretLeft className={headToggleIcon({ collapsed: context.collapsed })} />
     </button>
   );
 });

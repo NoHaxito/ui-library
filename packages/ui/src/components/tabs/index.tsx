@@ -11,11 +11,13 @@ const { indicator, list, trigger } = tabs();
 interface TabsContextProps {
   value: string | null;
   variant: TabsVariant["variant"];
+  disableAnimation: TabsVariant["disableAnimation"];
 }
 
 const TabsContext = React.createContext<TabsContextProps>({
   value: null,
   variant: "solid",
+  disableAnimation: false,
 });
 function useTabsContext(): { context: TabsContextProps } {
   const context = React.useContext(TabsContext);
@@ -31,32 +33,44 @@ function useTabsContext(): { context: TabsContextProps } {
 }
 
 export interface TabsProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
-  variant?: "solid" | "underline";
-}
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
+    TabsVariant {}
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
   TabsProps
->(({ activationMode = "automatic", children, variant, ...props }, ref) => {
-  const [value, setValue] = useControllableState({
-    defaultProp: props.defaultValue,
-    prop: props.value,
-    onChange: props.onValueChange,
-  });
-  return (
-    <TabsPrimitive.Root
-      activationMode={activationMode}
-      onValueChange={setValue}
-      ref={ref}
-      value={value}
-      {...props}
-    >
-      <TabsContext.Provider value={{ value: value ?? null, variant }}>
-        {children}
-      </TabsContext.Provider>
-    </TabsPrimitive.Root>
-  );
-});
+>(
+  (
+    {
+      activationMode = "automatic",
+      children,
+      variant,
+      disableAnimation,
+      ...props
+    },
+    ref,
+  ) => {
+    const [value, setValue] = useControllableState({
+      defaultProp: props.defaultValue,
+      prop: props.value,
+      onChange: props.onValueChange,
+    });
+    return (
+      <TabsPrimitive.Root
+        activationMode={activationMode}
+        onValueChange={setValue}
+        ref={ref}
+        value={value}
+        {...props}
+      >
+        <TabsContext.Provider
+          value={{ value: value ?? null, variant, disableAnimation }}
+        >
+          {children}
+        </TabsContext.Provider>
+      </TabsPrimitive.Root>
+    );
+  },
+);
 Tabs.displayName = TabsPrimitive.Root.displayName;
 
 export type TabsListProps = React.ComponentPropsWithoutRef<
@@ -111,7 +125,12 @@ const TabsList = React.forwardRef<
     >
       {children}
       <div
-        className={cn(indicator({ variant: context.variant }))}
+        className={cn(
+          indicator({
+            variant: context.variant,
+            disableAnimation: context.disableAnimation,
+          }),
+        )}
         style={{
           ["--radix-tab-active-width" as string]: !activeTab.width
             ? null
@@ -132,17 +151,27 @@ const TabsList = React.forwardRef<
 });
 TabsList.displayName = TabsPrimitive.List.displayName;
 
+interface TabsTriggerProps
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {
+  left?: React.ReactNode;
+  right?: React.ReactNode;
+}
+
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => {
+  TabsTriggerProps
+>(({ children, className, left, right, ...props }, ref) => {
   const { context } = useTabsContext();
   return (
     <TabsPrimitive.Trigger
       className={cn(trigger({ variant: context.variant, className }))}
       ref={ref}
       {...props}
-    />
+    >
+      {left ? left : null}
+      {children}
+      {right ? right : null}
+    </TabsPrimitive.Trigger>
   );
 });
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;

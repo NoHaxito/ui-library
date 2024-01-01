@@ -25,22 +25,22 @@ interface SidebarProps
 const SidebarComponent: FC<SidebarProps> = ({
   children,
   as: Component = "aside",
-  collapsed: collapsedProp = false,
+  collapsed: collapsedProp,
   className,
   onCollapsedChange,
   open: openProp,
-  overlay: overlayProp = true,
+  overlay: overlayProp = false,
   onOpenChange,
   ...props
 }) => {
   // const [collapsed, setCollapsed] = useState(collapsedProp);
   const [collapsed, setCollapsed] = useControllableState({
-    defaultProp: collapsedProp,
+    defaultProp: false,
     prop: collapsedProp,
     onChange: onCollapsedChange,
   });
   const [open, setOpen] = useControllableState({
-    defaultProp: openProp,
+    defaultProp: false,
     prop: openProp,
     onChange: onOpenChange,
   });

@@ -1,0 +1,56 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+date: 2024-01-1
+links:
+  radix: https://www.radix-ui.com/primitives/docs/components/tabs
+---
+
+<ComponentPreview name="tabs/basic" />
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@sihaxito/deluxe-ui";
+```
+
+```tsx showLineNumbers
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="tab-1">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab-2">Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab-1">Tab 1 content</TabsContent>
+  <TabsContent value="tab-2">Tab 2 content</TabsContent>
+</Tabs>
+```
+
+## Variants
+
+### Solid
+
+<ComponentPreview name="tabs/solid" />
+
+### Underline
+
+<ComponentPreview name="tabs/underline" />
+
+## Examples
+
+### With icons
+
+{/* prettier-ignore */}
+<Code2>TabsTrigger</Code2> component allows you to pass the <Code2>left</Code2> and <Code2>right</Code2> props to display elements (icons, text, badges, etc.) on the sides.
+{/* prettier-ignore */}
+
+<ComponentPreview name="tabs/with-icons" />
+
+### Without animation
+
+{/* prettier-ignore */}
+You can pass the <Code2>disableAnimation</Code2> prop to the <Code2>Tabs</Code2> component to disable any animation that the component has. This also works in <Code2>underline</Code2> variant
+{/* prettier-ignore */}
+
+<ComponentPreview name="tabs/no-animation" />
+
+## Useful links
