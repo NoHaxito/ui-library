@@ -12,34 +12,34 @@ export default function Vite({
 }: IconProps) {
   return (
     <svg
-      height={height || size}
-      preserveAspectRatio="xMidYMid"
       viewBox="0 0 256 257"
       width={width || size}
+      height={height || size}
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid"
       {...props}
     >
       <defs>
         <linearGradient
-          id="a"
           x1="-.828%"
-          x2="57.636%"
           y1="7.652%"
+          x2="57.636%"
           y2="78.411%"
+          id="a"
         >
-          <stop offset="0%" stopColor="#41D1FF" />
-          <stop offset="100%" stopColor="#BD34FE" />
+          <stop stop-color="#41D1FF" offset="0%" />
+          <stop stop-color="#BD34FE" offset="100%" />
         </linearGradient>
         <linearGradient
-          id="b"
           x1="43.376%"
-          x2="50.316%"
           y1="2.242%"
+          x2="50.316%"
           y2="89.03%"
+          id="b"
         >
-          <stop offset="0%" stopColor="#FFEA83" />
-          <stop offset="8.333%" stopColor="#FFDD35" />
-          <stop offset="100%" stopColor="#FFA800" />
+          <stop stop-color="#FFEA83" offset="0%" />
+          <stop stop-color="#FFDD35" offset="8.333%" />
+          <stop stop-color="#FFA800" offset="100%" />
         </linearGradient>
       </defs>
       <path

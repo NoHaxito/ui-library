@@ -2,7 +2,7 @@
 
 import type { ComponentProps, Ref } from "react";
 import { forwardRef } from "react";
-import { X } from "@phosphor-icons/react";
+import { X, List } from "@phosphor-icons/react";
 import { cn } from "../../utils";
 import { sidebar } from "./theme";
 import { useSidebarContext } from "./sidebar-context";
@@ -34,7 +34,11 @@ export const SidebarHeadToggleOpen = forwardRef<
       type="button"
       {...props}
     >
-      <X className={headToggleIcon()} />
+      {open ? (
+        <X className={headToggleIcon()} />
+      ) : (
+        <List className={headToggleIcon()} />
+      )}
     </button>
   );
 });

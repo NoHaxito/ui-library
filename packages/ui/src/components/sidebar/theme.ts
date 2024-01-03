@@ -39,7 +39,7 @@ export const sidebar = tv({
     },
     collapsed: {
       true: {
-        base: ["min-w-[4.5rem]"],
+        base: ["min-w-[4.5rem]", "max-w-[4.5rem]"],
         item: ["border-transparent", "px-3", "justify-start", "rounded-xl"],
         itemTitle: ["opacity-0"],
         itemCollapseContent: ["px-0"],
@@ -47,7 +47,7 @@ export const sidebar = tv({
         headToggleIcon: ["rotate-180"],
       },
       false: {
-        base: ["min-w-[16rem]"],
+        base: ["min-w-[16rem]", "max-w-[16rem]"],
         item: ["border-transparent", "px-3", "rounded-xl"],
         itemTitle: ["opacity-100"],
         itemCollapseContent: [],
@@ -73,7 +73,7 @@ export const sidebar = tv({
     {
       active: true,
       class: {
-        item: "bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-50 font-semibold",
+        item: "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-50 font-semibold",
       },
     },
   ],

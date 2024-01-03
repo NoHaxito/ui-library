@@ -60,7 +60,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0 dark:border-neutral-800",
+        "font-heading mt-12 scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0",
         className,
       )}
       {...props}
@@ -114,7 +114,10 @@ const components = {
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
-      className={cn("leading-7 text-neutral-500 [&:not(:first-child)]:mt-6", className)}
+      className={cn(
+        "leading-7 text-neutral-500 dark:text-neutral-400 [&:not(:first-child)]:mt-4",
+        className,
+      )}
       {...props}
     />
   ),
@@ -188,18 +191,18 @@ const components = {
     return (
       <div>
         {title !== undefined && (
-          <div className="-mb-2 mt-2 flex w-full items-center justify-between gap-x-3 rounded-t-lg border-l border-r border-t bg-zinc-200 px-5 py-2 text-[13px] font-medium text-neutral-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-neutral-200">
+          <div className="-mb-2 mt-2 flex w-full items-center justify-between gap-x-3 rounded-t-lg border-l border-r border-t border-neutral-300 bg-white px-5 py-2 text-[13px] font-medium text-neutral-900 dark:border-neutral-800 dark:bg-zinc-950 dark:text-neutral-200">
             {title}
             <CopyButton
-              className="border border-neutral-400 !bg-transparent hover:!bg-neutral-300 dark:border-neutral-800 dark:!bg-transparent dark:hover:!bg-neutral-950"
+              className="border border-neutral-200 !bg-transparent hover:!bg-neutral-100 dark:border-neutral-800 dark:!bg-transparent dark:hover:!bg-neutral-900"
               content={raw!}
             />
           </div>
         )}
         <pre
           className={cn(
-            "not-prose my-2 max-h-[650px] overflow-x-auto border bg-zinc-100 py-4 leading-6 dark:border-zinc-700 dark:bg-zinc-900",
-            raw && "!bg-zinc-100 dark:!bg-zinc-800",
+            "not-prose my-2 max-h-[650px] overflow-x-auto border border-neutral-300 py-4 leading-6 dark:border-neutral-800",
+            raw && "!bg-white dark:!bg-zinc-950",
             className,
             title !== undefined ? "rounded-b-lg border-t-0" : "rounded-lg",
           )}
@@ -207,7 +210,7 @@ const components = {
         >
           {children}
           {raw && title === undefined ? (
-            <CopyButton className="absolute right-3 top-3" content={raw} />
+            <CopyButton className="border dark:border-neutral-900 absolute right-3 top-3" content={raw} />
           ) : null}
         </pre>
       </div>
@@ -217,7 +220,7 @@ const components = {
   code: ({ className, ...otherProps }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "not-prose relative rounded bg-zinc-100 px-[0.3rem] py-[0.15rem] font-mono text-[13px] leading-6 text-neutral-800 dark:bg-zinc-800 dark:text-neutral-200",
+        "not-prose relative rounded bg-white px-[0.3rem] py-[0.15rem] font-mono text-[13px] leading-6 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200",
         className,
       )}
       {...otherProps}
@@ -226,7 +229,7 @@ const components = {
   Code2: ({ className, ...otherProps }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "dark:!bg-neutral-800 !w-max !rounded-lg !bg-neutral-200 !px-1 text-black dark:text-white",
+        "!w-max !rounded-lg !bg-neutral-200 !px-1 text-black dark:!bg-neutral-800 dark:text-white",
         className,
       )}
       {...otherProps}

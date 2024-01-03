@@ -60,6 +60,7 @@ export function AccordionDemo() {
   "collapsible/basic": {
     component: lazy(() => import("@/content/examples/collapsible/basic.tsx")),
     code: `"use client";
+import { CaretUpDown } from "@phosphor-icons/react";
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -74,22 +75,14 @@ export function CollapsibleDemo() {
           @peduarte starred 3 repositories
         </h4>
         <CollapsibleTrigger className="flex h-6 w-6 items-center justify-center rounded-lg bg-neutral-100 p-2 dark:bg-neutral-800">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="#ffffff"
-            viewBox="0 0 256 256"
-          >
-            <path d="M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z"></path>
-          </svg>
+          <CaretUpDown />
           <span className="sr-only">Toggle</span>
         </CollapsibleTrigger>
       </div>
       <div className="rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800">
         @radix-ui/primitives
       </div>
-      <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up space-y-2 transition-all duration-500 ease-out">
+      <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up space-y-2 overflow-hidden transition-all duration-500 ease-out">
         <div className="rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800">
           @radix-ui/colors
         </div>
@@ -142,7 +135,7 @@ import { useState } from "react";
 export function SidebarDemo() {
   const [active, setActive] = useState(1);
   return (
-    <Sidebar className="absolute left-0 top-0 h-full">
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarItems>
         <SidebarItemGroup>
           <SidebarItem
@@ -185,9 +178,9 @@ import {
 
 export function SidebarDemo() {
   return (
-    <Sidebar>
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarItems>
-      <SidebarItemGroup>
+        <SidebarItemGroup>
           <SidebarItem icon={<Layout />}> Dashboard</SidebarItem>
           <SidebarItem icon={<PaperPlane />}>Email</SidebarItem>
           <SidebarItem icon={<Gear />}>Settings</SidebarItem>
@@ -213,7 +206,7 @@ import {
 
 export function SidebarDemo() {
   return (
-    <Sidebar className="absolute left-0 top-0 h-full">
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarHead className="w-full">
         <SidebarHeadTitle>Sidebar</SidebarHeadTitle>
         <SidebarHeadToggle />
@@ -247,7 +240,7 @@ export function SidebarDemo() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sidebar
-      className="absolute left-0 top-0 h-full"
+      className="absolute left-0 top-0 h-full border-r dark:border-neutral-800"
       collapsed={collapsed}
       onCollapsedChange={setCollapsed}
     >
@@ -259,6 +252,53 @@ export function SidebarDemo() {
           <CaretLeft />
         </button>
         <SidebarHeadTitle>Sidebar</SidebarHeadTitle>
+      </SidebarHead>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem icon={<Layout />}> Dashboard</SidebarItem>
+          <SidebarItem icon={<PaperPlane />}>Email</SidebarItem>
+          <SidebarItem icon={<Gear />}>Settings</SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
+    </Sidebar>
+  );
+}
+`,
+  },
+  "sidebar/controlled-open": {
+    component: lazy(() => import("@/content/examples/sidebar/controlled-open.tsx")),
+    code: `import { Gear, Layout, PaperPlane } from "@phosphor-icons/react";
+import {
+  Sidebar,
+  SidebarItems,
+  SidebarItemGroup,
+  SidebarItem,
+  SidebarHead,
+  SidebarHeadTitle,
+  SidebarHeadToggleOpen,
+} from "@sihaxito/deluxe-ui";
+import { useState, useEffect } from "react";
+
+export function SidebarDemo() {
+  const [open, setOpen] = useState(true);
+
+  // ignore line 16 to 21, only for example purposes
+  useEffect(() => {
+    if (open === true) return;
+    setTimeout(() => {
+      setOpen(true);
+    }, 3000);
+  }, [open]);
+
+  return (
+    <Sidebar
+      className="absolute left-0 top-0 z-20 h-full -translate-x-[300%] border-r transition-[width,transform] duration-500 ease-in data-[open=true]:translate-x-0 dark:border-neutral-800"
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <SidebarHead className="w-full">
+        <SidebarHeadTitle>Sidebar</SidebarHeadTitle>
+        <SidebarHeadToggleOpen className="!flex" />
       </SidebarHead>
       <SidebarItems>
         <SidebarItemGroup>

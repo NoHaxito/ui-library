@@ -13,7 +13,7 @@ export default function SidebarDemo() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sidebar
-      className="absolute left-0 top-0 h-full"
+      className="absolute left-0 top-0 h-full border-r dark:border-neutral-800"
       collapsed={collapsed}
       onCollapsedChange={setCollapsed}
     >

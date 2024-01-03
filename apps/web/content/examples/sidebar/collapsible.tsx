@@ -11,7 +11,7 @@ import {
 
 export default function SidebarDemo() {
   return (
-    <Sidebar className="absolute left-0 top-0 h-full">
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarHead className="w-full">
         <SidebarHeadTitle>Sidebar</SidebarHeadTitle>
         <SidebarHeadToggle />

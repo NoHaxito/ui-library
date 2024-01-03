@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function SidebarDemo() {
   const [active, setActive] = useState(1);
   return (
-    <Sidebar className="absolute left-0 top-0 h-full">
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarItems>
         <SidebarItemGroup>
           <SidebarItem

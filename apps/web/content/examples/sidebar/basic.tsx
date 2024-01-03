@@ -8,9 +8,9 @@ import {
 
 export default function SidebarDemo() {
   return (
-    <Sidebar>
+    <Sidebar className="absolute left-0 top-0 h-full border-r dark:border-neutral-800">
       <SidebarItems>
-      <SidebarItemGroup>
+        <SidebarItemGroup>
           <SidebarItem icon={<Layout />}> Dashboard</SidebarItem>
           <SidebarItem icon={<PaperPlane />}>Email</SidebarItem>
           <SidebarItem icon={<Gear />}>Settings</SidebarItem>
