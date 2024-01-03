@@ -43,22 +43,24 @@ Deluxe UI requires Tailwind CSS to be used. If you don't have it installed, you 
 
 Once you have installed Tailwind CSS you will need to update your <Code2>tailwind.config</Code2> file.
 
-```tsx {11} showLineNumbers title="tailwind.config.js"
+```tsx {11,17} showLineNumbers title="tailwind.config.ts"
+import { deluxeTW } from "@sihaxito/deluxe-ui/plugin";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using 'src' directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+
+    "node_modules/@sihaxito/deluxe-ui/dist/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: ["class"],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [deluxeTW()],
 };
 ```
 
