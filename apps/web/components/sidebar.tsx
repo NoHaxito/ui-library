@@ -33,16 +33,20 @@ export function SidebarComp() {
   return (
     <Sidebar
       className={cn(
-        "fixed left-0 top-[4rem] z-30 h-[calc(100vh-4rem)] w-full shrink-0 -translate-x-[200%] border-r border-none bg-white transition-[width,transform] duration-500 data-[open=true]:translate-x-0 dark:border-neutral-800 dark:bg-neutral-950 md:!sticky md:-ml-4 md:block md:translate-x-0 md:duration-300",
+        "fixed left-0 top-[4rem] z-30 !h-[calc(100vh-4rem)] w-full shrink-0 -translate-x-[200%] border-r border-none bg-white transition-[width,transform] duration-500 data-[open=true]:translate-x-0 dark:border-neutral-800 dark:bg-neutral-950 md:!sticky md:-ml-4 md:block md:translate-x-0 md:duration-300",
       )}
       onOpenChange={context.setOpen}
       open={context.open}
     >
-      <SidebarItems>
+      <SidebarItems className="h-[calc(100vh-4rem)]">
         <SidebarItemGroup>
           {sidebarItems.map((item) => (
             <SidebarItemCollapse
               className="font-bold text-neutral-900 dark:text-white"
+              classNames={{
+                contentCollapsed:
+                  "data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden px-4 py-0.5 pb-0 text-sm transition-all",
+              }}
               defaultOpen
               itemTitle={item.title}
               key={item.title}

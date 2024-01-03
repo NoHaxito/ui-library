@@ -4,6 +4,9 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { CaretDown } from "@phosphor-icons/react";
 import { cn } from "../../utils";
+import { accordion } from "./theme";
+
+const { trigger, contentWrapper, content, iconIndicator } = accordion();
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -21,17 +24,12 @@ const AccordionTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
-      className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
-        className,
-      )}
+      className={trigger({ className })}
       ref={ref}
       {...props}
     >
       {children}
-      {!props.asChild ? (
-        <CaretDown className="@phosphor-icons/react-0 h-4 transition-transform duration-200" />
-      ) : null}
+      {!props.asChild ? <CaretDown className={iconIndicator()} /> : null}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -47,12 +45,8 @@ const AccordionContent = React.forwardRef<
   AccordionContentProps
 >(({ as: Content = "div", className, children, ...props }, ref) => {
   return (
-    <AccordionPrimitive.Content
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm transition-all"
-      ref={ref}
-      {...props}
-    >
-      <Content className={cn("pb-4 pt-0", className)}>{children}</Content>
+    <AccordionPrimitive.Content className={contentWrapper()} ref={ref} {...props}>
+      <Content className={content({ className })}>{children}</Content>
     </AccordionPrimitive.Content>
   );
 });

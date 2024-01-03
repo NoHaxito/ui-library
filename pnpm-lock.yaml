@@ -304,6 +304,9 @@ importers:
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
+      postcss-js:
+        specifier: ^4.0.1
+        version: 4.0.1(postcss@8.4.31)
       tailwind-merge:
         specifier: ^2.0.0
         version: 2.0.0
@@ -329,6 +332,9 @@ importers:
       '@sihaxito/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@types/postcss-js':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/react':
         specifier: ^18.2.38
         version: 18.2.38
@@ -5339,6 +5345,12 @@ packages:
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
+
+  /@types/postcss-js@4.0.4:
+    resolution: {integrity: sha512-j5+GMZVIPCJpRTwI/mO64mCzv7X+zAEq3JP0EV2lo/BrLWHAohEubUJimIAY23rH27+wKce0fXUYjAdBoqlaYw==}
+    dependencies:
+      postcss: 8.4.31
+    dev: true
 
   /@types/pretty-hrtime@1.0.1:
     resolution: {integrity: sha512-VjID5MJb1eGKthz2qUerWT8+R4b9N+CHvGCzg9fn4kWZgaF9AhdYikQio3R7wV8YY1NsQKPaCwKz1Yff+aHNUQ==}

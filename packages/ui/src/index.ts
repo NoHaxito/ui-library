@@ -1,18 +1,6 @@
-import "./styles.css";
+import "../styles.css";
 
-export {
-  Sidebar,
-  SidebarItem,
-  SidebarItemCollapse,
-  SidebarItemGroup,
-  SidebarItems,
-  SidebarHead,
-  SidebarHeadLogo,
-  SidebarHeadTitle,
-  SidebarHeadToggle,
-  SidebarHeadToggleOpen,
-  SidebarFooter,
-} from "./components/sidebar";
+export * from "./components/sidebar";
 export * from "./components/collapsible";
 export * from "./components/accordion/root";
 export * from "./components/tooltip";

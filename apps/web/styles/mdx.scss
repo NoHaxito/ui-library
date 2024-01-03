@@ -35,8 +35,7 @@
   }
 
   [data-highlighted-line] {
-    @apply border-indigo-400;
-    background-color: rgba(255, 255, 255, 0.08);
+    @apply border-indigo-400 bg-neutral-200 dark:bg-neutral-700;
 
     span {
       @apply relative;
@@ -44,7 +43,7 @@
   }
 
   [data-highlighted-chars] {
-    @apply rounded-sm bg-white/10 px-1;
+    @apply rounded-sm bg-neutral-700 dark:bg-white/10 px-1;
   }
 
   [data-chars-id="s"] {

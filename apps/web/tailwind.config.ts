@@ -7,6 +7,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./content/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "node_modules/@sihaxito/deluxe-ui/dist/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {

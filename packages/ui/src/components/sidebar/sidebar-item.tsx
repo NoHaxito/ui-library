@@ -87,10 +87,10 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
     const {
       context: { collapsed },
     } = useSidebarContext();
-    const { item, itemIcon } = sidebar();
+    const { itemWrapper, item, itemTitle, itemIcon } = sidebar();
     return (
       <ListItem
-        className={cn("cursor-pointer list-none")}
+        className={itemWrapper()}
         collapsed={collapsed}
         data-active={isActive}
         tooltip={tooltip}
@@ -107,12 +107,7 @@ export const SidebarItem = forwardRef<HTMLLIElement, SidebarItemProps>(
               {(children as string).charAt(0).toLocaleUpperCase()}
             </span>
           ) : null}
-          <div
-            className={cn(
-              collapsed ? "opacity-0" : "opacity-100",
-              "flex w-full items-center justify-between transition-opacity duration-[800ms]",
-            )}
-          >
+          <div className={itemTitle({ collapsed })}>
             {children}
             {label ? <div>{label}</div> : null}
           </div>

@@ -27,7 +27,14 @@ export const SidebarItemCollapse = React.forwardRef<
   SidebarItemCollapseProps
 >(({ classNames, children, className, ...props }, forwardedRef) => {
   const { context } = useSidebarContext();
-  const { item, itemIcon } = sidebar();
+  const {
+    item,
+    itemTitle,
+    itemIcon,
+    itemCollapseWrapper,
+    itemCollapseIcon,
+    itemCollapseContent,
+  } = sidebar();
   return (
     <Collapsible defaultOpen={props.defaultOpen}>
       <CollapsibleTrigger
@@ -42,24 +49,18 @@ export const SidebarItemCollapse = React.forwardRef<
             {(props.itemTitle as string).charAt(0).toLocaleUpperCase()}
           </span>
         ) : null}
-        <div
-          className={cn(
-            context.collapsed ? "opacity-0" : "opacity-100",
-            "flex w-full items-center justify-between transition-opacity duration-[400ms]",
-          )}
-        >
+        <div className={itemTitle({ collapsed: context.collapsed })}>
           {props.itemTitle}
-          <span className="ml-auto">
-            <CaretRight className="transition group-data-[state=open]:rotate-90" />
+          <span className={itemCollapseWrapper()}>
+            <CaretRight className={itemCollapseIcon()} />
           </span>
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent
-        className={cn(
-          context.collapsed && "!px-0",
-          "data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden px-4 py-0.5 pb-0 text-sm transition-all",
-          classNames?.contentCollapsed,
-        )}
+        className={itemCollapseContent({
+          collapsed: context.collapsed,
+          className: classNames?.contentCollapsed,
+        })}
         ref={forwardedRef}
       >
         {children}
