@@ -6,11 +6,5 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@sihaxito/docs",
-    "@sihaxito/web",
-    "@sihaxito/eslint-config",
-    "@sihaxito/typescript-config",
-    "@sihaxito/tailwind-config"
-  ]
+  "ignore": ["@sihaxito/docs", "@sihaxito/web"]
 }
