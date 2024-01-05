@@ -1,20 +1,10 @@
 import plugin from "tailwindcss/plugin";
-import theme from "tailwindcss/defaultTheme";
 import { PluginOptions } from "../types/plugin";
 import { deluxeUIColors } from "./colors";
 
 const getTheme = {
   grayColor: deluxeUIColors.grayColor,
-  // borderRadius: {
-  //   none: "borderRadius.none",
-  //   sm: "borderRadius.sm",
-  //   md: "borderRadius.md",
-  //   lg: "borderRadius.lg",
-  //   xl: "borderRadius.xl",
-  //   "2xl": "borderRadius.2xl",
-  //   "3xl": "borderRadius.3xl",
-  //   full: "borderRadius.full",
-  // },
+
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -28,51 +18,49 @@ const getTheme = {
 };
 
 export const deluxeTW = (config: PluginOptions = {}) => {
-  return plugin(
-    ({ addBase, theme }) => {
-      // addBase({
-      //   ".deluxe-rounded": {
-      //     borderRadius: `${theme(
-      //       getTheme.borderRadius[config.borderRadius ?? "md"]
-      //     )}`,
-      //   },
-      // });
-    },
-    {
-      theme: {
-        extend: {
-          borderRadius: {
-            deluxe: getTheme.borderRadius[config.borderRadius ?? "md"],
+  return plugin(() => {}, {
+    theme: {
+      extend: {
+        animation: {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
+          "collapsible-down": "collapsible-down 0.3s ease-out",
+          "collapsible-up": "collapsible-up 0.3s ease-out",
+          "indeterminated-progress":
+            "indeterminate-progress 1s infinite linear",
+        },
+        backgroundColor: {
+          deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
+        },
+        borderRadius: {
+          deluxe: getTheme.borderRadius[config.borderRadius ?? "md"],
+        },
+        keyframes: {
+          "accordion-down": {
+            from: { height: "0" },
+            to: { height: "var(--radix-accordion-content-height)" },
           },
-          backgroundColor: {
-            deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: "0" },
           },
-          keyframes: {
-            "accordion-down": {
-              from: { height: "0" },
-              to: { height: "var(--radix-accordion-content-height)" },
-            },
-            "accordion-up": {
-              from: { height: "var(--radix-accordion-content-height)" },
-              to: { height: "0" },
-            },
-            "collapsible-down": {
-              from: { height: "0" },
-              to: { height: "var(--radix-collapsible-content-height)" },
-            },
-            "collapsible-up": {
-              from: { height: "var(--radix-collapsible-content-height)" },
-              to: { height: "0" },
-            },
+          "collapsible-down": {
+            from: { height: "0" },
+            to: { height: "var(--radix-collapsible-content-height)" },
           },
-          animation: {
-            "accordion-down": "accordion-down 0.2s ease-out",
-            "accordion-up": "accordion-up 0.2s ease-out",
-            "collapsible-down": "collapsible-down 0.3s ease-out",
-            "collapsible-up": "collapsible-up 0.3s ease-out",
+          "collapsible-up": {
+            from: { height: "var(--radix-collapsible-content-height)" },
+            to: { height: "0" },
+          },
+          "indeterminate-progress": {
+            "0%": { transform: " translateX(0) scaleX(0)" },
+            "40%": { transform: "translateX(0) scaleX(0.7)" },
+            "100%": {
+              transform: "translateX(100%) scaleX(0.4)",
+            },
           },
         },
       },
-    }
-  );
+    },
+  });
 };

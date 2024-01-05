@@ -20,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} relative`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="absolute top-5 right-5">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
           {children}
         </ThemeProvider>
       </body>

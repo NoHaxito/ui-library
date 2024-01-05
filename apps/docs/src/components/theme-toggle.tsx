@@ -21,7 +21,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      className="active:scale-95 h-8 w-8 hover:opacity-90 active:opacity-80 transition-[transform,opacity] text-sm flex items-center justify-center gap-2 rounded-deluxe bg-deluxe-900 text-white"
+      className="absolute top-5 right-5 active:scale-95 h-8 w-8 hover:opacity-90 active:opacity-80 transition-[transform,opacity] text-sm flex items-center justify-center gap-2 rounded-lg bg-neutral-900 text-white"
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
