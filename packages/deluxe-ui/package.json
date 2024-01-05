@@ -1,0 +1,38 @@
+{
+  "name": "@deluxe/ui",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup src --watch",
+    "build": "tsup src",
+    "test": "echo 'Add test script here'",
+    "lint": "echo 'Add lint script here'"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3.3.0",
+    "tsup": "^8.0.1"
+  },
+  "dependencies": {
+    "tailwind-variants": "^0.1.20"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}
