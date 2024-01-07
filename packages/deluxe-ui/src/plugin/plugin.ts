@@ -4,7 +4,6 @@ import { deluxeUIColors } from "./colors";
 
 const getTheme = {
   grayColor: deluxeUIColors.grayColor,
-
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -30,6 +29,9 @@ export const deluxeTW = (config: PluginOptions = {}) => {
             "indeterminate-progress 1s infinite linear",
         },
         backgroundColor: {
+          deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
+        },
+        borderColor: {
           deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
         },
         borderRadius: {

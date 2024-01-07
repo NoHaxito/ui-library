@@ -1,3 +1,2 @@
 export { deluxeTW } from "./plugin/plugin";
-
-export * from "./components/button";
+export { Button } from "./components/button";
