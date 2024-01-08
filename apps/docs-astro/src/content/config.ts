@@ -6,12 +6,8 @@ const docsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    links: z
-      .object({
-        github: z.string(),
-        radix: z.string(),
-      })
-      .optional(),
+    github: z.string().optional(),
+    radix: z.string().optional(),
   }),
 });
 // 3. Export a single `collections` object to register your collection(s)
