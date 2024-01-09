@@ -1,9 +1,9 @@
-import { Button } from "deluxe";
+import { Button } from "@deluxe/ui";
 import { Bell, House } from "@phosphor-icons/react/dist/ssr";
 
 export default function Home() {
   return (
-    <main className="flex flex-col bg-neutral-50 dark:bg-neutral-950 min-h-screen justify-center items-center gap-2">
+    <main className="container space-y-2 mx-auto py-4">
       <div className="flex items-center gap-2">
         <Button left={<House />} size="sm">
           Home
@@ -45,11 +45,11 @@ export default function Home() {
           <Bell />
         </Button>
       </div>
-      {/* <div className="w-52 rounded-lg overflow-hidden">
+      <div className="w-52 rounded-lg overflow-hidden">
         <div className="h-1.5 w-full bg-deluxe-200 dark:bg-deluxe-800 group overflow-hidden">
-          <div className="animate-indeterminated-progress origin-[0%_50%] w-full h-full bg-blue-500"></div>
+          <div className="animate-indeterminated-progress duration-1000 origin-[0%_50%] w-full h-full bg-blue-500"></div>
         </div>
-      </div> */}
+      </div>
     </main>
   );
 }
