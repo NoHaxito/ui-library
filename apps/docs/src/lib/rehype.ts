@@ -3,6 +3,7 @@ import { visit } from "unist-util-visit";
 import type { Node } from "unist-builder/lib";
 
 import { Examples } from "../examples";
+import { UnistNode, UnistTree } from "@/types/unist";
 
 export const preProcess = () => (tree: UnistTree) => {
   visit(tree, "element", (node: UnistNode) => {
@@ -31,9 +32,10 @@ export const postProcess = () => (tree: UnistTree) => {
       ) {
         return;
       }
+
       const title = node.children?.find(
         (child) => child.tagName === "figcaption"
-      )?.children?.[0].value;
+      )?.children?.[0]?.value;
       const preElement = node.children?.find(
         (child: UnistNode) => child.tagName === "pre"
       );
@@ -88,28 +90,4 @@ export const addCode = () => (tree: UnistTree) => {
 
 function getNodeAttributeByName(node: UnistNode, name: string) {
   return node.attributes?.find((attribute) => attribute.name === name);
-}
-
-export interface UnistNode extends Node {
-  type: string;
-  name?: string;
-  tagName?: string;
-  raw?: string;
-  value?: string;
-  properties?: {
-    raw?: string;
-    className?: string;
-    [key: string]: unknown;
-  };
-  attributes?: {
-    name: string;
-    value: unknown;
-    type?: string;
-  }[];
-  children?: UnistNode[];
-  title?: string;
-}
-
-export interface UnistTree extends Node {
-  children: UnistNode[];
 }

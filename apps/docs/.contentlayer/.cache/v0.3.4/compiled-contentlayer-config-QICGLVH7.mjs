@@ -38,7 +38,7 @@ var postProcess = () => (tree) => {
       }
       const title = node.children?.find(
         (child) => child.tagName === "figcaption"
-      )?.children?.[0].value;
+      )?.children?.[0]?.value;
       const preElement = node.children?.find(
         (child) => child.tagName === "pre"
       );
@@ -158,4 +158,4 @@ export {
   Doc,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-QX6KI6KJ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-QICGLVH7.mjs.map

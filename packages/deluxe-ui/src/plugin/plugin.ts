@@ -34,6 +34,9 @@ export const deluxeTW = (config: PluginOptions = {}) => {
         borderColor: {
           deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
         },
+        textColor: {
+          deluxe: getTheme.grayColor[config.grayColor ?? "neutral"],
+        },
         borderRadius: {
           deluxe: getTheme.borderRadius[config.borderRadius ?? "md"],
         },
