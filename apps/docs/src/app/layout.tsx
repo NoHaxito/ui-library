@@ -76,8 +76,8 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
           </div>
-          <footer className="border-t dark:border-neutral-800 dark:bg-neutral-950">
-            <div className="container py-4 flex md:flex-row flex-col gap-2 items-center justify-between">
+          <footer className="z-50 border-t dark:border-neutral-800 dark:bg-neutral-950">
+            <div className="container py-6 flex md:flex-row flex-col gap-2 dark:bg-neutral-950 items-center justify-between">
               {/* <div className="text-neutral-500">
                 Using{" "}
                 <a

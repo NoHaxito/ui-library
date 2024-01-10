@@ -1,37 +1,45 @@
 {
-  "name": "@deluxe/ui",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "author": "",
+  "dependencies": {
+    "@phosphor-icons/react": "^2.0.15",
+    "@radix-ui/react-collapsible": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-use-controllable-state": "^1.0.1",
+    "clsx": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwind-variants": "^0.1.20"
+  },
+  "description": "",
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "concurrently": "^8.2.2",
+    "tailwindcss": "^3.3.0",
+    "tsup": "^8.0.1"
+  },
   "files": [
     "dist"
   ],
+  "keywords": [],
+  "license": "ISC",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "name": "@deluxe/ui",
   "scripts": {
-    "dev": "vite build --watch",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "concurrently \"npm run build:cjs\" \"npm run build:esm\"",
+    "build:cjs": "tsup --format cjs --external react",
+    "build:esm": "tsup --format esm --external react",
+    "build:watch": "concurrently \"npm:build:watch:*\"",
+    "build:watch:cjs": "npm run build:cjs -- --watch",
+    "build:watch:esm": "npm run build:esm -- --watch",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "npm run build:watch"
   },
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-variants": "^0.1.20"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0"
-  }
+  "sideEffects": false,
+  "type": "module",
+  "types": "./dist/cjs/index.d.cts",
+  "version": "1.0.0"
 }

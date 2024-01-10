@@ -25,6 +25,6 @@ const config: Config = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [deluxeTW({ grayColor: "neutral", borderRadius: "2xl" })],
+  plugins: [deluxeTW({ grayColor: "stone", borderRadius: "xl" })],
 };
 export default config;
