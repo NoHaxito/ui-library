@@ -1,8 +1,10 @@
 {
   "author": "",
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
     "@phosphor-icons/react": "^2.0.15",
     "@radix-ui/react-collapsible": "^1.0.3",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-use-controllable-state": "^1.0.1",
     "clsx": "^2.1.0",
@@ -25,21 +27,16 @@
   ],
   "keywords": [],
   "license": "ISC",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@deluxe/ui",
   "scripts": {
-    "build": "concurrently \"npm run build:cjs\" \"npm run build:esm\"",
-    "build:cjs": "tsup --format cjs --external react",
-    "build:esm": "tsup --format esm --external react",
-    "build:watch": "concurrently \"npm:build:watch:*\"",
-    "build:watch:cjs": "npm run build:cjs -- --watch",
-    "build:watch:esm": "npm run build:esm -- --watch",
+    "build": "tsup --external react",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "dev": "npm run build:watch"
+    "dev": "npm run build -- --watch"
   },
   "sideEffects": false,
   "type": "module",
-  "types": "./dist/cjs/index.d.cts",
+  "types": "./dist/index.d.ts",
   "version": "1.0.0"
 }
