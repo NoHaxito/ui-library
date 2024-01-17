@@ -8,7 +8,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="container mx-auto flex-1 items-start md:grid md:grid-cols-[auto_minmax(0,1fr)] md:gap-6">
+    <div className="flex-1 items-start md:grid md:grid-cols-[auto_minmax(0,1fr)] md:gap-6">
       <DocsSidebar />
       {children}
     </div>

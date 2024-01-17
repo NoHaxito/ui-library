@@ -28,7 +28,7 @@ const config: Config = {
   },
   darkMode: "class",
   plugins: [
-    deluxeTW({ grayColor: "stone", borderRadius: "lg" }),
+    deluxeTW({ grayColor: "neutral", borderRadius: "xl" }),
     require("tailwindcss-animate"),
   ],
 };

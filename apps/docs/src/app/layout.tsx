@@ -7,6 +7,8 @@ import { Heart } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@deluxe/ui";
 import Github from "@/components/icons/github";
 import Discord from "@/components/icons/discord";
+import { SubNav } from "@/components/docs/sub-nav";
+import { SidebarContextProvider } from "@/components/docs/sidebar-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,54 +74,37 @@ export default function RootLayout({
     >
       <body className={`${inter.className} relative`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="relative flex min-h-screen flex-col dark:bg-neutral-950">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-          </div>
-          <footer className="z-50 border-t dark:border-neutral-800 dark:bg-neutral-950">
-            <div className="container py-6 flex md:flex-row flex-col gap-2 dark:bg-neutral-950 items-center justify-between">
-              {/* <div className="text-neutral-500">
-                Using{" "}
-                <a
-                  className="underline text-neutral-700 dark:text-neutral-300"
-                  target="_blank"
-                  rel="noreferrer noopen"
-                  href="https://radix-ui.com"
-                >
-                  RadixUI
-                </a>{" "}
-                and{" "}
-                <a
-                  className="underline text-neutral-700 dark:text-neutral-300"
-                  target="_blank"
-                  rel="noreferrer noopen"
-                  href="https://tailwindcss.com"
-                >
-                  TailwindCSS
-                </a>
-              </div> */}
-              <p className="flex items-center gap-x-1 text-neutral-500">
-                Built with <Heart className="text-red-500" weight="fill" /> by
-                nohaxito.
-              </p>
-              <div className="flex items-center gap-x-1 text-neutral-500">
-                <Button
-                  variant="ghost"
-                  className="dark:hover:text-white"
-                  size="icon"
-                >
-                  <Github className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="dark:hover:text-white"
-                  size="icon"
-                >
-                  <Discord className="h-4 w-4" />
-                </Button>
-              </div>
+          <SidebarContextProvider>
+            <div className="relative flex min-h-screen flex-col dark:bg-neutral-950">
+              <Navbar />
+              <SubNav />
+              <main className="container mx-auto flex-1">{children}</main>
+              <footer className="border-t dark:border-neutral-800 dark:bg-neutral-950">
+                <div className="container py-6 flex md:flex-row flex-col gap-2 dark:bg-neutral-950 items-center justify-between">
+                  <p className="flex items-center gap-x-1 text-neutral-500">
+                    Built with <Heart className="text-red-500" weight="fill" />{" "}
+                    by nohaxito.
+                  </p>
+                  <div className="flex items-center gap-x-1 text-neutral-500">
+                    <Button
+                      variant="ghost"
+                      className="dark:hover:text-white"
+                      size="icon"
+                    >
+                      <Github className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      className="dark:hover:text-white"
+                      size="icon"
+                    >
+                      <Discord className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </footer>
             </div>
-          </footer>
+          </SidebarContextProvider>
         </ThemeProvider>
       </body>
     </html>

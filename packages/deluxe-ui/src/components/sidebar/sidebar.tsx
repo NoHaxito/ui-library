@@ -39,7 +39,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
       onChange: onOpenChange,
     });
     const { SidebarContext } = useSidebarContext();
-    const { base } = sidebarTheme.base();
+    const { base, overlay } = sidebarTheme.base();
     return (
       <SidebarContext.Provider
         value={{
@@ -50,12 +50,15 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
         }}
       >
         <Component
+          data-open={open ? "true" : "false"}
+          data-collapsed={collapsed ? "true" : "false"}
           className={base({ collapsed, open, className })}
           ref={ref}
           {...props}
         >
           {children}
         </Component>
+        {open && <div onClick={() => setOpen(false)} className={overlay()} />}
       </SidebarContext.Provider>
     );
   }

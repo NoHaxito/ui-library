@@ -25,7 +25,7 @@ const sidebarBase = tv({
 
 const sidebarItems = tv({
   slots: {
-    base: "overflow-hidden overflow-y-auto h-full my-0 pr-2 first:my-4 px-3 overflow-x-hidden flex flex-1 flex-col gap-y-6",
+    base: "overflow-hidden overflow-y-auto h-full first:py-1.5 pr-2 px-3 overflow-x-hidden flex flex-1 flex-col gap-y-6",
     group: "flex flex-col",
   },
 });

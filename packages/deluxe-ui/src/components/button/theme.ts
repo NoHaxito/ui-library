@@ -11,6 +11,8 @@ export const buttonVariants = tv({
         "border-transparent bg-transparent hover:bg-deluxe-200 dark:hover:bg-deluxe-900",
       outline:
         "border-deluxe-200 hover:bg-deluxe-200 dark:border-deluxe-800 dark:hover:bg-deluxe-900",
+      danger:
+        "bg-red-500 border-red-400 dark:border-red-700 dark:bg-red-600 text-white",
     },
     size: {
       sm: "px-3 py-2",
