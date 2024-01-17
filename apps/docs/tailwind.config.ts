@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 
 import { deluxeTW } from "@deluxe/ui";
+import tailwindAnimate from "tailwindcss-animate";
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,6 +27,9 @@ const config: Config = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [deluxeTW({ grayColor: "neutral", borderRadius: "xl" })],
+  plugins: [
+    deluxeTW({ grayColor: "stone", borderRadius: "lg" }),
+    require("tailwindcss-animate"),
+  ],
 };
 export default config;

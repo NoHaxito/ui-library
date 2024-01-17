@@ -1,6 +1,7 @@
 import plugin from "tailwindcss/plugin";
 import { PluginOptions } from "../types/plugin";
 import { deluxeUIColors } from "./colors";
+import tailwindAnimate from "tailwindcss-animate";
 
 const getTheme = {
   grayColor: deluxeUIColors.grayColor,
@@ -67,5 +68,6 @@ export const deluxeTW = (config: PluginOptions = {}) => {
         },
       },
     },
+    plugins: [tailwindAnimate],
   });
 };

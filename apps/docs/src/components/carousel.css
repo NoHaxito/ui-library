@@ -1,0 +1,39 @@
+.veil {
+  --veil-right-width: 2rem;
+  --veil-left-width: 2rem;
+
+  margin-right: calc(var(--veil-right-width) * -1);
+  margin-left: calc(var(--veil-left-width) * -1);
+  overflow: hidden;
+}
+.slider {
+  --visible-items: 1;
+
+  display: grid;
+  position: relative;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(
+    (100% - var(--gap) * (var(--visible-items) - 1)) / var(--visible-items)
+  );
+  gap: var(--gap);
+
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none; /* 1 */
+  -ms-overflow-style: none; /* 2 */
+  &::-webkit-scrollbar {
+    display: none; /* 3 */
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: calc(var(--veil-right-width) - var(--gap));
+  }
+}
+
+.item {
+  scroll-snap-align: start;
+}
