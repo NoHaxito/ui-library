@@ -49,14 +49,14 @@ export const SidebarItemCollapse = React.forwardRef<
             <CaretRight
               className={icon({
                 className:
-                  "transition group-data-[state=open]:rotate-90 h-4 w-4",
+                  "h-4 w-4 transition group-data-[state=open]:rotate-90",
               })}
             />
           </span>
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent
-        className={cn('px-4', classNames?.contentCollapsed)}
+        className={cn("px-4", classNames?.contentCollapsed)}
         ref={forwardedRef}
       >
         {children}

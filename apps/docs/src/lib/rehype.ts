@@ -34,10 +34,10 @@ export const postProcess = () => (tree: UnistTree) => {
       }
 
       const title = node.children?.find(
-        (child) => child.tagName === "figcaption"
+        (child) => child.tagName === "figcaption",
       )?.children?.[0]?.value;
       const preElement = node.children?.find(
-        (child: UnistNode) => child.tagName === "pre"
+        (child: UnistNode) => child.tagName === "pre",
       );
 
       if (preElement?.tagName !== "pre") {
@@ -82,7 +82,7 @@ export const addCode = () => (tree: UnistTree) => {
               ],
             }),
           ],
-        }) as unknown as UnistNode
+        }) as unknown as UnistNode,
       );
     }
   });

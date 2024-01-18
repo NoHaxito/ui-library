@@ -80,7 +80,7 @@ export default function RootLayout({
               <SubNav />
               <main className="container mx-auto flex-1">{children}</main>
               <footer className="border-t dark:border-neutral-800 dark:bg-neutral-950">
-                <div className="container py-6 flex md:flex-row flex-col gap-2 dark:bg-neutral-950 items-center justify-between">
+                <div className="container flex flex-col items-center justify-between gap-2 py-6 md:flex-row dark:bg-neutral-950">
                   <p className="flex items-center gap-x-1 text-neutral-500">
                     Built with <Heart className="text-red-500" weight="fill" />{" "}
                     by nohaxito.

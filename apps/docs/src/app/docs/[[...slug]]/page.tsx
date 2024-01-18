@@ -71,7 +71,7 @@ export default async function GettingStartedDocPage({
 
           {doc.links?.radix && (
             <Link
-              className="inline-flex px-3 py-1 transform items-center justify-center gap-2 rounded-md bg-neutral-100/80 dark:bg-neutral-900/80 text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
+              className="inline-flex transform items-center justify-center gap-2 rounded-md bg-neutral-100/80 px-3 py-1 text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900/80 dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
               href={doc.links.radix ?? "#"}
               rel="noopener noreferrer"
               target="_blank"
@@ -99,7 +99,7 @@ export default async function GettingStartedDocPage({
         </div>
         <Pager doc={doc} />
         <div className="my-3 h-px w-full bg-neutral-300 dark:bg-neutral-800" />
-        <div className="text-neutral-500 flex justify-between items-center flex-col w-full sm:flex-row gap-2">
+        <div className="flex w-full flex-col items-center justify-between gap-2 text-neutral-500 sm:flex-row">
           <EditPageLink />
           <ScrollToTop />
         </div>

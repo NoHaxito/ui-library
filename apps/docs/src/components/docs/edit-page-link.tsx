@@ -15,7 +15,7 @@ export function EditPageLink() {
     <Button
       size="sm"
       variant="ghost"
-      className="w-full sm:w-auto text-start hover:text-neutral-700 dark:hover:text-neutral-300"
+      className="w-full text-start hover:text-neutral-700 sm:w-auto dark:hover:text-neutral-300"
       left={<Github className="h-4 w-4" />}
       asChild
     >

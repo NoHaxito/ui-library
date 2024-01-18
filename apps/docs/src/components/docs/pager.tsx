@@ -11,7 +11,7 @@ export function Pager({ doc }: { doc: Doc }) {
     return null;
   }
   return (
-    <div className="flex justify-between items-center flex-col w-full sm:flex-row gap-2">
+    <div className="flex w-full flex-col items-center justify-between gap-2 sm:flex-row">
       {pager?.prev?.href ? (
         <Button
           size="sm"
@@ -46,7 +46,7 @@ export function getPagerForDoc(doc: Doc): {
 } | null {
   const flattenedLinks = [null, ...flatten(sidebarItems), null];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href
+    (link) => doc.slug === link?.href,
   );
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =

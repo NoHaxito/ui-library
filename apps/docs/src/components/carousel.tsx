@@ -42,7 +42,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       onNext,
       ...props
     },
-    ref
+    ref,
   ) => {
     const sliderRef = useRef<HTMLUListElement>(null!);
 
@@ -124,7 +124,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       <div
         {...props}
         ref={ref}
-        className={cn("grid w-full relative", props.className)}
+        className={cn("relative grid w-full", props.className)}
       >
         <div className={cn("veil")}>
           <ul
@@ -167,7 +167,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Carousel.displayName = "Carousel";

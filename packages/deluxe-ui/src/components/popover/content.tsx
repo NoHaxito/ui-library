@@ -15,7 +15,7 @@ export const PopoverContent = React.forwardRef<
 >(
   (
     { className, side = "bottom", sideOffset = 4, align = "center", ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const content = popoverTheme.content;
     return (
@@ -30,6 +30,6 @@ export const PopoverContent = React.forwardRef<
         />
       </RadixPopoverPortal>
     );
-  }
+  },
 );
 PopoverContent.displayName = "PopoverContent";

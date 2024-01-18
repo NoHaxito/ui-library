@@ -37,7 +37,7 @@ export function CopyButton({ className, content }: CopyButtonProps) {
         className={cn(
           isCopied && "pointer-events-none",
           className,
-          "copy-button inline-flex h-8 w-8 border-neutral-800 border items-center justify-center gap-2 rounded-md text-sm font-medium transition duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 bg-neutral-950 text-white ring-offset-neutral-950 hover:bg-neutral-900 hover:text-neutral-50 focus-visible:ring-neutral-300"
+          "copy-button inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md border border-neutral-800 bg-neutral-950 text-sm font-medium text-white ring-offset-neutral-950 transition duration-300 ease-in-out hover:bg-neutral-900 hover:text-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50",
         )}
         onClick={handleCopy}
         type="button"

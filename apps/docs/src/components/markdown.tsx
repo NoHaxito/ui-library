@@ -52,7 +52,7 @@ const components = {
     <h1
       className={cn(
         "font-heading mt-2 scroll-m-20 text-4xl font-bold",
-        className
+        className,
       )}
       {...props}
     />
@@ -61,7 +61,7 @@ const components = {
     <h2
       className={cn(
         "font-heading mt-12 scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0",
-        className
+        className,
       )}
       {...props}
     >
@@ -72,7 +72,7 @@ const components = {
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     >
@@ -83,7 +83,7 @@ const components = {
     <h4
       className={cn(
         "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -92,7 +92,7 @@ const components = {
     <h5
       className={cn(
         "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -101,7 +101,7 @@ const components = {
     <h6
       className={cn(
         "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -116,7 +116,7 @@ const components = {
     <p
       className={cn(
         "leading-7 text-neutral-500 dark:text-neutral-400 [&:not(:first-child)]:mt-4",
-        className
+        className,
       )}
       {...props}
     />
@@ -145,7 +145,7 @@ const components = {
     <img alt={alt} className={cn("rounded-md", className)} {...props} />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr className="my-4 border-0 dark:border-neutral-800 md:my-8" {...props} />
+    <hr className="my-4 border-0 md:my-8 dark:border-neutral-800" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -162,7 +162,7 @@ const components = {
     <th
       className={cn(
         "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
+        className,
       )}
       {...props}
     />
@@ -171,7 +171,7 @@ const components = {
     <td
       className={cn(
         "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
+        className,
       )}
       {...props}
     />
@@ -191,7 +191,7 @@ const components = {
     return (
       <div className="group">
         {title !== undefined && (
-          <div className="-mb-2 mt-2 flex w-full items-center justify-between gap-x-3 rounded-t-lg border px-5 py-2 text-[13px] font-medium border-neutral-800 bg-zinc-950 text-neutral-200">
+          <div className="-mb-2 mt-2 flex w-full items-center justify-between gap-x-3 rounded-t-lg border border-neutral-800 bg-zinc-950 px-5 py-2 text-[13px] font-medium text-neutral-200">
             {title}
             <CopyButton content={raw!} />
           </div>
@@ -201,14 +201,14 @@ const components = {
             "not-prose my-2 max-h-[650px] overflow-x-auto border border-neutral-300 py-4 leading-6 dark:border-neutral-800",
             raw && "!bg-zinc-950",
             className,
-            title !== undefined ? "rounded-b-lg border-t-0" : "rounded-lg"
+            title !== undefined ? "rounded-b-lg border-t-0" : "rounded-lg",
           )}
           {...otherProps}
         >
           {children}
           {raw && title === undefined ? (
             <CopyButton
-              className="opacity-0 group-hover:opacity-100 absolute right-3 top-3"
+              className="absolute right-3 top-3 opacity-0 group-hover:opacity-100"
               content={raw}
             />
           ) : null}
@@ -220,7 +220,7 @@ const components = {
     <code
       className={cn(
         "not-prose relative rounded bg-white px-[0.3rem] py-[0.15rem] font-mono text-[13px] leading-6 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200",
-        className
+        className,
       )}
       {...otherProps}
     />
@@ -229,7 +229,7 @@ const components = {
     <code
       className={cn(
         "!w-max !rounded-lg !bg-neutral-200 !px-1 text-black dark:!bg-neutral-800 dark:text-white",
-        className
+        className,
       )}
       {...otherProps}
     />
@@ -239,7 +239,7 @@ const components = {
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -260,8 +260,8 @@ const components = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "ease flex w-full flex-col items-center gap-y-1 rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 opacity-60 shadow transition-[colors,opacity,transform] duration-300 hover:bg-neutral-100 hover:opacity-100 active:scale-95 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900 sm:p-8",
-        className
+        "ease flex w-full flex-col items-center gap-y-1 rounded-xl border border-neutral-200 bg-neutral-100/50 p-6 opacity-60 shadow transition-[colors,opacity,transform] duration-300 hover:bg-neutral-100 hover:opacity-100 active:scale-95 sm:p-8 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:bg-neutral-900",
+        className,
       )}
       {...props}
     />
@@ -296,14 +296,14 @@ function LinkHeading({
     <Link
       className={cn(
         "group relative flex w-fit items-center gap-1 text-inherit",
-        className
+        className,
       )}
       href={`#${id}`}
       id={id}
       {...props}
     >
       {children}
-      <span className="opacity-0 transition-opacity group-hover:opacity-100 text-neutral-500">
+      <span className="text-neutral-500 opacity-0 transition-opacity group-hover:opacity-100">
         <Hash aria-hidden className="h-5 w-5" />
       </span>
     </Link>

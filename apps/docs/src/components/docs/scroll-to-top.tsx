@@ -9,7 +9,7 @@ export function ScrollToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       size="sm"
       variant="ghost"
-      className="w-full sm:w-auto hover:text-neutral-700 dark:hover:text-neutral-300"
+      className="w-full hover:text-neutral-700 sm:w-auto dark:hover:text-neutral-300"
       left={<CaretUp className="h-4 w-4" />}
     >
       Back to top

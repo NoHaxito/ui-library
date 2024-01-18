@@ -8,7 +8,7 @@ export const SidebarItems = forwardRef<HTMLElement, SidebarItemsProps>(
   ({ className, ...props }, ref) => {
     const { base } = sidebarTheme.items();
     return <nav className={base({ className })} {...props} />;
-  }
+  },
 );
 
 SidebarItems.displayName = "SidebarItems";

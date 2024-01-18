@@ -35,6 +35,6 @@ export function GET(): ImageResponse {
     {
       width: 1200,
       height: 630,
-    }
+    },
   );
 }

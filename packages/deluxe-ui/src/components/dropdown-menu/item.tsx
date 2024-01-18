@@ -33,7 +33,7 @@ export const DropdownMenuItem = forwardRef<
       {children}
       {rightIcon && <span className="ml-auto">{rightIcon && rightIcon}</span>}
       {shortcut && (
-        <span className="ml-auto text-xs tracking-widest text-deluxe-500">
+        <span className="text-deluxe-500 ml-auto text-xs tracking-widest">
           {shortcut && shortcut}
         </span>
       )}

@@ -26,7 +26,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
       onCollapsedChange,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [collapsed, setCollapsed] = useControllableState({
       defaultProp: false,
@@ -61,6 +61,6 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
         {open && <div onClick={() => setOpen(false)} className={overlay()} />}
       </SidebarContext.Provider>
     );
-  }
+  },
 );
 Sidebar.displayName = "Sidebar";

@@ -39,7 +39,7 @@ export function Navbar() {
           <nav className="ml-10 hidden items-center gap-6 text-sm md:flex">
             <Link
               className={cn(
-                "pointer-events-none text-neutral-600 transition-[transform,colors] ease-in hover:text-neutral-800 active:scale-95 dark:text-neutral-400 dark:hover:text-neutral-200"
+                "pointer-events-none text-neutral-600 transition-[transform,colors] ease-in hover:text-neutral-800 active:scale-95 dark:text-neutral-400 dark:hover:text-neutral-200",
               )}
               href="/docs"
             >
@@ -50,7 +50,7 @@ export function Navbar() {
                 "pointer-events-none transition-[transform,colors] ease-in hover:text-neutral-800 active:scale-95 dark:hover:text-neutral-200",
                 pathname.startsWith("/docs/components")
                   ? "font-bold text-neutral-800 dark:text-neutral-200"
-                  : "text-neutral-600 dark:text-neutral-400"
+                  : "text-neutral-600 dark:text-neutral-400",
               )}
               href="/docs/components"
             >
@@ -61,7 +61,7 @@ export function Navbar() {
         <div className="flex items-center gap-1">
           {pathname.startsWith("/docs/") && (
             <button
-              className="hidden h-8 w-56 items-center justify-between gap-2 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-sm text-neutral-700 transition-[border,transform] duration-300 focus:border-neutral-200 focus:outline-none active:scale-95 dark:bg-neutral-900 dark:text-neutral-200 focus:dark:border-neutral-800 md:flex"
+              className="hidden h-8 w-56 items-center justify-between gap-2 rounded-lg border border-transparent bg-neutral-100 px-2 py-0.5 text-sm text-neutral-700 transition-[border,transform] duration-300 focus:border-neutral-200 focus:outline-none active:scale-95 md:flex dark:bg-neutral-900 dark:text-neutral-200 focus:dark:border-neutral-800"
               type="button"
             >
               <div className=" flex items-center gap-x-2 text-neutral-600 dark:text-neutral-400">
@@ -76,7 +76,7 @@ export function Navbar() {
           <nav className="flex items-center gap-1">
             {pathname.startsWith("/docs/") && (
               <button
-                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300 md:hidden"
+                className="inline-flex h-8 w-8 transform items-center justify-center gap-2 rounded-md bg-transparent text-sm font-medium ring-offset-white transition duration-300 ease-in-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:hidden dark:bg-transparent dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
                 type="button"
               >
                 <MagnifyingGlass className="h-[1.2rem] w-[1.2rem]" />

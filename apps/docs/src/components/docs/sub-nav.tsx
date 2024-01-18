@@ -11,7 +11,7 @@ export const SubNav = () => {
   const { context } = useSidebarContext();
   if (!pathname.startsWith("/docs/")) return null;
   return (
-    <div className="sticky top-[4rem] bg-white z-20 dark:bg-neutral-950 h-[3rem] container mx-auto border-b dark:border-neutral-800 flex md:hidden items-center gap-2">
+    <div className="container sticky top-[4rem] z-20 mx-auto flex h-[3rem] items-center gap-2 border-b bg-white md:hidden dark:border-neutral-800 dark:bg-neutral-950">
       <Button
         variant="ghost"
         size="icon"
@@ -19,8 +19,8 @@ export const SubNav = () => {
         className="h-8 w-8"
         left={<List className="h-5 w-5" />}
       />
-      <hr className="h-[50%] border-0 bg-neutral-200 dark:bg-neutral-800 w-px" />
-      <div className="text-sm pl-2 gap-x-2 flex items-center">
+      <hr className="h-[50%] w-px border-0 bg-neutral-200 dark:bg-neutral-800" />
+      <div className="flex items-center gap-x-2 pl-2 text-sm">
         {pathname
           ?.replace("/docs/", "")
           .split("/")
@@ -29,8 +29,8 @@ export const SubNav = () => {
               <div
                 className={cn(
                   path === pathname?.replace("/docs/", "").split("/").pop() &&
-                    "dark:!text-white text-neutral-800",
-                  "flex items-center gap-x-2 capitalize text-neutral-500 dark:text-neutral-400"
+                    "text-neutral-800 dark:!text-white",
+                  "flex items-center gap-x-2 capitalize text-neutral-500 dark:text-neutral-400",
                 )}
                 key={path}
               >

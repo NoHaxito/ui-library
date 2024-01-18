@@ -69,7 +69,7 @@ export const SidebarItem = forwardRef<HTMLUListElement, SidebarItemsProps>(
 
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       context: { collapsed },
@@ -100,7 +100,7 @@ export const SidebarItem = forwardRef<HTMLUListElement, SidebarItemsProps>(
         </Component>
       </ListItem>
     );
-  }
+  },
 );
 
 SidebarItem.displayName = "SidebarItem";

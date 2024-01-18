@@ -1,5 +1,6 @@
 "use client";
 import { Badge } from "@/components/badge";
+import { cn } from "@/lib/utils";
 import {
   Button,
   Dialog,
@@ -17,7 +18,12 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
 } from "@deluxe/ui";
+import { Copy, Download, Printer, Share } from "@phosphor-icons/react";
 import {
   Bell,
   CaretRight,
@@ -43,7 +49,7 @@ export default function Home() {
         <Button
           left={<Bell />}
           right={
-            <div className="dark:bg-black bg-white px-2 py-0.5 rounded-lg text-xs text-black dark:text-white">
+            <div className="rounded-lg bg-white px-2 py-0.5 text-xs text-black dark:bg-black dark:text-white">
               NEW
             </div>
           }
@@ -60,7 +66,7 @@ export default function Home() {
           variant="outline"
           left={<Bell />}
           right={
-            <div className="dark:bg-black bg-white px-2 py-0.5 rounded-lg text-xs text-black dark:text-white">
+            <div className="rounded-lg bg-white px-2 py-0.5 text-xs text-black dark:bg-black dark:text-white">
               NEW
             </div>
           }
@@ -77,9 +83,9 @@ export default function Home() {
           <Bell />
         </Button>
       </div>
-      <div className="w-52 rounded-lg overflow-hidden">
-        <div className="h-1.5 w-full bg-deluxe-200 dark:bg-deluxe-800 group overflow-hidden">
-          <div className="animate-indeterminated-progress duration-1000 origin-[0%_50%] w-full h-full bg-blue-500"></div>
+      <div className="w-52 overflow-hidden rounded-lg">
+        <div className="bg-deluxe-200 dark:bg-deluxe-800 group h-1.5 w-full overflow-hidden">
+          <div className="animate-indeterminated-progress h-full w-full origin-[0%_50%] bg-blue-500 duration-1000"></div>
         </div>
       </div>
       <div className="flex items-center gap-2">
@@ -124,7 +130,7 @@ export default function Home() {
             <Button size="sm">Open dialog</Button>
           </DialogTrigger>
           <DialogContent className="max-w-sm">
-            <DialogClose className="absolute top-4 right-4" />
+            <DialogClose className="absolute right-4 top-4" />
             <DialogHeader>
               <DialogTitle>Get Started</DialogTitle>
               <DialogDescription>
@@ -135,7 +141,7 @@ export default function Home() {
             <input
               defaultValue={"npm install @deluxe/ui"}
               readOnly
-              className="text-neutral-500 dark:text-neutral-300 w-full border focus:outline-none focus:border-deluxe-300 dark:focus:border-deluxe-700 bg-transparent transition-[border] duration-300 px-3 py-1 text-sm border-deluxe-200 dark:border-deluxe-900 rounded-deluxe"
+              className="focus:border-deluxe-300 dark:focus:border-deluxe-700 border-deluxe-200 dark:border-deluxe-900 rounded-deluxe w-full border bg-transparent px-3 py-1 text-sm text-neutral-500 transition-[border] duration-300 focus:outline-none dark:text-neutral-300"
             />
             <DialogFooter>
               <Button size="sm">See documentation</Button>
@@ -175,9 +181,79 @@ export default function Home() {
       cumque animi eos enim eveniet voluptas obcaecati saepe commodi iusto hic
       voluptatem, omnis ratione tempora unde. Pariatur perspiciatis illum
       explicabo repellendus eum modi commodi id.
-      <Button className="animate-in zoom-in-0 duration-500 fixed bottom-6 right-6 h-10 w-10" size="icon">
-        <Plus className="h-6 w-6" />
-      </Button>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            className={cn(
+              "animate-in fade-in-0 zoom-in-0 group fixed bottom-6 right-6 h-12 w-12",
+            )}
+            size="icon"
+          >
+            <Plus className="tranform h-6 w-6 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-45" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          onOpenAutoFocus={(e) => e.preventDefault()}
+          side="top"
+          align="center"
+          className="group mb-2 flex min-w-[48px] max-w-[48px] flex-col items-center justify-center gap-y-2 !bg-transparent p-0"
+        >
+          <TooltipProvider delayDuration={500}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  className={cn(
+                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                  )}
+                  size="icon"
+                >
+                  <Share className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">Share</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  className={cn(
+                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                  )}
+                  size="icon"
+                >
+                  <Printer className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">Print</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  className={cn(
+                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                  )}
+                  size="icon"
+                >
+                  <Download className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">Download</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  className={cn(
+                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                  )}
+                  size="icon"
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">Copy</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </PopoverContent>
+      </Popover>
     </main>
   );
 }
