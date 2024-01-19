@@ -185,11 +185,11 @@ export default function Home() {
         <PopoverTrigger asChild>
           <Button
             className={cn(
-              "animate-in fade-in-0 zoom-in-0 group fixed bottom-6 right-6 h-12 w-12",
+              "animate-in fade-in-0 zoom-in-0 group fixed bottom-6 right-6 h-12 w-12 duration-700",
             )}
             size="icon"
           >
-            <Plus className="tranform h-6 w-6 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-45" />
+            <Plus className="tranform h-6 w-6 transition-transform duration-300 ease-in-out group-data-[state=open]:-rotate-45" />
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -203,7 +203,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -216,7 +216,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -229,7 +229,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -242,7 +242,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in duration-1000 group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >

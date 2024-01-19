@@ -3,7 +3,7 @@ import type { VariantProps } from "tailwind-variants";
 
 const sidebarBase = tv({
   slots: {
-    base: "z-30 transition-[width,transform] duration-[300ms] antialiased h-full ease-in-out bg-deluxe-50 dark:bg-deluxe-900 flex flex-col",
+    base: "z-30 transition-[width,transform] transform duration-[1700ms] data-[open=false]:duration-[1000ms] antialiased h-full ease-in bg-deluxe-50 dark:bg-deluxe-900 flex flex-col",
     overlay: "fixed inset-0 z-20 bg-black/50",
   },
   variants: {
