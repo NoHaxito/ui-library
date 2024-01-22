@@ -12,9 +12,11 @@ import {
   DialogClose,
   DialogFooter,
   DropdownMenu,
+  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -22,7 +24,9 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  useBackdrop,
 } from "@deluxe/ui";
+
 import { Copy, Download, Printer, Share } from "@phosphor-icons/react";
 import {
   Bell,
@@ -34,12 +38,22 @@ import {
   User,
   Plus,
   Question,
+  Dot,
+  Checks,
 } from "@phosphor-icons/react/dist/ssr";
+import { useState, CSSProperties } from "react";
+import { Drawer } from "vaul";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const { height, width, left, top } = useBackdrop(
+    "#nav-items [data-active=true]",
+  );
+
   return (
     <main className="space-y-2 py-4">
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <Button left={<House />} size="sm">
           Home
         </Button>
@@ -58,7 +72,7 @@ export default function Home() {
           Notifications
         </Button>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <Button variant="outline" left={<House />} size="sm">
           Home
         </Button>
@@ -75,7 +89,7 @@ export default function Home() {
           Notifications
         </Button>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <Button size="icon">
           <House />
         </Button>
@@ -88,7 +102,7 @@ export default function Home() {
           <div className="animate-indeterminated-progress h-full w-full origin-[0%_50%] bg-blue-500 duration-1000"></div>
         </div>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <DropdownMenu modal>
           <DropdownMenuTrigger asChild>
             <Button left={<List />} size="sm">
@@ -96,18 +110,28 @@ export default function Home() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
+            <DropdownMenuLabel>Menu content</DropdownMenuLabel>
             <DropdownMenuItem icon={<User weight="fill" />}>
               Account
             </DropdownMenuItem>
             <DropdownMenuItem
-              rightIcon={<Badge>New</Badge>}
-              icon={<Gear weight="fill" />}
+              onSelect={() => setOpen(true)}
+              icon={<Bell weight="fill" />}
+              rightIcon={
+                <Badge className="h-4 w-4 rounded-full bg-red-500 text-center text-xs">
+                  3
+                </Badge>
+              }
             >
+              Notifications
+            </DropdownMenuItem>
+            <DropdownMenuItem icon={<Gear weight="fill" />}>
               Settings
             </DropdownMenuItem>
             <DropdownMenuItem icon={<Question weight="fill" />} shortcut={"F1"}>
               Support
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               icon={<Trash weight="fill" />}
               shortcut={"⌘D"}
@@ -117,6 +141,69 @@ export default function Home() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        <Drawer.Root open={open} onOpenChange={setOpen} direction="left">
+          <Drawer.Trigger asChild>
+            <Button
+              size="sm"
+              left={<Bell />}
+              right={
+                <Dot weight="fill" className="animate-pulse text-red-500" />
+              }
+            >
+              Notifications
+            </Button>
+          </Drawer.Trigger>
+          <Drawer.Portal>
+            <Drawer.Content className="fixed inset-x-0 left-0 top-0 z-[60] flex h-full w-72 flex-col rounded-r-[10px] border-r border-neutral-900 bg-neutral-950 p-4 sm:w-64">
+              {/* <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-neutral-700 dark:bg-neutral-300" /> */}
+              <div className="flex items-center justify-between gap-x-2">
+                <h3 className="font-heading text-xl font-semibold tracking-tight after:text-sm after:text-neutral-500 after:content-['_(3)']">
+                  Notifications
+                </h3>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6"
+                  left={<Checks />}
+                />
+              </div>
+              <div className="my-2 h-px w-full rounded-lg bg-neutral-800 dark:bg-neutral-800" />
+              <ul className="space-y-1 overflow-auto">
+                <li className="flex w-full items-center gap-2 rounded-lg bg-neutral-900 p-2">
+                  <div className="size-6 max-h-6 min-h-6 min-w-6 max-w-6 rounded-full bg-neutral-800" />
+                  <div>
+                    <p className="text-sm">Notification 1</p>
+                    <span className=" line-clamp-1 text-xs text-neutral-500">
+                      This is a notification description
+                    </span>
+                  </div>
+                  <Dot weight="fill" className="ml-auto text-blue-400" />
+                </li>
+                <li className="flex w-full items-center gap-2 rounded-lg bg-neutral-900 p-2">
+                  <div className="size-6 max-h-6 min-h-6 min-w-6 max-w-6 rounded-full bg-neutral-800" />
+                  <div>
+                    <p className="text-sm">Notification 2</p>
+                    <span className=" line-clamp-1 text-xs text-neutral-500">
+                      This is a notification description
+                    </span>
+                  </div>
+                  {/* <Dot weight="fill" className="ml-auto text-blue-400" /> */}
+                </li>
+                <li className="flex w-full items-center gap-2 rounded-lg bg-neutral-900 p-2">
+                  <div className="size-6 max-h-6 min-h-6 min-w-6 max-w-6 rounded-full bg-neutral-800" />
+                  <div>
+                    <p className="text-sm">Notification 3</p>
+                    <span className=" line-clamp-1 text-xs text-neutral-500">
+                      This is a notification description
+                    </span>
+                  </div>
+                  {/* <Dot weight="fill" className="ml-auto text-blue-400" /> */}
+                </li>
+              </ul>
+            </Drawer.Content>
+            <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
+          </Drawer.Portal>
+        </Drawer.Root>
         <Popover>
           <PopoverTrigger asChild>
             <Button size="sm">Open popover</Button>
@@ -129,7 +216,7 @@ export default function Home() {
           <DialogTrigger asChild>
             <Button size="sm">Open dialog</Button>
           </DialogTrigger>
-          <DialogContent className="max-w-sm">
+          <DialogContent className="max-w-sm duration-500">
             <DialogClose className="absolute right-4 top-4" />
             <DialogHeader>
               <DialogTitle>Get Started</DialogTitle>
@@ -148,44 +235,196 @@ export default function Home() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+        <Drawer.Root>
+          <Drawer.Trigger asChild>
+            <Button size="sm" className="flex sm:hidden" left={<Gear />}>
+              Settings
+            </Button>
+          </Drawer.Trigger>
+          <Drawer.Portal>
+            <Drawer.Content className="rounded-t-deluxe fixed inset-x-0 bottom-0 z-[60] flex max-h-[96%] w-full flex-col border-neutral-200 bg-neutral-100 dark:border-neutral-900 dark:bg-neutral-950">
+              <div className="mx-auto mt-4 mb-2 h-2 w-[100px] rounded-full bg-neutral-700 dark:bg-neutral-500" />
+              <div className="overflow-auto p-4">
+                <div className="mb-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="first_name"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      id="first_name"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="John"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="last_name"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Last name
+                    </label>
+                    <input
+                      type="text"
+                      id="last_name"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Doe"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="company"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Flowbite"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Phone number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="123-45-678"
+                      pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="website"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Website URL
+                    </label>
+                    <input
+                      type="url"
+                      id="website"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="flowbite.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="visitors"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Unique visitors (per month)
+                    </label>
+                    <input
+                      type="number"
+                      id="visitors"
+                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="mb-6">
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="john.doe@company.com"
+                    required
+                  />
+                </div>
+                <div className="mb-6">
+                  <label
+                    htmlFor="password"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="•••••••••"
+                    required
+                  />
+                </div>
+                <div className="mb-6">
+                  <label
+                    htmlFor="confirm_password"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Confirm password
+                  </label>
+                  <input
+                    type="password"
+                    id="confirm_password"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="•••••••••"
+                    required
+                  />
+                </div>
+                <div className="mb-6 flex items-start">
+                  <div className="flex h-5 items-center">
+                    <input
+                      id="remember"
+                      type="checkbox"
+                      value=""
+                      className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                      required
+                    />
+                  </div>
+                  <label
+                    htmlFor="remember"
+                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    I agree with the{" "}
+                    <a
+                      href="#"
+                      className="text-blue-600 hover:underline dark:text-blue-500"
+                    >
+                      terms and conditions
+                    </a>
+                    .
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Submit
+                </button>
+              </div>
+            </Drawer.Content>
+            <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
+          </Drawer.Portal>
+        </Drawer.Root>
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, placeat
-      qui vel quibusdam alias cumque, amet impedit consequatur repellat
-      perferendis, voluptate doloribus. Optio numquam doloremque perspiciatis
-      sapiente. Autem, quasi inventore. Praesentium, doloribus, accusantium nisi
-      quia, velit porro laboriosam suscipit aspernatur eius recusandae magni
-      placeat voluptas? Sit incidunt mollitia atque, facilis voluptas minus
-      culpa doloremque, sunt aspernatur ad voluptates non eum. Nobis optio
-      accusantium, cupiditate doloremque eos officia debitis nemo atque
-      doloribus. Repellat, illum harum, soluta ipsam temporibus impedit laborum
-      perspiciatis alias blanditiis neque iusto aliquam cumque reprehenderit nam
-      officiis ut! Quia necessitatibus sunt ut quae atque autem, dignissimos,
-      odit eius nobis corrupti pariatur a officiis, dolore aspernatur. Maiores
-      vero excepturi vitae voluptate aliquam consectetur nam cum harum dolores
-      a? Aut. Fuga tempore maiores sapiente! Impedit ab doloremque voluptatem
-      deleniti error consequuntur in quis deserunt nostrum nisi perspiciatis
-      ratione iure officia quaerat est sit quibusdam explicabo, iste dolores a
-      tempora iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Natus consectetur, esse ipsa eveniet sint molestiae beatae ea ullam
-      similique incidunt excepturi id exercitationem ut harum eaque ratione
-      doloremque tenetur. Facilis. Ex explicabo, tenetur ab quod recusandae
-      blanditiis corrupti quaerat sequi rem repellat et vero nulla similique
-      error corporis voluptatem eum ipsa illum fugit a asperiores non neque, eos
-      expedita? Magni. Placeat neque incidunt possimus asperiores assumenda
-      omnis repellat suscipit consequatur, quia unde dolores earum mollitia
-      nulla doloribus obcaecati aliquam in nisi a, velit nam. Eveniet neque
-      optio architecto beatae reiciendis? Debitis accusamus praesentium aut iure
-      iste voluptates ut veritatis in sequi. Inventore ducimus tempore quo quae,
-      at ad tempora perspiciatis labore, nemo ipsum distinctio maxime iusto
-      officia libero cumque nesciunt. Facere atque placeat perferendis illum
-      cumque animi eos enim eveniet voluptas obcaecati saepe commodi iusto hic
-      voluptatem, omnis ratione tempora unde. Pariatur perspiciatis illum
-      explicabo repellendus eum modi commodi id.
+      {/* speed dial */}
       <Popover>
         <PopoverTrigger asChild>
           <Button
             className={cn(
-              "animate-in fade-in-0 zoom-in-0 group fixed bottom-6 right-6 h-12 w-12 duration-700",
+              "animate-in fade-in-0 zoom-in-75 slide-in-from-bottom-full group fixed bottom-6 right-6 h-10 w-10",
             )}
             size="icon"
           >
@@ -196,14 +435,14 @@ export default function Home() {
           onOpenAutoFocus={(e) => e.preventDefault()}
           side="top"
           align="center"
-          className="group mb-2 flex min-w-[48px] max-w-[48px] flex-col items-center justify-center gap-y-2 !bg-transparent p-0"
+          className="group mb-2 flex min-w-[40px] max-w-[40px] flex-col items-center justify-center gap-y-2 !bg-transparent p-0"
         >
           <TooltipProvider delayDuration={500}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-9 w-9 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -216,7 +455,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-9 w-9 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -229,7 +468,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-9 w-9 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -242,7 +481,7 @@ export default function Home() {
               <TooltipTrigger asChild>
                 <Button
                   className={cn(
-                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-11 w-11 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+                    "group-data-[state=open]:animate-in group-data-[state=open]:fade-in-0 group-data-[state=open]:slide-in-from-right-4 group-data-[state=open]:zoom-in-0 h-9 w-9 bg-neutral-200 duration-1000 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
                   )}
                   size="icon"
                 >
@@ -254,6 +493,36 @@ export default function Home() {
           </TooltipProvider>
         </PopoverContent>
       </Popover>
+      {/* speed dial */}
+
+      <div>
+        <ul id="nav-items" className="relative z-10 flex items-center gap-x-2">
+          {["element 1", "im a bigger element", "element 2"].map(
+            (item, idx) => (
+              <Button
+                onClick={() => setActive(idx)}
+                variant="ghost"
+                key={idx}
+                data-active={active === idx ? true : null}
+                size="sm"
+              >
+                {item}
+              </Button>
+            ),
+          )}
+          <div
+            style={
+              {
+                ["--width"]: `${width}px`,
+                ["--height"]: `${height}px`,
+                ["--top"]: `${top}px`,
+                ["--left"]: `${left}px`,
+              } as CSSProperties
+            }
+            className="rounded-deluxe absolute left-0 -z-[2] h-[var(--height)] w-[var(--width)] translate-x-[var(--left)] bg-neutral-900 transition-[width,transform] duration-500 ease-in-out"
+          />
+        </ul>
+      </div>
     </main>
   );
 }

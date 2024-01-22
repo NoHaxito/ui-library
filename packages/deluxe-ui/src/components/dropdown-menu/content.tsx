@@ -22,10 +22,12 @@ export const DropdownMenuContent = React.forwardRef<
         ref={forwardedRef}
         sideOffset={sideOffset}
         side={side}
-        className={cn(content({ className, side }))}
+        className={cn(
+          content({ className: cn(className, "duration-500"), side }),
+        )}
         {...props}
       />
     </RadixDropdownMenuPortal>
   );
 });
-DropdownMenuContent.displayName = "DropdownMenuContent";
+DropdownMenuContent.displayName = "DropdownMenu.Content";

@@ -40,4 +40,4 @@ export const DropdownMenuItem = forwardRef<
     </RadixDropdownMenuItem>
   );
 });
-DropdownMenuItem.displayName = "DropdownItem";
+DropdownMenuItem.displayName = "DropdownMenu.Item";

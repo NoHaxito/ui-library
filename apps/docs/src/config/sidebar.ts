@@ -90,6 +90,12 @@ export const sidebarItems: SidebarDocs = [
         disabled: true,
       },
       {
+        title: "Drawer",
+        href: "/docs/components/drawer",
+        label: "New",
+        disabled: true,
+      },
+      {
         title: "Dropdown Menu",
         href: "/docs/components/dropdown-menu",
         disabled: true,

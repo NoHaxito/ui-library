@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 import type { VariantProps } from "tailwind-variants";
 
 const content = tv({
-  base: "data-[state=open]:animate-in ease-in-out data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0 min-w-[180px] dark:bg-deluxe-900 bg-deluxe-100 rounded-deluxe shadow-md px-1 py-1.5 z-50 overflow-hidden",
+  base: "data-[state=open]:animate-in ease-in-out data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0 min-w-[180px] dark:bg-deluxe-900 bg-deluxe-100 rounded-deluxe shadow-md px-1 py-1.5 z-50 overflow-hidden border border-deluxe-200 dark:border-deluxe-800",
   variants: {
     side: {
       top: "data-[state=open]:slide-in-from-bottom-3.5 data-[state=closed]:slide-out-to-bottom-3.5",
@@ -23,7 +23,7 @@ const item = tv({
         "dark:text-deluxe-300 text-deluxe-800 focus:bg-deluxe-200 dark:focus:bg-deluxe-800 focus:outline-none focus:border-deluxe-300 dark:focus:border-deluxe-700",
 
       danger:
-        "dark:text-deluxe-300 dark:focus:text-deluxe-300 focus:text-red-800 text-deluxe-800 focus:bg-red-100 dark:focus:bg-red-800/20 focus:outline-none focus:border-deluxe-300 dark:focus:border-deluxe-700",
+        "dark:text-red-400 dark:focus:text-deluxe-300 focus:text-deluxe-700 text-red-500 focus:bg-red-100 dark:focus:bg-red-600/20 focus:outline-none focus:border-deluxe-300 dark:focus:border-deluxe-700",
     },
   },
   defaultVariants: {
@@ -31,11 +31,20 @@ const item = tv({
   },
 });
 
+const extra = tv({
+  slots: {
+    separator: "-mx-1 my-1 h-px bg-deluxe-200 dark:bg-deluxe-800",
+    label: "px-2 py-1.5 text-sm font-semibold",
+  },
+});
+
 export const dropdownTheme = {
   content,
   item,
+  extra,
 };
 export type DropdownTheme = {
   content: VariantProps<typeof content>;
   item: VariantProps<typeof item>;
+  extra: VariantProps<typeof extra>;
 };
