@@ -49,7 +49,7 @@ export default function Home() {
   const [active, setActive] = useState(0);
   const { height, width, left, top } = useBackdrop(
     "#nav-items [data-active=true]",
-  );
+  ) as any;
 
   return (
     <main className="space-y-2 py-4">
