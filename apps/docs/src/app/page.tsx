@@ -23,8 +23,7 @@ import {
   TooltipProvider,
   Tooltip,
   TooltipTrigger,
-  TooltipContent,
-  useBackdrop,
+  TooltipContent
 } from "@deluxe/ui";
 
 import { Copy, Download, Printer, Share } from "@phosphor-icons/react";
@@ -46,11 +45,6 @@ import { Drawer } from "vaul";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(0);
-  const { height, width, left, top } = useBackdrop(
-    "#nav-items [data-active=true]",
-  ) as any;
-
   return (
     <main className="space-y-2 py-4">
       <div className="flex flex-wrap items-center gap-2">
@@ -494,35 +488,6 @@ export default function Home() {
         </PopoverContent>
       </Popover>
       {/* speed dial */}
-
-      <div>
-        <ul id="nav-items" className="relative z-10 flex items-center gap-x-2">
-          {["element 1", "im a bigger element", "element 2"].map(
-            (item, idx) => (
-              <Button
-                onClick={() => setActive(idx)}
-                variant="ghost"
-                key={idx}
-                data-active={active === idx ? true : null}
-                size="sm"
-              >
-                {item}
-              </Button>
-            ),
-          )}
-          <div
-            style={
-              {
-                ["--width"]: `${width}px`,
-                ["--height"]: `${height}px`,
-                ["--top"]: `${top}px`,
-                ["--left"]: `${left}px`,
-              } as CSSProperties
-            }
-            className="rounded-deluxe absolute left-0 -z-[2] h-[var(--height)] w-[var(--width)] translate-x-[var(--left)] bg-neutral-900 transition-[width,transform] duration-500 ease-in-out"
-          />
-        </ul>
-      </div>
     </main>
   );
 }
